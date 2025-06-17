@@ -1,0 +1,274 @@
+/* General Body and Font Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    /* Updated: Light background for a clean, professional look */
+    background-color: #f9f9f9; /* A very light grey, almost white */
+    color: #333; /* Darker text for readability on light background */
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header and Navigation */
+header {
+    background-color: #ffffff; /* White header for a clean look */
+    border-bottom: 1px solid #eee; /* Subtle border */
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow for depth */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333; /* Darker logo for visibility */
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #555; /* Dark grey for navigation links */
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #007bff; /* Coursera blue accent color */
+}
+
+/* General Section Styling */
+section {
+    padding: 60px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333; /* Darker title for readability */
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: -10px auto 40px auto;
+    color: #666; /* Darker subtitle */
+}
+
+/* Hero Section */
+#hero .hero-content {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+#hero .hero-left, #hero .hero-right {
+    flex: 1;
+    background-color: #ffffff; /* White background for hero sections */
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #eee; /* Light border */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+
+#hero h2 {
+    color: #007bff; /* Coursera blue for headings */
+    margin-top: 0;
+}
+
+#hero img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 15px;
+    /* Added a light border to images that might have a transparent background */
+    border: 1px solid #eee;
+}
+
+/* NEW: Video container and video element styles */
+.video-container {
+    margin-top: 30px; /* Space above the video section */
+    text-align: center;
+}
+
+.video-container h3 {
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.hero-video {
+    width: 100%; /* Make video responsive */
+    max-width: 600px; /* Max width for larger screens */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px;
+    border: 1px solid #eee; /* Light border around video */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+/* END NEW */
+
+
+.btn {
+    display: inline-block;
+    background-color: #007bff; /* Coursera blue for primary button */
+    color: #ffffff;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.small-text {
+    font-size: 0.8rem;
+    color: #888; /* Slightly darker grey for small text */
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+/* Cards for Courses and Research */
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #ffffff; /* White background for cards */
+    border: 1px solid #eee; /* Light border */
+    border-radius: 8px;
+    padding: 25px;
+    width: 260px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,123,255,0.1); /* More prominent shadow on hover with blue tint */
+}
+
+.card h3 {
+    color: #007bff; /* Coursera blue for card headings */
+    margin-top: 0;
+}
+
+.research-card i {
+    font-size: 3rem;
+    color: #007bff; /* Coursera blue for icons */
+}
+
+.btn-secondary {
+    display: inline-block;
+    background-color: transparent;
+    border: 1px solid #007bff; /* Coursera blue border */
+    color: #007bff; /* Coursera blue text */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.btn-secondary.disabled {
+    opacity: 0.6; /* Slightly less opaque for disabled */
+    cursor: not-allowed;
+    border-color: #ccc; /* Lighter border for disabled */
+    color: #999; /* Lighter text for disabled */
+}
+.btn-secondary.disabled:hover {
+    background-color: transparent;
+    color: #999; /* Keep lighter text on hover for disabled */
+}
+
+/* Slogan Section */
+#slogan {
+    background-color: #e6f2ff; /* A very light blue for the slogan section */
+    color: #333; /* Darker text for slogan */
+    text-align: center;
+    padding: 40px 0; /* Adjusted padding */
+}
+
+#slogan h2 {
+    font-weight: 700;
+    margin: 0;
+    color: #007bff; /* Coursera blue for slogan heading */
+    font-size: 2rem; /* Slightly smaller for better fit */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    border-top: 1px solid #eee; /* Light border */
+    color: #777; /* Darker grey for footer text */
+    background-color: #ffffff; /* White footer background */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Simple hiding for mobile, can be replaced with a hamburger menu later */
+    }
+    #hero .hero-content {
+        flex-direction: column;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    .card {
+        width: 100%; /* Full width cards on mobile */
+    }
+}
+
+/* Custom size for the smaller video player */
+.hero-video-small {
+    max-width: 200px; /* Adjust this value to your desired smaller width */
+    margin-left: auto; /* Center the video within its container */
+    margin-right: auto; /* Center the video within its container */
+    display: block; /* Ensures margin: auto works for centering */
+}
+
+/* You might want to adjust the general video container margin if you find the spacing too large after making one video smaller */
+.video-container {
+    margin-top: 30px; /* Keep this or adjust as needed for spacing between videos */
+    text-align: center; /* Ensures content within the container is centered */
+}

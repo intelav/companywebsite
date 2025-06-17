@@ -1,0 +1,48 @@
+{
+  "courses": [
+    {
+      "title": "AI for Students",
+      "description": "Building foundational knowledge for the next generation of innovators."
+    },
+    {
+      "title": "AI for Undergraduates",
+      "description": "Advanced concepts and practical skills for university-level learners."
+    },
+    {
+      "title": "AI for Engineering Professionals",
+      "description": "Upskill with cutting-edge techniques in machine learning and data science."
+    },
+    {
+      "title": "AI for Non-Engineers",
+      "description": "Understand and leverage AI in your professional domain, no coding required."
+    }
+  ],
+  "research": [
+    {
+      "title": "U-Net Paper",
+      "description": "Convolutional Networks for Biomedical Image Segmentation.",
+      "url": "https://arxiv.org/pdf/1505.04597",
+      "icon": "fas fa-file-pdf"
+    },
+    {
+      "title": "Changeformer Paper",
+      "description": "A Transformer-Based Siamese Network for Change Detection.",
+      "url": "https://arxiv.org/pdf/2201.01293",
+      "icon": "fas fa-file-pdf"
+    },
+    {
+      "title": "Upcoming Paper",
+      "description": "Our next deep dive session is coming soon. Stay tuned!",
+      "url": "#",
+      "icon": "fas fa-file-alt",
+      "disabled": true
+    },
+    {
+      "title": "Upcoming Paper",
+      "description": "Our next deep dive session is coming soon. Stay tuned!",
+      "url": "#",
+      "icon": "fas fa-file-alt",
+      "disabled": true
+    }
+  ]
+}
