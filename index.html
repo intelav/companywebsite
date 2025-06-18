@@ -15,7 +15,10 @@
     <!-- Header and Navigation Bar -->
     <header>
         <nav class="container">
-            <a href="index.html" class="logo">Svaraikyam AI</a>
+            <a href="index.html" class="logo">
+                <img src="company_logo.png" alt="Svaraikyam AI Logo">
+                <span>Svaraikyam AI</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="courses.html">Courses</a></li>
@@ -32,11 +35,15 @@
         <section id="hero" class="container">
             <div class="hero-content">
                 <div class="hero-left">
-                    <h2>Our Flagship Product</h2>
+                    <!-- MODIFIED: Title enhanced -->
+                    <h2>SmartPurchase: Our Flagship AI App</h2>
                     <p>Introducing the future of intelligent shopping.</p>
-                    <a href="smartpurchase-details.html" target="_blank">
-                        <img src="smartpurchase.png" alt="Smart Purchase App Interface">
-                    </a>
+                    
+                    <!-- MODIFIED: Replaced image with autoplaying video -->
+                    <div class="product-video-container">
+                        <video src="purchase_video_1.mp4" autoplay loop muted playsinline></video>
+                    </div>
+
                     <a href="https://play.google.com/store/apps/details?id=com.yourapp.id" target="_blank" class="btn">Download SmartPurchase App</a>
                     <p class="small-text">(Note: App is in testing. Link is a placeholder.)</p>
                 </div>
@@ -58,7 +65,6 @@
                         <video class="hero-video hero-video-small" src="shopping_ai_video.mp4" autoplay loop muted controls></video>
                         <p class="small-text">See multi-barcode detection with our Android app.</p>
                     </div>
-                    <!-- END NEW -->
                     <!-- END NEW -->
                 </div>
             </div>
