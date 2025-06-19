@@ -2,9 +2,8 @@
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
-    /* Updated: Light background for a clean, professional look */
-    background-color: #f9f9f9; /* A very light grey, almost white */
-    color: #333; /* Darker text for readability on light background */
+    background-color: #f9f9f9;
+    color: #333;
     line-height: 1.6;
 }
 
@@ -16,64 +15,105 @@ body {
 
 /* Header and Navigation */
 header {
-    background-color: #ffffff; /* White header for a clean look */
-    border-bottom: 1px solid #eee; /* Subtle border */
+    background-color: #ffffff;
+    border-bottom: 1px solid #eee;
     padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow for depth */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 nav {
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
-/* MODIFIED: Changed logo to a flex container to align image and text */
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px; /* Adds space between the logo icon and text */
+    gap: 10px;
     text-decoration: none;
-    color: #333; /* Default text color */
-}
-
-/* ADDED: Styles for the logo image */
-.logo img {
-    height: 50px; /* Increased height for better visibility */
-    width: auto;  /* Maintain aspect ratio */
-}
-
-/* ADDED: Styles for the logo text */
-.logo span {
-    font-size: 1.5rem; /* Larger font size */
-    font-weight: 700;  /* Bold text */
     color: #333;
 }
 
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+.logo span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+}
 
 .nav-links {
     list-style: none;
     display: flex;
-    margin: 0;
+    align-items: center;
+    margin: 0 0 0 auto; /* Pushes nav links to the right */
     padding: 0;
 }
 
-.nav-links li {
+.nav-links > li {
     margin-left: 25px;
+    position: relative;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: #555; /* Dark grey for navigation links */
+    color: #555;
     font-weight: 400;
     transition: color 0.3s ease;
+    padding: 10px 0;
 }
 
-.nav-links a:hover, .nav-links a.active {
-    color: #007bff; /* Coursera blue accent color */
+.nav-links a:hover, 
+.nav-links a.active {
+    color: #007bff;
+}
+
+/* Dropdown Menu Styles */
+.dropdown .dropbtn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #004a99; /* Dark blue background */
+    min-width: 280px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: none; /* Removed the thin border */
+}
+
+/* This rule shows the dropdown when hovering over the parent .dropdown element */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: #ffffff; /* White text for contrast */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-weight: 400;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #005cb8; /* Slightly lighter blue on hover */
+    color: #ffffff; /* Text remains white on hover */
 }
 
 /* General Section Styling */
@@ -85,7 +125,7 @@ section {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #333; /* Darker title for readability */
+    color: #333;
 }
 
 .section-subtitle {
@@ -93,7 +133,15 @@ section {
     font-size: 1.1rem;
     max-width: 600px;
     margin: -10px auto 40px auto;
-    color: #666; /* Darker subtitle */
+    color: #666;
+}
+
+.content-block {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
 }
 
 /* Hero Section */
@@ -105,42 +153,32 @@ section {
 
 #hero .hero-left, #hero .hero-right {
     flex: 1;
-    background-color: #ffffff; /* White background for hero sections */
+    background-color: #ffffff;
     padding: 30px;
     border-radius: 8px;
-    border: 1px solid #eee; /* Light border */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Subtle shadow */
+    border: 1px solid #eee;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 #hero h2 {
-    color: #007bff; /* Coursera blue for headings */
+    color: #007bff;
     margin-top: 0;
 }
 
-#hero img {
+#hero img,
+.product-video-container video,
+.hero-video {
     width: 100%;
     border-radius: 8px;
-    margin-top: 15px;
-    /* Added a light border to images that might have a transparent background */
     border: 1px solid #eee;
 }
 
-/* ADDED: Container for the main product video */
 .product-video-container {
-    width: 100%;
     margin: 15px 0;
 }
 
-.product-video-container video {
-    width: 100%;
-    border-radius: 8px;
-    border: 1px solid #eee;
-}
-
-
-/* NEW: Video container and video element styles */
 .video-container {
-    margin-top: 30px; /* Space above the video section */
+    margin-top: 30px;
     text-align: center;
 }
 
@@ -150,19 +188,14 @@ section {
 }
 
 .hero-video {
-    width: 100%; /* Make video responsive */
-    max-width: 600px; /* Max width for larger screens */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 8px;
-    border: 1px solid #eee; /* Light border around video */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Subtle shadow */
+    max-width: 600px;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
-/* END NEW */
-
 
 .btn {
     display: inline-block;
-    background-color: #007bff; /* Coursera blue for primary button */
+    background-color: #007bff;
     color: #ffffff;
     padding: 12px 25px;
     border-radius: 5px;
@@ -174,18 +207,17 @@ section {
 }
 
 .btn:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
 }
 
 .small-text {
     font-size: 0.8rem;
-    color: #888; /* Slightly darker grey for small text */
+    color: #888;
     margin-top: 10px;
     text-align: center;
 }
 
-
-/* Cards for Courses and Research */
+/* Cards */
 .card-container {
     display: flex;
     justify-content: center;
@@ -194,36 +226,36 @@ section {
 }
 
 .card {
-    background-color: #ffffff; /* White background for cards */
-    border: 1px solid #eee; /* Light border */
+    background-color: #ffffff;
+    border: 1px solid #eee;
     border-radius: 8px;
     padding: 25px;
     width: 260px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Subtle shadow */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,123,255,0.1); /* More prominent shadow on hover with blue tint */
+    box-shadow: 0 8px 16px rgba(0,123,255,0.1);
 }
 
-.card h3 {
-    color: #007bff; /* Coursera blue for card headings */
+.card h3, .card h4 {
+    color: #007bff;
     margin-top: 0;
 }
 
 .research-card i {
     font-size: 3rem;
-    color: #007bff; /* Coursera blue for icons */
+    color: #007bff;
 }
 
 .btn-secondary {
     display: inline-block;
     background-color: transparent;
-    border: 1px solid #007bff; /* Coursera blue border */
-    color: #007bff; /* Coursera blue text */
+    border: 1px solid #007bff;
+    color: #007bff;
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
@@ -237,29 +269,30 @@ section {
 }
 
 .btn-secondary.disabled {
-    opacity: 0.6; /* Slightly less opaque for disabled */
+    opacity: 0.6;
     cursor: not-allowed;
-    border-color: #ccc; /* Lighter border for disabled */
-    color: #999; /* Lighter text for disabled */
+    border-color: #ccc;
+    color: #999;
 }
+
 .btn-secondary.disabled:hover {
     background-color: transparent;
-    color: #999; /* Keep lighter text on hover for disabled */
+    color: #999;
 }
 
 /* Slogan Section */
 #slogan {
-    background-color: #e6f2ff; /* A very light blue for the slogan section */
-    color: #333; /* Darker text for slogan */
+    background-color: #e6f2ff;
+    color: #333;
     text-align: center;
-    padding: 40px 0; /* Adjusted padding */
+    padding: 40px 0;
 }
 
 #slogan h2 {
     font-weight: 700;
     margin: 0;
-    color: #007bff; /* Coursera blue for slogan heading */
-    font-size: 2rem; /* Slightly smaller for better fit */
+    color: #007bff;
+    font-size: 2rem;
 }
 
 /* Footer */
@@ -267,15 +300,21 @@ footer {
     text-align: center;
     padding: 20px 0;
     margin-top: 40px;
-    border-top: 1px solid #eee; /* Light border */
-    color: #777; /* Darker grey for footer text */
-    background-color: #ffffff; /* White footer background */
+    border-top: 1px solid #eee;
+    color: #777;
+    background-color: #ffffff;
+}
+
+.last-updated {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-bottom: 10px;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-links {
-        display: none; /* Simple hiding for mobile, can be replaced with a hamburger menu later */
+        display: none;
     }
     #hero .hero-content {
         flex-direction: column;
@@ -284,20 +323,13 @@ footer {
         font-size: 2rem;
     }
     .card {
-        width: 100%; /* Full width cards on mobile */
+        width: 100%;
     }
 }
 
-/* Custom size for the smaller video player */
 .hero-video-small {
-    max-width: 200px; /* Adjust this value to your desired smaller width */
-    margin-left: auto; /* Center the video within its container */
-    margin-right: auto; /* Center the video within its container */
-    display: block; /* Ensures margin: auto works for centering */
-}
-
-/* You might want to adjust the general video container margin if you find the spacing too large after making one video smaller */
-.video-container {
-    margin-top: 30px; /* Keep this or adjust as needed for spacing between videos */
-    text-align: center; /* Ensures content within the container is centered */
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }

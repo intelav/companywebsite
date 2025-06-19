@@ -16,14 +16,38 @@
     <header>
         <nav class="container">
             <a href="index.html" class="logo">
-                <img src="company_logo.png" alt="Svaraikyam AI Logo">
+                <img src="company_logo.png" alt="Svaraikyam AI Logo" onerror="this.onerror=null; this.src='https://placehold.co/100x50/e6f2ff/007bff?text=Logo';">
                 <span>Svaraikyam AI</span>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="courses.html">Courses</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="research.html">Research</a></li>
+                <li class="dropdown">
+                    <a href="courses.html" class="dropbtn">Courses <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="training-basics-deep-learning.html">Basics of Deep Learning</a>
+                        <a href="training-students.html">AI Trainings for Students (Xth grade onwards)</a>
+                        <a href="training-undergraduates.html">AI Trainings for Undergraduates</a>
+                        <a href="training-engineers.html">AI trainings for Engineering Professionals</a>
+                            
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="products.html" class="dropbtn">Products <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="smartpurchase-details.html">SmartPurchase</a>
+                        <a href="product-voice-llm.html">Voice LLM</a>
+                        <a href="product-virtual-sales-agent.html">Virtual Sales Agent</a>
+                    </div>
+                </li>
+                 <li class="dropdown">
+                    <a href="research.html" class="dropbtn">Research <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="https://arxiv.org/pdf/1505.04597" target="_blank">U-Net Paper Deep Dive</a>
+                        <a href="https://arxiv.org/pdf/2201.01293" target="_blank">Changeformer Paper Deep Dive</a>
+                        <a href="#">Upcoming Paper</a>
+                        <a href="#">Upcoming Paper</a>
+                    </div>
+                </li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -35,11 +59,9 @@
         <section id="hero" class="container">
             <div class="hero-content">
                 <div class="hero-left">
-                    <!-- MODIFIED: Title enhanced -->
                     <h2>SmartPurchase: Our Flagship AI App</h2>
                     <p>Introducing the future of intelligent shopping.</p>
                     
-                    <!-- MODIFIED: Replaced image with autoplaying video -->
                     <div class="product-video-container">
                         <video src="purchase_video_1.mp4" autoplay loop muted playsinline></video>
                     </div>
@@ -50,8 +72,8 @@
                 <div class="hero-right">
                     <h2>Our State-of-the-Art AI Lab</h2>
                     <p>Where innovation and research come to life.</p>
-                    <a href="ai-lab-details.html" target="_blank">
-                        <img src="lab.png" alt="Svaraikyam AI Lab Hardware">
+                    <a href="ai-lab-details.html">
+                        <img src="lab.png" alt="Svaraikyam AI Lab Hardware" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e6f2ff/007bff?text=AI+Lab';">
                     </a>
                     <!-- Video Player Section 1: Voice LLM Demo -->
                     <div class="video-container">
@@ -72,7 +94,7 @@
 
         <!-- Courses Section - NOW DYNAMICALLY LOADED -->
         <section id="courses" class="container">
-            <h2 class="section-title">AI Training for Everyone</h2>
+            <h2 class="section-title">AI Trainings</h2>
             <div class="card-container">
                 <!-- JavaScript will insert course cards here -->
             </div>

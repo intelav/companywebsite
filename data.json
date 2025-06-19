@@ -1,20 +1,20 @@
 {
   "courses": [
     {
-      "title": "AI for Students",
+      "title": "Basics of Deep Learning",
+      "description": "An introduction to the foundational concepts and applications of deep learning."
+    },
+    {
+      "title": "AI Trainings for Students (Xth grade onwards)",
       "description": "Building foundational knowledge for the next generation of innovators."
     },
     {
-      "title": "AI for Undergraduates",
+      "title": "AI Trainings for Undergraduates",
       "description": "Advanced concepts and practical skills for university-level learners."
     },
     {
-      "title": "AI for Engineering Professionals",
+      "title": "AI trainings for Engineering Professionals",
       "description": "Upskill with cutting-edge techniques in machine learning and data science."
-    },
-    {
-      "title": "AI for Non-Engineers",
-      "description": "Understand and leverage AI in your professional domain, no coding required."
     }
   ],
   "research": [
