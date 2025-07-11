@@ -2,8 +2,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Dynamic Content Loading ---
-    const coursesContainer = document.querySelector('#courses .card-container');
-    const researchContainer = document.querySelector('#research .card-container');
+    const coursesContainer = document.querySelector('#courses .card-container, #courses-page .card-container');
+    const researchContainer = document.querySelector('#research .card-container, #research-page .card-container');
 
     // Fetch the data from our JSON file, only if the containers exist on the page
     if (coursesContainer || researchContainer) {
@@ -42,13 +42,21 @@ document.addEventListener('DOMContentLoaded', () => {
 function loadCourses(courses, container) {
     container.innerHTML = '';
     courses.forEach(course => {
+        // Create a link element that will wrap the card content
+        const link = document.createElement('a');
+        link.href = course.link;
+        link.className = 'card-link'; // Added a class for styling if needed
+
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
             <h3>${course.title}</h3>
             <p>${course.description}</p>
         `;
-        container.appendChild(card);
+
+        // Append the card to the link, and the link to the container
+        link.appendChild(card);
+        container.appendChild(link);
     });
 }
 

@@ -2,19 +2,23 @@
   "courses": [
     {
       "title": "Basics of Deep Learning",
-      "description": "An introduction to the foundational concepts and applications of deep learning."
+      "description": "An introduction to the foundational concepts and applications of deep learning.",
+      "link": "training-basics-deep-learning.html"
     },
     {
       "title": "AI Trainings for Students (Xth grade onwards)",
-      "description": "Building foundational knowledge for the next generation of innovators."
+      "description": "Building foundational knowledge for the next generation of innovators.",
+      "link": "training-students.html"
     },
     {
       "title": "AI Trainings for Undergraduates",
-      "description": "Advanced concepts and practical skills for university-level learners."
+      "description": "Advanced concepts and practical skills for university-level learners.",
+      "link": "training-undergraduates.html"
     },
     {
       "title": "AI trainings for Engineering Professionals",
-      "description": "Upskill with cutting-edge techniques in machine learning and data science."
+      "description": "Upskill with cutting-edge techniques in machine learning and data science.",
+      "link": "training-engineers.html"
     }
   ],
   "research": [
@@ -31,18 +35,16 @@
       "icon": "fas fa-file-pdf"
     },
     {
-      "title": "Upcoming Paper",
-      "description": "Our next deep dive session is coming soon. Stay tuned!",
-      "url": "#",
-      "icon": "fas fa-file-alt",
-      "disabled": true
+      "title": "Resnet Networks",
+      "description": "Deep Residual Learning for Image Recognition",
+      "url": "https://arxiv.org/pdf/1512.03385",
+      "icon": "fas fa-file-pdf"
     },
     {
-      "title": "Upcoming Paper",
-      "description": "Our next deep dive session is coming soon. Stay tuned!",
-      "url": "#",
-      "icon": "fas fa-file-alt",
-      "disabled": true
+      "title": "Aggregated Residual Networks",
+      "description": "Aggregated Residual Transformation for Deep Neural Networks",
+      "url": "https://arxiv.org/pdf/1611.05431.pdf",
+      "icon": "fas fa-file-pdf"
     }
   ]
 }
