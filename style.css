@@ -350,7 +350,7 @@ footer {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    pointer-events: none;
+    /* Removed pointer-events: none; as it's now handled by the overlay for the main video */
 }
 
 /* === NEW STYLES ADDED FOR VIRTUAL SALES AGENT UPDATE === */
@@ -431,4 +431,28 @@ footer {
     .side-by-side-videos {
         flex-direction: column;
     }
+}
+
+/* Styles for the new YouTube clickable overlay */
+.youtube-video-clickable-wrapper {
+    position: relative; /* Establish a positioning context for the overlay */
+    display: block; /* Ensure the anchor tag takes up full width/height of its content */
+    width: 100%; /* Ensure it covers the iframe's width */
+    height: 100%; /* Ensure it covers the iframe's height */
+    text-decoration: none; /* Remove underline from the link */
+}
+
+.youtube-video-clickable-wrapper iframe {
+    pointer-events: none; /* Allow clicks to pass through the iframe to the overlay */
+}
+
+.youtube-click-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; /* Place the overlay on top of the iframe */
+    background: transparent; /* Make it invisible */
+    cursor: pointer; /* Indicate it's clickable */
 }
