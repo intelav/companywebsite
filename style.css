@@ -559,3 +559,52 @@ footer {
         opacity: 0.9;
     }
 }
+
+/* Styles for the AI Lab "Click Here!" message */
+.ai-lab-image-wrapper {
+    position: relative; /* Needed for absolute positioning of the message */
+    display: block; /* Ensures the wrapper takes up the image's space */
+    text-decoration: none; /* Remove underline from the link */
+}
+
+.ai-lab-click-message {
+    position: absolute;
+    bottom: 10px; /* Position towards the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5; /* Ensure it's above the image */
+    background-color: rgba(255, 165, 0, 0.85); /* Orange background for contrast */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    animation: flash 1s infinite alternate; /* Apply flash animation */
+}
+
+.ai-lab-click-message p {
+    margin: 0;
+}
+
+@keyframes flash {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+/* Specific grid for AI Lab videos (2 columns) */
+.ai-lab-video-grid {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Adjusted for 2 columns */
+}
+
+@media (min-width: 992px) {
+    .ai-lab-video-grid {
+        grid-template-columns: repeat(2, 1fr); /* Force 2 columns on larger screens */
+    }
+}
