@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 <body>
-
-    <!-- Header and Navigation Bar -->
     <header>
         <nav class="container">
             <a href="index.html" class="logo">
@@ -22,15 +20,6 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li class="dropdown">
-                    <a href="courses.html" class="dropbtn">Courses <i class="fas fa-caret-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="training-basics-deep-learning.html">Basics of Deep Learning</a>
-                        <a href="training-students.html">AI Trainings for Students (Xth grade onwards)</a>
-                        <a href="training-undergraduates.html">AI Trainings for Undergraduates</a>
-                        <a href="training-engineers.html">AI trainings for Engineering Professionals</a>
-                    </div>
-                </li>
-                <li class="dropdown">
                     <a href="products.html" class="dropbtn active">Products <i class="fas fa-caret-down"></i></a>
                     <div class="dropdown-content">
                         <a href="smartpurchase-details.html">SmartPurchase</a>
@@ -39,12 +28,22 @@
                     </div>
                 </li>
                  <li class="dropdown">
-                    <a href="research.html" class="dropbtn">Research <i class="fas fa-caret-down"></i></a>
+                    <a href="blogs.html" class="dropbtn">Blogs <i class="fas fa-caret-down"></i></a>
                     <div class="dropdown-content">
-                        <a href="https://arxiv.org/pdf/1505.04597" target="_blank">U-Net Paper Deep Dive</a>
-                        <a href="https://arxiv.org/pdf/2201.01293" target="_blank">Changeformer Paper Deep Dive</a>
-                        <a href="https://arxiv.org/pdf/1512.03385" target="_blank">Resnet Networks</a>
-                        <a href="https://arxiv.org/pdf/1611.05431.pdf" target="_blank">Aggregated Residual Networks</a>
+                        <a href="blog-basics-deep-learning.html">Basics of Deep Learning</a>
+                        <a href="blog-ai-skills-students.html">AI Skills for Students</a>
+                        <a href="blog-ai-skills-undergraduates.html">AI Skills for Undergraduates</a>
+                        <a href="blog-ai-skills-engineers.html">AI Skills for Engineering Professionals</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="services.html" class="dropbtn">Services <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="service-android-ar-vr.html">Android App Dev with AR/VR</a>
+                        <a href="service-android-gen-ai.html">Android App Dev with GenAI</a>
+                        <a href="service-android-cv.html">Android App Dev with CV</a>
+                        <a href="service-llm-cuda.html">LLM Training Optimization with CUDA</a>
+                        <a href="service-ai-model-migration.html">AI Model Migration to Production</a>
                     </div>
                 </li>
                 <li><a href="about.html">About Us</a></li>
@@ -52,72 +51,30 @@
             </ul>
         </nav>
     </header>
-
     <main>
         <section id="smartpurchase-details" class="container">
             <div class="content-block">
-                <!-- New section for SmartPurchase feature videos -->
                 <div class="video-features-section">
                     <h3 class="video-features-title">SmartPurchase Features in Action</h3>
                     <div class="video-grid">
                         <div class="video-grid-item">
-                            <iframe 
-                                width="100%" 
-                                height="250" 
-                                src="https://www.youtube.com/embed/RpPBYW8B0Dk?autoplay=0&mute=1&loop=1&playlist=RpPBYW8B0Dk&controls=1" 
-                                title="YouTube video player - Special Discounts" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                            </iframe>
+                            <iframe width="100%" height="250" src="https://www.youtube.com/embed/RpPBYW8B0Dk?autoplay=0&mute=1&loop=1&playlist=RpPBYW8B0Dk&controls=1" title="YouTube video player - Special Discounts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             <p class="video-title">Special Discounts for Valued Customers</p>
                         </div>
                         <div class="video-grid-item">
-                            <iframe 
-                                width="100%" 
-                                height="250" 
-                                src="https://www.youtube.com/embed/O1CGbhayoX0?autoplay=0&mute=1&loop=1&playlist=O1CGbhayoX0&controls=1" 
-                                title="YouTube video player - Generative AI for Shop Management" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                            </iframe>
+                            <iframe width="100%" height="250" src="https://www.youtube.com/embed/O1CGbhayoX0?autoplay=0&mute=1&loop=1&playlist=O1CGbhayoX0&controls=1" title="YouTube video player - Generative AI for Shop Management" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             <p class="video-title">Generative AI for Shop Management</p>
                         </div>
                         <div class="video-grid-item">
-                            <iframe 
-                                width="100%" 
-                                height="250" 
-                                src="https://www.youtube.com/embed/zyViUdkNO_Q?autoplay=0&mute=1&loop=1&playlist=zyViUdkNO_Q&controls=1" 
-                                title="YouTube video player - AI-Powered Product Exploration" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                            </iframe>
+                            <iframe width="100%" height="250" src="https://www.youtube.com/embed/zyViUdkNO_Q?autoplay=0&mute=1&loop=1&playlist=zyViUdkNO_Q&controls=1" title="YouTube video player - AI-Powered Product Exploration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             <p class="video-title">AI-Powered Product Exploration for Customers</p>
                         </div>
                         <div class="video-grid-item">
-                            <iframe 
-                                width="100%" 
-                                height="250" 
-                                src="https://www.youtube.com/embed/v5ayNEKEBnE?autoplay=0&mute=1&loop=1&playlist=v5ayNEKEBnE&controls=1" 
-                                title="YouTube video player - Real-time Discount Notifications" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                            </iframe>
+                            <iframe width="100%" height="250" src="https://www.youtube.com/embed/v5ayNEKEBnE?autoplay=0&mute=1&loop=1&playlist=v5ayNEKEBnE&controls=1" title="YouTube video player - Real-time Discount Notifications" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             <p class="video-title">Real-time Discount Notifications</p>
                         </div>
                         <div class="video-grid-item">
-                            <iframe 
-                                width="100%" 
-                                height="250" 
-                                src="https://www.youtube.com/embed/1jyDlMw38jc?autoplay=0&mute=1&loop=1&playlist=1jyDlMw38jc&controls=1" 
-                                title="YouTube video player - Custom Notifications" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                            </iframe>
+                            <iframe width="100%" height="250" src="https://www.youtube.com/embed/1jyDlMw38jc?autoplay=0&mute=1&loop=1&playlist=1jyDlMw38jc&controls=1" title="YouTube video player - Custom Notifications" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             <p class="video-title">Custom Notifications for Visited Customers</p>
                         </div>
                     </div>
@@ -125,8 +82,6 @@
             </div>
         </section>
     </main>
-
-    <!-- Footer - Consistent with index.html -->
     <footer>
         <div class="container">
             <p>&copy; 2025 Svaraikyam AI. All Rights Reserved.</p>

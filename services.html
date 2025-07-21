@@ -38,7 +38,16 @@
                         <a href="blog-ai-skills-engineers.html">AI Skills for Engineering Professionals</a>
                     </div>
                 </li>
-                <li><a href="services.html" class="active">Services</a></li>
+                <li class="dropdown">
+                    <a href="services.html" class="dropbtn active">Services <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="service-android-ar-vr.html">Android App Dev with AR/VR</a>
+                        <a href="service-android-gen-ai.html">Android App Dev with GenAI</a>
+                        <a href="service-android-cv.html">Android App Dev with CV</a>
+                        <a href="service-llm-cuda.html">LLM Training Optimization with CUDA</a>
+                        <a href="service-ai-model-migration.html">AI Model Migration to Production</a>
+                    </div>
+                </li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -46,11 +55,35 @@
     </header>
 
     <main>
-        <section id="services-page" class="container" style="min-height: 60vh;">
-            <div class="content-block" style="text-align: center;">
-                <h1 class="section-title">Our Services</h1>
-                <p class="section-subtitle">We offer a range of AI consultancy and development services. Full details will be available here soon.</p>
-                <h2>Page Coming Soon</h2>
+        <section id="services-page" class="container">
+            <h1 class="section-title">Our AI Services</h1>
+            <p class="section-subtitle">We offer specialized AI development and consultancy services to bring your projects to life. Explore our offerings below.</p>
+            <div class="card-container">
+                 <div class="card">
+                    <h3>Android App Development with AR/VR</h3>
+                    <p>Create immersive experiences by integrating Augmented and Virtual Reality into your Android applications.</p>
+                    <a href="service-android-ar-vr.html" class="btn-secondary">Learn More</a>
+                </div>
+                 <div class="card">
+                    <h3>Android App Development with Generative AI</h3>
+                    <p>Leverage the power of Generative AI to build intelligent and creative Android applications.</p>
+                    <a href="service-android-gen-ai.html" class="btn-secondary">Learn More</a>
+                </div>
+                <div class="card">
+                    <h3>Android App Development with Computer Vision</h3>
+                    <p>Implement powerful image and video analysis features in your Android apps with our Computer Vision expertise.</p>
+                     <a href="service-android-cv.html" class="btn-secondary">Learn More</a>
+                </div>
+                <div class="card">
+                    <h3>LLM Training Optimization with CUDA</h3>
+                    <p>Accelerate your Large Language Model training pipelines with advanced CUDA optimization techniques.</p>
+                     <a href="service-llm-cuda.html" class="btn-secondary">Learn More</a>
+                </div>
+                <div class="card">
+                    <h3>AI Model Migration from Research to Production</h3>
+                    <p>Seamlessly move your AI models from Python-based research environments to high-performance C/C++/Assembly for production.</p>
+                    <a href="service-ai-model-migration.html" class="btn-secondary">Learn More</a>
+                </div>
             </div>
         </section>
     </main>
