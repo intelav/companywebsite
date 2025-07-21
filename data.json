@@ -1,50 +1,24 @@
 {
-  "courses": [
+  "blogs": [
     {
       "title": "Basics of Deep Learning",
-      "description": "An introduction to the foundational concepts and applications of deep learning.",
-      "link": "training-basics-deep-learning.html"
+      "description": "Fundamental concepts and practical introductions to deep learning models.",
+      "link": "blog-basics-deep-learning.html"
     },
     {
-      "title": "AI Trainings for Students (Xth grade onwards)",
-      "description": "Building foundational knowledge for the next generation of innovators.",
-      "link": "training-students.html"
+      "title": "AI Skills for Students",
+      "description": "Building foundational AI knowledge for the next generation of innovators.",
+      "link": "blog-ai-skills-students.html"
     },
     {
-      "title": "AI Trainings for Undergraduates",
+      "title": "AI Skills for Undergraduates",
       "description": "Advanced concepts and practical skills for university-level learners.",
-      "link": "training-undergraduates.html"
+      "link": "blog-ai-skills-undergraduates.html"
     },
     {
-      "title": "AI trainings for Engineering Professionals",
+      "title": "AI Skills for Engineering Professionals",
       "description": "Upskill with cutting-edge techniques in machine learning and data science.",
-      "link": "training-engineers.html"
-    }
-  ],
-  "research": [
-    {
-      "title": "U-Net Paper",
-      "description": "Convolutional Networks for Biomedical Image Segmentation.",
-      "url": "https://arxiv.org/pdf/1505.04597",
-      "icon": "fas fa-file-pdf"
-    },
-    {
-      "title": "Changeformer Paper",
-      "description": "A Transformer-Based Siamese Network for Change Detection.",
-      "url": "https://arxiv.org/pdf/2201.01293",
-      "icon": "fas fa-file-pdf"
-    },
-    {
-      "title": "Resnet Networks",
-      "description": "Deep Residual Learning for Image Recognition",
-      "url": "https://arxiv.org/pdf/1512.03385",
-      "icon": "fas fa-file-pdf"
-    },
-    {
-      "title": "Aggregated Residual Networks",
-      "description": "Aggregated Residual Transformation for Deep Neural Networks",
-      "url": "https://arxiv.org/pdf/1611.05431.pdf",
-      "icon": "fas fa-file-pdf"
+      "link": "blog-ai-skills-engineers.html"
     }
   ]
 }
