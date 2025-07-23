@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual Sales Agent | Svaraikyam AI</title>
+    <title>Data Annotation Services | Svaraikyam AI</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +20,7 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li class="dropdown">
-                    <a href="products.html" class="dropbtn active">Products <i class="fas fa-caret-down"></i></a>
+                    <a href="products.html" class="dropbtn">Products <i class="fas fa-caret-down"></i></a>
                     <div class="dropdown-content">
                         <a href="smartpurchase-details.html">SmartPurchase</a>
                         <a href="product-voice-llm.html">Voice LLM</a>
@@ -37,7 +37,7 @@
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="services.html" class="dropbtn">Services <i class="fas fa-caret-down"></i></a>
+                    <a href="services.html" class="dropbtn active">Services <i class="fas fa-caret-down"></i></a>
                     <div class="dropdown-content">
                         <a href="service-android-ar-vr.html">Android App Dev with AR/VR</a>
                         <a href="service-android-gen-ai.html">Android App Dev with GenAI</a>
@@ -53,22 +53,32 @@
         </nav>
     </header>
     <main>
-        <section id="product-details" class="container">
-            <div class="content-block">
-                <h1 class="section-title">Virtual Sales Agent in Action</h1>
-                <p class="section-subtitle">Showcasing the core technologies behind our Virtual Sales Agent, combining multi-product detection with augmented reality experiences.</p>
-                <div class="side-by-side-videos" style="flex-wrap: nowrap;">
-                    <div class="video-container-page">
-                        <h3>Multi-Barcode Detection</h3>
-                        <video src="shopping_ai_video.mp4" autoplay loop muted controls playsinline></video>
-                        <p class="small-text">Our AI quickly scans and identifies multiple products, forming the foundation of a rapid, intelligent checkout or inventory process.</p>
-                    </div>
-                    <div class="video-container-page">
-                        <h3>AR Engagement Use Case</h3>
-                        <video src="ar_video.mp4" autoplay loop muted controls playsinline></video>
-                        <p class="small-text">Engage customers with interactive Augmented Reality experiences, triggered by product recognition. (Illustrative use case)</p>
-                    </div>
-                </div>
+        <section class="container">
+            <h1 class="section-title">Data Annotation Services</h1>
+            <p class="section-subtitle">High-quality, reliable data labeling is the backbone of any successful AI model. We provide meticulous annotation services to fuel your machine learning projects.</p>
+            
+            <!-- Video Demonstration -->
+            <div class="video-container-page" style="max-width: 900px; margin: 0 auto 40px auto;">
+                 <h3>Annotation in Action</h3>
+                 <iframe 
+                    width="100%" 
+                    height="500" 
+                    src="https://www.youtube.com/embed/PNblCPdxjhs?autoplay=0&mute=1&loop=1&playlist=PNblCPdxjhs&controls=1" 
+                    title="YouTube video player - Data Annotation" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="content-block" style="text-align: left;">
+                <h2>Our Expertise</h2>
+                <p>Garbage in, garbage out. The performance of any AI model is directly tied to the quality of the data it's trained on. Our team provides precise and consistent data labeling to ensure your models learn from the best possible information. We offer a wide range of data annotation services, including:</p>
+                <ul>
+                    <li><strong>Image Annotation:</strong> Bounding boxes, polygons, semantic segmentation, keypoint annotation, and classification.</li>
+                    <li><strong>Video Annotation:</strong> Object tracking and video segmentation to understand action, movement, and temporal context.</li>
+                </ul>
+                <p>In the future, more videos will be published here showcasing our annotation capabilities, tool usage, and quality control processes.</p>
             </div>
         </section>
     </main>
@@ -77,6 +87,5 @@
             <p>&copy; 2025 Svaraikyam AI. All Rights Reserved.</p>
         </div>
     </footer>
-    <script src="app.js"></script>
 </body>
 </html>
