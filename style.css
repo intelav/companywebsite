@@ -808,3 +808,71 @@ footer {
   from, to { border-color: transparent }
   50% { border-color: #007bff; }
 }
+
+/* === NEW HERO RIGHT LAYOUT STYLES === */
+.hero-right-row {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.hero-right-video-item {
+    flex: 1;
+}
+
+.hero-right-video-item .hero-video-small,
+.hero-right-video-item iframe {
+    height: 115px; /* Make heights consistent */
+    object-fit: cover;
+}
+
+/* === NEW SERVICE PAGE MEDIA LAYOUT === */
+.media-container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start; /* Align items to the top */
+    margin-bottom: 40px;
+}
+
+.media-item {
+    flex: 1; /* Each item takes up equal space */
+    text-align: center;
+}
+
+.media-item h3 {
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.media-item iframe,
+.media-item img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Responsive adjustments for the media container */
+@media (max-width: 800px) {
+    .media-container {
+        flex-direction: column;
+    }
+}
+
+/* === NEW IMAGE ROW FOR SERVICE PAGE === */
+.image-row {
+    display: flex;
+    gap: 15px;
+}
+
+.image-col {
+    flex: 1 1 0; /* Let it grow and shrink, but start from 0 */
+    min-width: 0; /* Important for preventing overflow with large content */
+    text-align: center;
+}
+
+.image-col h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #555;
+}
