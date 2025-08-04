@@ -184,6 +184,33 @@
         "the relationship between adding odd numbers and square numbers",
       ];
 
+      /**
+       * Creates a detailed, robust prompt for the AI model.
+       * @param {string} randomPattern - The math concept for the question.
+       * @returns {string} The complete prompt.
+       */
+      function createPrompt(randomPattern) {
+        return `
+            Generate a multiple-choice math quiz question for a 6th-grade student based on the concept of "${randomPattern}".
+
+            Follow these steps carefully:
+            1. Create a clear question statement. For sequences, provide at least 4-5 terms.
+            2. Determine the single correct answer to the question.
+            3. Create three distinct and plausible incorrect options (distractors).
+            4. Combine the correct answer and the three distractors into a list of four options.
+            5. CRITICAL: Double-check that the 'answer' you provide in the JSON is the genuinely correct mathematical answer to the 'question' and that this answer is present in the 'options' array.
+
+            Format the output STRICTLY as a JSON object with the keys: "question", "options" (an array of numbers or strings), and "answer".
+
+            Example for triangular numbers:
+            {
+              "question": "The sequence 1, 3, 6, 10, 15,... represents triangular numbers. What is the next number in this sequence?",
+              "options": [21, 20, 25, 18],
+              "answer": 21
+            }
+        `;
+      }
+
       // --- Main Functions ---
 
       /**
@@ -193,19 +220,7 @@
         nextQuestionData = null; // Clear previous pre-fetched data
         const randomPattern =
           patternTypes[Math.floor(Math.random() * patternTypes.length)];
-        const prompt = `
-            Generate a multiple-choice math quiz question for a 6th-grade student based on the concept of "${randomPattern}".
-            The question should be challenging but solvable.
-            Provide a question statement, four options (one correct, three plausible incorrect), and identify the correct answer.
-            Format the output as a JSON object with the keys: "question", "options" (an array of numbers or strings), and "answer".
-            Ensure the options are distinct. For sequence questions, the question should present the first 4 or 5 terms.
-            Example for triangular numbers:
-            {
-              "question": "The sequence 1, 3, 6, 10, 15,... represents triangular numbers. What is the next number in this sequence?",
-              "options": [21, 20, 25, 18],
-              "answer": 21
-            }
-        `;
+        const prompt = createPrompt(randomPattern);
 
         try {
           const result = await callGemini(prompt);
@@ -233,7 +248,7 @@
           try {
             const randomPattern =
               patternTypes[Math.floor(Math.random() * patternTypes.length)];
-            const prompt = `Generate a multiple-choice math quiz question for a 6th-grade student based on the concept of "${randomPattern}". Format as JSON with keys: "question", "options", "answer".`;
+            const prompt = createPrompt(randomPattern); // Use the robust prompt here too
             const result = await callGemini(prompt);
             displayQuestion(result);
           } catch (error) {
