@@ -1,106 +1,264 @@
+<!-- about.html -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us | Svaraikyam AI</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-</head>
-<body>
-
-    <!-- Header and Navigation Bar -->
-    <header>
-        <nav class="container">
-            <a href="index.html" class="logo">
-                <img src="company_logo.png" alt="Svaraikyam AI Logo" onerror="this.onerror=null; this.src='https://placehold.co/100x50/e6f2ff/007bff?text=Logo';">
-                <span>Svaraikyam AI</span>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <style>
+      /* Custom styles for the page */
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0f172a; /* slate-900 */
+        color: #f8fafc; /* slate-50 */
+      }
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #ffffff;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      .section-subtitle {
+        font-size: 1.125rem;
+        color: #cbd5e1; /* slate-300 */
+        text-align: center;
+        max-width: 48rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 4rem;
+      }
+      .content-card {
+        background-color: #1e293b; /* slate-800 */
+        border: 1px solid #334155; /* slate-700 */
+        border-radius: 0.75rem;
+        padding: 2rem;
+      }
+      /* Dropdown styles */
+      .dropdown-content {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+      .group:hover .dropdown-content {
+        opacity: 1;
+        visibility: visible;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- Header -->
+    <header
+      class="bg-slate-900/70 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-800"
+    >
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="index.html" class="flex items-center space-x-3">
+          <img
+            src="company_logo.png"
+            alt="Svaraikyam AI Logo"
+            class="h-10"
+            onerror="this.onerror=null; this.src='https://placehold.co/100x40/0f172a/ffffff?text=Logo';"
+          />
+          <span class="text-2xl font-bold text-white">Svaraikyam AI</span>
+        </a>
+        <!-- Desktop Nav -->
+        <ul class="hidden md:flex items-center space-x-8 text-lg">
+          <li>
+            <a
+              href="index.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >Home</a
+            >
+          </li>
+          <!-- Products Dropdown -->
+          <li class="relative group">
+            <a
+              href="products.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
+            >
+              Products
+              <i class="fas fa-chevron-down text-xs ml-2"></i>
             </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li class="dropdown">
-                    <a href="products.html" class="dropbtn">Products <i class="fas fa-caret-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="smartpurchase-details.html">SmartPurchase</a>
-                        <a href="product-voice-llm.html">Voice LLM</a>
-                        <a href="product-virtual-sales-agent.html">Virtual Sales Agent</a>
-                    </div>
-                </li>
-                 <li class="dropdown">
-                    <a href="blogs.html" class="dropbtn">Blogs <i class="fas fa-caret-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="blog-basics-deep-learning.html">Basics of Deep Learning</a>
-                        <a href="blog-ai-skills-students.html">AI Skills for Students</a>
-                        <a href="blog-ai-skills-undergraduates.html">AI Skills for Undergraduates</a>
-                        <a href="blog-ai-skills-engineers.html">AI Skills for Engineering Professionals</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="services.html" class="dropbtn active">Services <i class="fas fa-caret-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="service-android-ar-vr.html">Android App Dev with AR/VR</a>
-                        <a href="service-android-gen-ai.html">Android App Dev with GenAI</a>
-                        <a href="service-android-cv.html">Android App Dev with CV</a>
-                        <a href="service-llm-cuda.html">LLM Training Optimization with CUDA</a>
-                        <a href="service-ai-model-migration.html">AI Model Migration to Production</a>
-                        <a href="service-data-annotation.html">Data Annotation</a>
-                    </div>
-                </li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section id="about-page" class="container">
-            <h1 class="section-title">About the Founder</h1>
-            
-            <div class="linkedin-profile-card">
-                <div class="linkedin-header">
-                    <div class="linkedin-profile-pic">
-                        <img src="israel_linkdin_photo.jpg" alt="Atul Vaish Profile Picture" onerror="this.onerror=null; this.src='https://placehold.co/150x150/007bff/ffffff?text=AV';">
-                    </div>
-                    <div class="linkedin-info">
-                        <h1>Atul Vaish (AV)</h1>
-                        <p class="headline">Founder and CEO at Svaraikyam, an AI company</p>
-                        <p class="location"><i class="fas fa-map-marker-alt"></i> Bengaluru, Karnataka, India</p>
-                        <a href="https://www.linkedin.com/in/atulvaish/" class="btn" target="_blank">View on LinkedIn</a>
-                    </div>
-                </div>
-
-                <div class="linkedin-section">
-                    <h2>About</h2>
-                    <p>Experienced Founder with a demonstrated history of working in the information technology and services industry. Skilled in AI, Machine Learning, and building scalable technology solutions. Strong business development professional with a passion for driving innovation.</p>
-                </div>
-
-                <div class="linkedin-section">
-                    <h2>Experience</h2>
-                    <div class="linkedin-experience-item">
-                        <div class="linkedin-exp-logo">
-                            <i class="fas fa-building"></i>
-                        </div>
-                        <div class="linkedin-exp-details">
-                            <h3>Founder and CEO</h3>
-                            <p class="company-name">Svaraikyam AI</p>
-                            <p class="duration">2022 - Present</p>
-                        </div>
-                    </div>
-                </div>
+            <div
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
+            >
+              <a
+                href="smartpurchase-details.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
+                >SmartPurchase App</a
+              >
+              <a
+                href="annotation_ui.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Satellite Image Analysis</a
+              >
+              <a
+                href="math_ai_class_6.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
+                >AI Tutors</a
+              >
             </div>
-
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Svaraikyam AI. All Rights Reserved.</p>
+          </li>
+          <!-- Services Dropdown -->
+          <li class="relative group">
+            <a
+              href="services.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
+            >
+              Services
+              <i class="fas fa-chevron-down text-xs ml-2"></i>
+            </a>
+            <div
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
+            >
+              <a
+                href="service-android-ar-vr.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
+                >Android App Dev with AR/VR</a
+              >
+              <a
+                href="service-android-gen-ai.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Android App Dev with GenAI</a
+              >
+              <a
+                href="service-llm-cuda.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >LLM Training Optimization</a
+              >
+              <a
+                href="service-ai-model-migration.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
+                >AI Model Migration</a
+              >
+            </div>
+          </li>
+          <!-- Blogs Dropdown -->
+          <li class="relative group">
+            <a
+              href="blogs.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
+            >
+              Blogs
+              <i class="fas fa-chevron-down text-xs ml-2"></i>
+            </a>
+            <div
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
+            >
+              <a
+                href="blog-basics-deep-learning.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
+                >Basics of Deep Learning</a
+              >
+              <a
+                href="blog-ai-skills-students.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >AI Skills for Students</a
+              >
+              <a
+                href="blog-ai-skills-undergraduates.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >AI Skills for Undergraduates</a
+              >
+              <a
+                href="blog-ai-skills-engineers.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
+                >AI Skills for Professionals</a
+              >
+            </div>
+          </li>
+          <li>
+            <a href="about.html" class="text-sky-400 transition-colors"
+              >About Us</a
+            >
+          </li>
+          <li>
+            <a
+              href="contact.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="about-page" class="py-16">
+        <div class="container mx-auto px-6">
+          <h1 class="section-title">About the Founder</h1>
+          <div class="content-card max-w-4xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+              <img
+                src="israel_linkdin_photo.jpg"
+                alt="Atul Vaish Profile Picture"
+                class="w-48 h-48 rounded-full border-4 border-sky-400 object-cover"
+                onerror="this.onerror=null; this.src='https://placehold.co/192x192/1e293b/ffffff?text=AV';"
+              />
+              <div class="text-center md:text-left">
+                <h2 class="text-3xl font-bold text-white">Atul Vaish (AV)</h2>
+                <p class="text-xl text-slate-300 mt-1">
+                  Founder and CEO at Svaraikyam, an AI company
+                </p>
+                <p class="text-slate-400 mt-2">
+                  <i class="fas fa-map-marker-alt mr-2"></i>Bengaluru,
+                  Karnataka, India
+                </p>
+                <a
+                  href="https://www.linkedin.com/in/atulvaish/"
+                  class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-lg mt-4 transition-colors"
+                  target="_blank"
+                  >View on LinkedIn</a
+                >
+              </div>
+            </div>
+            <div class="border-t border-slate-700 my-8"></div>
+            <div>
+              <h3 class="text-2xl font-bold text-sky-400 mb-4">About</h3>
+              <p class="text-lg text-slate-300">
+                Experienced Founder with a demonstrated history of working in
+                the information technology and services industry. Skilled in AI,
+                Machine Learning, and building scalable technology solutions.
+                Strong business development professional with a passion for
+                driving innovation.
+              </p>
+            </div>
+            <div class="border-t border-slate-700 my-8"></div>
+            <div>
+              <h3 class="text-2xl font-bold text-sky-400 mb-4">Experience</h3>
+              <div class="flex items-center gap-4">
+                <i class="fas fa-building text-3xl text-slate-400"></i>
+                <div>
+                  <h4 class="text-xl font-bold text-white">Founder and CEO</h4>
+                  <p class="text-slate-300">Svaraikyam AI</p>
+                  <p class="text-slate-400 text-sm">2022 - Present</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800">
+      <div class="container mx-auto px-6 py-8 text-center text-slate-400">
+        <p>&copy; 2025 Svaraikyam AI. All Rights Reserved.</p>
+      </div>
     </footer>
-    <script src="app.js"></script>
-</body>
+  </body>
 </html>

@@ -4,35 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Math AI for Class 6 | Svaraikyam AI</title>
-
-    <!-- Site-wide Styles and Fonts -->
-    <link rel="stylesheet" href="style.css" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    />
-
-    <!-- Tailwind CSS for the Quiz Component -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inter Font for the Quiz Component -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Inline Styles for the Quiz Component -->
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
     <style>
-      /* Styles for the quiz, scoped to the quiz container */
-      #quiz-section {
+      /* Custom styles for the page */
+      body {
         font-family: "Inter", sans-serif;
-        background-color: #f0f4f8; /* A light blue-gray background */
+        background-color: #0f172a; /* slate-900 */
+        color: #f8fafc; /* slate-50 */
       }
+      .content-card {
+        background-color: #1e293b; /* slate-800 */
+        border: 1px solid #334155; /* slate-700 */
+        border-radius: 0.75rem;
+        padding: 2rem;
+      }
+      /* Dropdown styles */
+      .dropdown-content {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+      .group:hover .dropdown-content {
+        opacity: 1;
+        visibility: visible;
+      }
+      /* Quiz specific styles */
       .option-btn {
         transition: all 0.2s ease-in-out;
       }
@@ -68,135 +77,79 @@
       }
     </style>
   </head>
-  <body>
-    <!-- Header and Navigation Bar -->
-    <header>
-      <nav class="container">
-        <a href="index.html" class="logo">
+  <body class="antialiased">
+    <!-- Header -->
+    <header
+      class="bg-slate-900/70 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-800"
+    >
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="index.html" class="flex items-center space-x-3">
           <img
             src="company_logo.png"
             alt="Svaraikyam AI Logo"
-            onerror="this.onerror=null; this.src='https://placehold.co/100x50/e6f2ff/007bff?text=Logo';"
+            class="h-10"
+            onerror="this.onerror=null; this.src='https://placehold.co/100x40/0f172a/ffffff?text=Logo';"
           />
-          <span>Svaraikyam AI</span>
+          <span class="text-2xl font-bold text-white">Svaraikyam AI</span>
         </a>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li class="dropdown">
-            <a href="products.html" class="dropbtn"
-              >Products <i class="fas fa-caret-down"></i
-            ></a>
-            <div class="dropdown-content">
-              <a href="smartpurchase-details.html">SmartPurchase</a>
-              <a href="product-voice-llm.html">Voice LLM</a>
-              <a href="product-virtual-sales-agent.html">Virtual Sales Agent</a>
-            </div>
-          </li>
-          <li class="dropdown">
-            <a href="blogs.html" class="dropbtn"
-              >Blogs <i class="fas fa-caret-down"></i
-            ></a>
-            <div class="dropdown-content">
-              <a href="blog-basics-deep-learning.html"
-                >Basics of Deep Learning</a
-              >
-              <a href="blog-ai-skills-students.html">AI Skills for Students</a>
-              <a href="blog-ai-skills-undergraduates.html"
-                >AI Skills for Undergraduates</a
-              >
-              <a href="blog-ai-skills-engineers.html"
-                >AI Skills for Engineering Professionals</a
-              >
-            </div>
-          </li>
-          <li class="dropdown">
-            <a href="services.html" class="dropbtn"
-              >Services <i class="fas fa-caret-down"></i
-            ></a>
-            <div class="dropdown-content">
-              <a href="service-android-ar-vr.html"
-                >Android App Dev with AR/VR</a
-              >
-              <a href="service-android-gen-ai.html"
-                >Android App Dev with GenAI</a
-              >
-              <a href="service-android-cv.html">Android App Dev with CV</a>
-              <a href="service-llm-cuda.html"
-                >LLM Training Optimization with CUDA</a
-              >
-              <a href="service-ai-model-migration.html"
-                >AI Model Migration to Production</a
-              >
-              <a href="service-data-annotation.html">Data Annotation</a>
-            </div>
-          </li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
+        <ul class="hidden md:flex items-center space-x-8 text-lg">
+          <!-- Navigation links -->
         </ul>
       </nav>
     </header>
-
-    <main>
-      <section id="quiz-section">
-        <div class="container mx-auto py-12">
-          <div class="w-full max-w-2xl mx-auto">
-            <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
-              <h1
-                class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-2"
+    <main class="py-12">
+      <div class="container mx-auto">
+        <div class="w-full max-w-2xl mx-auto">
+          <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 text-gray-800">
+            <h1 class="text-2xl md:text-3xl font-bold text-center mb-2">
+              Math Patterns Quiz
+            </h1>
+            <p class="text-center text-gray-500 mb-6">
+              AI-Generated Questions for Grade 6
+            </p>
+            <div id="quiz-container" class="space-y-6">
+              <div
+                id="question-area"
+                class="text-center p-5 bg-blue-50 border-2 border-blue-200 rounded-lg min-h-[120px] flex items-center justify-center"
               >
-                Math Patterns Quiz
-              </h1>
-              <p class="text-center text-gray-500 mb-6">
-                AI-Generated Questions for Grade 6
-              </p>
-
-              <div id="quiz-container" class="space-y-6">
-                <div
-                  id="question-area"
-                  class="text-center p-5 bg-blue-50 border-2 border-blue-200 rounded-lg min-h-[120px] flex items-center justify-center"
-                >
-                  <div id="loader"></div>
-                  <p
-                    id="question-text"
-                    class="text-xl font-medium text-gray-700 hidden"
-                  ></p>
-                </div>
-
-                <div
-                  id="options-grid"
-                  class="grid grid-cols-1 md:grid-cols-2 gap-4"
-                >
-                  <!-- Options will be dynamically inserted here -->
-                </div>
-
-                <div
-                  id="feedback-area"
-                  class="text-center text-lg font-medium p-3 rounded-lg hidden"
-                ></div>
-
-                <button
-                  id="next-question-btn"
-                  class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 shadow-md hidden"
-                >
-                  Next Question
-                </button>
+                <div id="loader"></div>
+                <p
+                  id="question-text"
+                  class="text-xl font-medium text-gray-700 hidden"
+                ></p>
               </div>
+              <div
+                id="options-grid"
+                class="grid grid-cols-1 md:grid-cols-2 gap-4"
+              >
+                <!-- Options will be dynamically inserted here -->
+              </div>
+              <div
+                id="feedback-area"
+                class="text-center text-lg font-medium p-3 rounded-lg hidden"
+              ></div>
+              <button
+                id="next-question-btn"
+                class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 shadow-md hidden"
+              >
+                Next Question
+              </button>
             </div>
-            <footer class="text-center mt-4 text-gray-400 text-sm">
-              <p>Powered by AI. Based on "Patterns in Mathematics" concepts.</p>
-            </footer>
           </div>
+          <footer class="text-center mt-4 text-slate-400 text-sm">
+            <p>Powered by AI. Based on "Patterns in Mathematics" concepts.</p>
+          </footer>
         </div>
-      </section>
+      </div>
     </main>
-
     <!-- Footer -->
-    <footer>
-      <div class="container">
+    <footer class="bg-slate-900 border-t border-slate-800">
+      <div class="container mx-auto px-6 py-8 text-center text-slate-400">
         <p>&copy; 2025 Svaraikyam AI. All Rights Reserved.</p>
       </div>
     </footer>
-
     <script>
       // --- DOM Elements ---
       const questionArea = document.getElementById("question-area");
@@ -207,11 +160,19 @@
       const loader = document.getElementById("loader");
 
       // --- State ---
-      let currentQuestion = null;
       let correctAnswer = null;
       let isAnswered = false;
+      let nextQuestionData = null; // To store the pre-fetched question
 
-      // --- Pattern Types from the PDF ---
+      // --- OPTIMIZATION: Add a pre-generated first question ---
+      const initialQuestion = {
+        question:
+          "The sequence 1, 4, 9, 16, 25,... represents square numbers. What is the next number in this sequence?",
+        options: [36, 30, 49, 35],
+        answer: 36,
+      };
+
+      // --- Pattern Types for AI generation ---
       const patternTypes = [
         "consecutive odd numbers",
         "consecutive even numbers",
@@ -226,57 +187,75 @@
       // --- Main Functions ---
 
       /**
-       * Fetches a new question from the AI model.
+       * Fetches the *next* question from the AI model and stores it.
        */
-      async function getNewQuestion() {
-        // 1. Reset UI
-        resetUI();
-
-        // 2. Select a random pattern
+      async function fetchNextQuestion() {
+        nextQuestionData = null; // Clear previous pre-fetched data
         const randomPattern =
           patternTypes[Math.floor(Math.random() * patternTypes.length)];
-
-        // 3. Create a prompt for the AI
         const prompt = `
-                Generate a multiple-choice math quiz question for a 6th-grade student based on the concept of "${randomPattern}".
-                The question should be challenging but solvable.
-                Provide a question statement, four options (one correct, three plausible incorrect), and identify the correct answer.
-                Format the output as a JSON object with the keys: "question", "options" (an array of numbers or strings), and "answer".
-                Ensure the options are distinct. For sequence questions, the question should present the first 4 or 5 terms.
-                Example for triangular numbers:
-                {
-                  "question": "The sequence 1, 3, 6, 10, 15,... represents triangular numbers. What is the next number in this sequence?",
-                  "options": [21, 20, 25, 18],
-                  "answer": 21
-                }
-            `;
+            Generate a multiple-choice math quiz question for a 6th-grade student based on the concept of "${randomPattern}".
+            The question should be challenging but solvable.
+            Provide a question statement, four options (one correct, three plausible incorrect), and identify the correct answer.
+            Format the output as a JSON object with the keys: "question", "options" (an array of numbers or strings), and "answer".
+            Ensure the options are distinct. For sequence questions, the question should present the first 4 or 5 terms.
+            Example for triangular numbers:
+            {
+              "question": "The sequence 1, 3, 6, 10, 15,... represents triangular numbers. What is the next number in this sequence?",
+              "options": [21, 20, 25, 18],
+              "answer": 21
+            }
+        `;
 
-        // 4. Call the AI model
         try {
           const result = await callGemini(prompt);
-          currentQuestion = result;
-          correctAnswer = result.answer;
-          displayQuestion(result);
+          nextQuestionData = result; // Store the fetched question
         } catch (error) {
-          console.error("Error fetching question:", error);
-          // The error message will now be displayed by callGemini if the API key is missing.
+          console.error("Error fetching next question:", error);
+          // If fetching fails, the user can still try again by clicking 'Next'
         }
       }
 
       /**
-       * Calls the Gemini API with a given prompt and schema.
+       * Shows the next question, either from pre-fetched data or by fetching a new one.
+       */
+      async function showNextQuestion() {
+        resetUI();
+
+        if (nextQuestionData) {
+          // If a question was pre-fetched, display it immediately
+          displayQuestion(nextQuestionData);
+          // And start fetching the *next* one in the background
+          fetchNextQuestion();
+        } else {
+          // Fallback: if pre-fetching failed or is slow, fetch a new one now
+          loader.classList.remove("hidden"); // Show loader while fetching
+          try {
+            const randomPattern =
+              patternTypes[Math.floor(Math.random() * patternTypes.length)];
+            const prompt = `Generate a multiple-choice math quiz question for a 6th-grade student based on the concept of "${randomPattern}". Format as JSON with keys: "question", "options", "answer".`;
+            const result = await callGemini(prompt);
+            displayQuestion(result);
+          } catch (error) {
+            console.error("Error fetching question:", error);
+            questionText.textContent =
+              "Failed to load a new question. Please check your API key and try again.";
+            questionText.classList.remove("hidden");
+            loader.classList.add("hidden");
+          }
+        }
+      }
+
+      /**
+       * Calls the Gemini API with a given prompt.
        */
       async function callGemini(prompt) {
-        // IMPORTANT: Paste your Google AI Studio API key in the quotes below.
+        // !!! IMPORTANT !!!
+        // PASTE YOUR GOOGLE AI STUDIO API KEY HERE
         const apiKey = "AIzaSyC6rNEPO-OuGXIQaPSLpkqBJGmsA2L_-nk";
 
-        // Check if the API key has been replaced.
-        if (apiKey === "PASTE_YOUR_API_KEY_HERE") {
-          questionText.textContent =
-            "API Key not set. Please add your Google AI Studio API key to the script.";
-          loader.classList.add("hidden");
-          questionText.classList.remove("hidden");
-          throw new Error("API Key not set.");
+        if (apiKey === "YOUR_API_KEY_HERE") {
+          throw new Error("API key is not set. Please add your API key.");
         }
 
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
@@ -306,7 +285,6 @@
         ) {
           let textResponse = result.candidates[0].content.parts[0].text;
 
-          // CORRECTED: Clean the response to remove Markdown formatting before parsing.
           if (textResponse.startsWith("```json")) {
             textResponse = textResponse.slice(7, -3).trim();
           } else if (textResponse.startsWith("```")) {
@@ -320,6 +298,12 @@
             throw new Error("Could not parse the question data from the AI.");
           }
         } else {
+          // Add a check for blocked responses due to safety settings
+          if (result.promptFeedback && result.promptFeedback.blockReason) {
+            throw new Error(
+              `Request blocked due to: ${result.promptFeedback.blockReason}`
+            );
+          }
           throw new Error("Invalid response structure from API.");
         }
       }
@@ -329,6 +313,7 @@
        * @param {object} data - The question data from the AI.
        */
       function displayQuestion(data) {
+        correctAnswer = data.answer;
         loader.classList.add("hidden");
         questionText.textContent = data.question;
         questionText.classList.remove("hidden");
@@ -347,8 +332,6 @@
 
       /**
        * Handles the logic when a user clicks an option.
-       * @param {HTMLElement} buttonEl - The button element that was clicked.
-       * @param {string|number} selectedOption - The value of the selected option.
        */
       function handleOptionClick(buttonEl, selectedOption) {
         if (isAnswered) return;
@@ -393,12 +376,22 @@
         isAnswered = false;
       }
 
+      /**
+       * Initializes the quiz.
+       */
+      function startQuiz() {
+        resetUI();
+        // Display the hardcoded initial question instantly
+        displayQuestion(initialQuestion);
+        // Start fetching the first AI-generated question in the background
+        fetchNextQuestion();
+      }
+
       // --- Event Listeners ---
-      nextButton.addEventListener("click", getNewQuestion);
+      nextButton.addEventListener("click", showNextQuestion);
 
       // --- Initial Load ---
-      window.onload = getNewQuestion;
+      window.onload = startQuiz;
     </script>
-    <script src="app.js"></script>
   </body>
 </html>

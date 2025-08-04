@@ -3,301 +3,502 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Svaraikyam | AI Training & Consultancy</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Svaraikyam AI | AI Training & Consultancy</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Font Awesome for Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
+    <style>
+      /* Custom styles for the page */
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0f172a; /* slate-900 */
+        color: #f8fafc; /* slate-50 */
+      }
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #ffffff;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      .section-subtitle {
+        font-size: 1.125rem;
+        color: #cbd5e1; /* slate-300 */
+        text-align: center;
+        max-width: 48rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 4rem;
+      }
+      .content-card {
+        background-color: #1e293b; /* slate-800 */
+        border: 1px solid #334155; /* slate-700 */
+        border-radius: 0.75rem;
+        padding: 2rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .content-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      .video-responsive {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        border-radius: 0.5rem;
+      }
+      .video-responsive iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .btn-download {
+        display: inline-block;
+        background-color: #22c55e; /* green-500 */
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        text-align: center;
+        margin-top: 1rem;
+        transition: background-color 0.3s ease;
+      }
+      .btn-download:hover {
+        background-color: #16a34a; /* green-600 */
+      }
+      /* Dropdown styles */
+      .dropdown-content {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+      .group:hover .dropdown-content {
+        opacity: 1;
+        visibility: visible;
+      }
+    </style>
   </head>
-  <body>
-    <!-- Header and Navigation Bar -->
-    <header>
-      <nav class="container">
-        <a href="index.html" class="logo">
+  <body class="antialiased">
+    <!-- Header -->
+    <header
+      class="bg-slate-900/70 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-800"
+    >
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="index.html" class="flex items-center space-x-3">
           <img
             src="company_logo.png"
             alt="Svaraikyam AI Logo"
-            onerror="this.onerror=null; this.src='https://placehold.co/100x50/e6f2ff/007bff?text=Logo';"
+            class="h-10"
+            onerror="this.onerror=null; this.src='https://placehold.co/100x40/0f172a/ffffff?text=Logo';"
           />
-          <span>Svaraikyam AI</span>
+          <span class="text-2xl font-bold text-white">Svaraikyam AI</span>
         </a>
-        <ul class="nav-links">
-          <li><a href="index.html" class="active">Home</a></li>
-          <li class="dropdown">
-            <a href="products.html" class="dropbtn"
-              >Products <i class="fas fa-caret-down"></i
-            ></a>
-            <div class="dropdown-content">
-              <a href="smartpurchase-details.html">SmartPurchase</a>
-              <a href="product-voice-llm.html">Voice LLM</a>
-              <a href="product-virtual-sales-agent.html">Virtual Sales Agent</a>
+        <!-- Desktop Nav -->
+        <ul class="hidden md:flex items-center space-x-8 text-lg">
+          <li>
+            <a
+              href="index.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >Home</a
+            >
+          </li>
+          <!-- Products Dropdown -->
+          <li class="relative group">
+            <a
+              href="products.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
+            >
+              Products
+              <i class="fas fa-chevron-down text-xs ml-2"></i>
+            </a>
+            <div
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
+            >
+              <a
+                href="smartpurchase-details.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
+                >SmartPurchase App</a
+              >
+              <a
+                href="annotation_ui.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Satellite Image Analysis</a
+              >
+              <a
+                href="math_ai_class_6.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
+                >AI Tutors</a
+              >
             </div>
           </li>
-          <li class="dropdown">
-            <a href="blogs.html" class="dropbtn"
-              >Blogs <i class="fas fa-caret-down"></i
-            ></a>
-            <div class="dropdown-content">
-              <a href="blog-basics-deep-learning.html"
-                >Basics of Deep Learning</a
-              >
-              <a href="blog-ai-skills-students.html">AI Skills for Students</a>
-              <a href="blog-ai-skills-undergraduates.html"
-                >AI Skills for Undergraduates</a
-              >
-              <a href="blog-ai-skills-engineers.html"
-                >AI Skills for Engineering Professionals</a
-              >
-            </div>
-          </li>
-          <li class="dropdown">
-            <a href="services.html" class="dropbtn"
-              >Services <i class="fas fa-caret-down"></i
-            ></a>
-            <div class="dropdown-content">
-              <a href="service-android-ar-vr.html"
+          <!-- Services Dropdown -->
+          <li class="relative group">
+            <a
+              href="services.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
+            >
+              Services
+              <i class="fas fa-chevron-down text-xs ml-2"></i>
+            </a>
+            <div
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
+            >
+              <a
+                href="service-android-ar-vr.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
                 >Android App Dev with AR/VR</a
               >
-              <a href="service-android-gen-ai.html"
+              <a
+                href="#"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
                 >Android App Dev with GenAI</a
               >
-              <a href="service-android-cv.html">Android App Dev with CV</a>
-              <a href="service-llm-cuda.html"
-                >LLM Training Optimization with CUDA</a
+              <a
+                href="#"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >LLM Training Optimization</a
               >
-              <a href="service-ai-model-migration.html"
-                >AI Model Migration to Production</a
+              <a
+                href="#"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
+                >AI Model Migration</a
               >
-              <a href="service-data-annotation.html">Data Annotation</a>
             </div>
           </li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <!-- Blogs Dropdown -->
+          <li class="relative group">
+            <a
+              href="blogs.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
+            >
+              Blogs
+              <i class="fas fa-chevron-down text-xs ml-2"></i>
+            </a>
+            <div
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
+            >
+              <a
+                href="#"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
+                >Basics of Deep Learning</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >AI Skills for Students</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >AI for Undergraduates</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
+                >AI for Professionals</a
+              >
+            </div>
+          </li>
+          <li>
+            <a
+              href="about.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >About Us</a
+            >
+          </li>
+          <li>
+            <a
+              href="contact.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >Contact</a
+            >
+          </li>
         </ul>
       </nav>
     </header>
 
     <main>
-      <!-- Hero Section: Products and Lab -->
-      <section id="hero" class="container">
-        <div class="hero-content">
-          <div class="hero-left">
-            <h2>SmartPurchase: Our Flagship AI App</h2>
-            <p>Introducing the future of intelligent shopping.</p>
+      <!-- Hero Section -->
+      <section class="py-20 text-center">
+        <div class="container mx-auto px-6">
+          <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">
+            Pioneering Edge AI Solutions
+          </h1>
+          <p class="text-xl text-slate-300 mt-4 max-w-3xl mx-auto">
+            From intelligent applications to advanced consultancy, we deliver
+            the future of AI, optimized for performance and efficiency.
+          </p>
+        </div>
+      </section>
 
-            <!-- YouTube Video Embed for SmartPurchase -->
-            <div class="video-container">
-              <a
-                href="smartpurchase-details.html"
-                class="youtube-video-clickable-wrapper"
-              >
-                <div class="youtube-click-message">
-                  <p>Click Here!</p>
-                </div>
+      <!-- Products Section -->
+      <section id="products" class="py-16">
+        <div class="container mx-auto px-6">
+          <h2 class="section-title">Our Products</h2>
+          <p class="section-subtitle">
+            Innovative and intelligent solutions designed to solve complex
+            challenges and drive growth.
+          </p>
+
+          <div class="space-y-16">
+            <!-- Product 1: SmartPurchase App -->
+            <div class="content-card grid md:grid-cols-2 gap-12 items-center">
+              <div class="video-responsive">
                 <iframe
-                  width="100%"
-                  height="630"
                   src="https://www.youtube.com/embed/-XcbjQ6DXVE?autoplay=1&mute=1&loop=1&playlist=-XcbjQ6DXVE&controls=0"
-                  title="YouTube video player"
+                  title="SmartPurchase App Demo"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
-                >
-                </iframe>
-                <div class="youtube-click-overlay"></div>
-              </a>
-            </div>
-            <a
-              href="https://play.google.com/store/apps/details?id=com.svar.purchase.user"
-              target="_blank"
-              class="btn"
-              >Download SmartPurchase App</a
-            >
-
-            <!-- Data Annotation Video Section -->
-            <div class="video-container">
-              <h3>Data Annotation Services</h3>
-              <a
-                href="service-data-annotation.html"
-                class="youtube-video-clickable-wrapper"
-              >
-                <div class="youtube-click-message">
-                  <p>Learn More!</p>
-                </div>
-                <iframe
-                  width="100%"
-                  height="515"
-                  src="https://www.youtube.com/embed/PNblCPdxjhs?autoplay=1&mute=1&loop=1&playlist=PNblCPdxjhs&controls=0"
-                  title="YouTube video player - Data Annotation"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                >
-                </iframe>
-                <div class="youtube-click-overlay"></div>
-              </a>
-              <p class="small-text">
-                High-quality data annotation for your AI models.
-              </p>
-            </div>
-          </div>
-          <div class="hero-right">
-            <h2>Our State-of-the-Art AI Lab</h2>
-            <p>Where innovation and research come to life.</p>
-            <a href="ai-lab-details.html" class="ai-lab-image-wrapper">
-              <img
-                src="lab.png"
-                alt="Svaraikyam AI Lab Hardware"
-                onerror="this.onerror=null; this.src='https://placehold.co/600x400/e6f2ff/007bff?text=AI+Lab';"
-              />
-              <div class="ai-lab-click-message">
-                <p>Click Here!</p>
+                ></iframe>
               </div>
-            </a>
-            <!-- Video Player Section 1: Voice LLM Demo -->
-            <div class="video-container">
-              <h3>Voice LLM Demo</h3>
-              <video
-                class="hero-video"
-                src="voice_llm_demo.mp4"
-                autoplay
-                loop
-                muted
-                controls
-              ></video>
-              <p class="small-text">Experience our Voice LLM in action.</p>
-            </div>
-
-            <!-- Virtual Sales Agent -->
-            <a
-              href="product-virtual-sales-agent.html"
-              class="video-link-wrapper"
-            >
-              <div class="video-container clickable-video">
-                <h3>Smart Shopping AI Demo</h3>
-                <video
-                  class="hero-video hero-video-small"
-                  src="shopping_ai_video.mp4"
-                  autoplay
-                  loop
-                  muted
-                  playsinline
-                ></video>
-                <div class="video-overlay">
-                  <p class="overlay-text">Know More</p>
-                </div>
-                <p class="small-text">
-                  Multi-barcode detection with our Android app.
+              <div>
+                <h3 class="text-3xl font-bold text-sky-400 mb-4">
+                  SmartPurchase App
+                </h3>
+                <p class="text-lg text-slate-300 mb-4">
+                  Our flagship AI-powered application revolutionizes the
+                  shopping experience for both customers and businesses. It
+                  offers intelligent inventory management, personalized customer
+                  engagement, and seamless point-of-sale integration.
                 </p>
+                <a
+                  href="smartpurchase-details.html"
+                  class="text-sky-400 font-semibold text-lg hover:underline"
+                  >Learn More &rarr;</a
+                >
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.svar.purchase.user"
+                  target="_blank"
+                  class="btn-download"
+                >
+                  <i class="fab fa-google-play"></i> Download on Google Play
+                </a>
               </div>
-            </a>
+            </div>
+
+            <!-- Product 2: Satellite Image Analysis -->
+            <div class="content-card grid md:grid-cols-2 gap-12 items-center">
+              <div class="md:order-2">
+                <div class="video-responsive">
+                  <iframe
+                    src="https://www.youtube.com/embed/ZpciamC_MMs"
+                    title="Satellite Image Analysis using customized Yolo Model"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </div>
+              <div class="md:order-1">
+                <h3 class="text-3xl font-bold text-sky-400 mb-4">
+                  Satellite Image Analysis
+                </h3>
+                <p class="text-lg text-slate-300 mb-4">
+                  We leverage customized YOLO models to perform high-precision
+                  object detection and analysis on satellite imagery. This
+                  technology is crucial for applications in agriculture, urban
+                  planning, environmental monitoring, and defense.
+                </p>
+                <a
+                  href="annotation_ui.html"
+                  class="text-sky-400 font-semibold text-lg hover:underline"
+                  >Explore Use Cases &rarr;</a
+                >
+              </div>
+            </div>
+
+            <!-- Product 3: AI Tutors -->
+            <div class="content-card grid md:grid-cols-2 gap-12 items-center">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="bg-slate-700 p-4 rounded-lg text-center">
+                  <i class="fas fa-calculator text-sky-400 text-4xl mb-2"></i>
+                  <h4 class="font-bold text-white">Math AI</h4>
+                  <p class="text-sm text-slate-300">For Class 6 & 11</p>
+                </div>
+                <div class="bg-slate-700 p-4 rounded-lg text-center">
+                  <i class="fas fa-atom text-sky-400 text-4xl mb-2"></i>
+                  <h4 class="font-bold text-white">Physics AI</h4>
+                  <p class="text-sm text-slate-300">For Class 11</p>
+                </div>
+                <div class="bg-slate-700 p-4 rounded-lg text-center">
+                  <i class="fas fa-vial text-sky-400 text-4xl mb-2"></i>
+                  <h4 class="font-bold text-white">Chemistry AI</h4>
+                  <p class="text-sm text-slate-300">For Class 11</p>
+                </div>
+                <div class="bg-slate-700 p-4 rounded-lg text-center">
+                  <i class="fas fa-flask text-sky-400 text-4xl mb-2"></i>
+                  <h4 class="font-bold text-white">Science AI</h4>
+                  <p class="text-sm text-slate-300">For Class 6</p>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-3xl font-bold text-sky-400 mb-4">AI Tutors</h3>
+                <p class="text-lg text-slate-300 mb-4">
+                  Our suite of AI-powered tutors provides personalized and
+                  interactive learning experiences for students. By generating
+                  dynamic questions and offering targeted feedback, we help
+                  students master complex subjects in math and science with
+                  confidence.
+                </p>
+                <a
+                  href="math_ai_class_6.html"
+                  class="text-sky-400 font-semibold text-lg hover:underline"
+                  >Try a Demo &rarr;</a
+                >
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- AI-Driven Education Section -->
-      <section id="education" class="container">
-        <h2 class="section-title">AI Tutors</h2>
-        <p class="section-subtitle">
-          Interactive learning tools powered by AI to help students master
-          complex subjects.
-        </p>
-        <div class="card-container">
-          <!-- Card for Math AI Class 6 -->
-          <a href="math_ai_class_6.html" class="card-link">
-            <div class="card education-card">
-              <i class="fas fa-calculator"></i>
-              <h3>Math AI for Class 6</h3>
-              <p>
-                Master mathematical patterns with our interactive quiz for CBSE
-                Class 6 students.
-              </p>
-              <span class="btn-secondary">Start Learning</span>
+      <!-- Services Section -->
+      <section id="services" class="py-16 bg-slate-900/50">
+        <div class="container mx-auto px-6">
+          <h2 class="section-title">Our Services</h2>
+          <p class="section-subtitle">
+            Expert consultancy and development services to accelerate your AI
+            journey from concept to production.
+          </p>
+
+          <div class="space-y-16">
+            <!-- Service 1: AI Lab -->
+            <div class="content-card grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <img
+                  src="lab.png"
+                  alt="AI Lab Hardware"
+                  class="rounded-lg shadow-lg w-full h-auto"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=AI+Lab+Image';"
+                />
+              </div>
+              <div>
+                <h3 class="text-3xl font-bold text-sky-400 mb-4">
+                  State-of-the-Art AI Lab
+                </h3>
+                <p class="text-lg text-slate-300 mb-4">
+                  Our AI lab is equipped with powerful hardware, including
+                  Jetson Nano and other edge devices, to research, develop, and
+                  optimize models for peak performance. We specialize in
+                  migrating Python-based research models to highly efficient
+                  C/C++ for production environments.
+                </p>
+                <a
+                  href="ai-lab-details.html"
+                  class="text-sky-400 font-semibold text-lg hover:underline"
+                  >Discover Our Lab &rarr;</a
+                >
+              </div>
             </div>
-          </a>
-          <!-- Card for Math AI Class 11 -->
-          <a href="#" class="card-link">
-            <div class="card education-card">
-              <i class="fas fa-infinity"></i>
-              <h3>Math AI for Class 11</h3>
-              <p>
-                Tackle advanced topics in CBSE Class 11 mathematics with
-                AI-generated problems.
-              </p>
-              <span class="btn-secondary disabled">Coming Soon</span>
+
+            <!-- Service 2: Shopping AI -->
+            <div class="content-card grid md:grid-cols-2 gap-12 items-center">
+              <div class="md:order-2">
+                <div class="video-responsive">
+                  <iframe
+                    src="https://www.youtube.com/embed/yrOjWotohvs"
+                    title="Multi-barcode detection with AR Overlay"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </div>
+              <div class="md:order-1">
+                <h3 class="text-3xl font-bold text-sky-400 mb-4">
+                  Multi-barcode detection with AR Overlay
+                </h3>
+                <p class="text-lg text-slate-300 mb-4">
+                  We build custom computer vision solutions for retail. Our
+                  multi-barcode detection system with Augmented Reality overlays
+                  enables faster checkouts, accurate inventory tracking, and a
+                  smarter shopping experience.
+                </p>
+                <a
+                  href="service-android-ar-vr.html"
+                  class="text-sky-400 font-semibold text-lg hover:underline"
+                  >Explore AR Services &rarr;</a
+                >
+              </div>
             </div>
-          </a>
-          <!-- Card for Science AI Class 6 -->
-          <a href="#" class="card-link">
-            <div class="card education-card">
-              <i class="fas fa-flask"></i>
-              <h3>Science AI for Class 6</h3>
-              <p>
-                Explore the wonders of science with interactive lessons and
-                quizzes.
-              </p>
-              <span class="btn-secondary disabled">Coming Soon</span>
-            </div>
-          </a>
-          <!-- Card for Physics AI Class 11 -->
-          <a href="#" class="card-link">
-            <div class="card education-card">
-              <i class="fas fa-atom"></i>
-              <h3>Physics AI for Class 11</h3>
-              <p>
-                Understand complex physics concepts through simulations and AI
-                tutors.
-              </p>
-              <span class="btn-secondary disabled">Coming Soon</span>
-            </div>
-          </a>
-          <!-- Card for Chemistry AI Class 11 -->
-          <a href="#" class="card-link">
-            <div class="card education-card">
-              <i class="fas fa-vial"></i>
-              <h3>Chemistry AI for Class 11</h3>
-              <p>
-                Master chemical reactions and structures with our intelligent
-                learning tools.
-              </p>
-              <span class="btn-secondary disabled">Coming Soon</span>
-            </div>
-          </a>
+          </div>
         </div>
       </section>
 
       <!-- Blogs Section -->
-      <section id="blogs" class="container">
-        <h2 class="section-title">Edge AI Blogs for Upskilling</h2>
-        <div class="card-container">
-          <!-- JavaScript will insert blog cards here -->
-        </div>
-      </section>
-
-      <!-- Slogan Section -->
-      <section id="slogan">
-        <div class="container">
-          <h2 class="slogan-animated">
-            Svaraikyam brings AI Education for All with an Inside-Out Approach.
-          </h2>
+      <section id="blogs" class="py-16">
+        <div class="container mx-auto px-6">
+          <div class="content-card grid md:grid-cols-2 gap-12 items-center">
+            <div class="grid grid-cols-2 gap-4">
+              <a
+                href="#"
+                class="bg-slate-700 p-4 rounded-lg text-center hover:bg-slate-600 transition-colors"
+              >
+                <h4 class="font-bold text-white">Basics of Deep Learning</h4>
+              </a>
+              <a
+                href="#"
+                class="bg-slate-700 p-4 rounded-lg text-center hover:bg-slate-600 transition-colors"
+              >
+                <h4 class="font-bold text-white">AI Skills for Students</h4>
+              </a>
+              <a
+                href="#"
+                class="bg-slate-700 p-4 rounded-lg text-center hover:bg-slate-600 transition-colors"
+              >
+                <h4 class="font-bold text-white">AI for Undergraduates</h4>
+              </a>
+              <a
+                href="#"
+                class="bg-slate-700 p-4 rounded-lg text-center hover:bg-slate-600 transition-colors"
+              >
+                <h4 class="font-bold text-white">AI for Professionals</h4>
+              </a>
+            </div>
+            <div>
+              <h3 class="text-3xl font-bold text-sky-400 mb-4">
+                Edge AI Blogs for Upskilling
+              </h3>
+              <p class="text-lg text-slate-300 mb-4">
+                Explore our collection of articles, tutorials, and insights
+                designed to build your skills in AI. Whether you're a student,
+                an undergraduate, or a seasoned engineering professional, our
+                content will help you stay at the forefront of technology.
+              </p>
+              <a
+                href="blogs.html"
+                class="text-sky-400 font-semibold text-lg hover:underline"
+                >Read Our Blogs &rarr;</a
+              >
+            </div>
+          </div>
         </div>
       </section>
     </main>
 
     <!-- Footer -->
-    <footer>
-      <div class="container">
+    <footer class="bg-slate-900 border-t border-slate-800">
+      <div class="container mx-auto px-6 py-8 text-center text-slate-400">
         <p>&copy; 2025 Svaraikyam AI. All Rights Reserved.</p>
       </div>
     </footer>
-
-    <script src="app.js"></script>
   </body>
 </html>

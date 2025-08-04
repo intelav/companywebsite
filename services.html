@@ -1,100 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Services | Svaraikyam AI</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-</head>
-<body>
-    <header>
-        <nav class="container">
-            <a href="index.html" class="logo">
-                <img src="company_logo.png" alt="Svaraikyam AI Logo" onerror="this.onerror=null; this.src='https://placehold.co/100x50/e6f2ff/007bff?text=Logo';">
-                <span>Svaraikyam AI</span>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <style>
+      /* Custom styles for the page */
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0f172a; /* slate-900 */
+        color: #f8fafc; /* slate-50 */
+      }
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #ffffff;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      .section-subtitle {
+        font-size: 1.125rem;
+        color: #cbd5e1; /* slate-300 */
+        text-align: center;
+        max-width: 48rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 4rem;
+      }
+      .content-card {
+        background-color: #1e293b; /* slate-800 */
+        border: 1px solid #334155; /* slate-700 */
+        border-radius: 0.75rem;
+        padding: 2rem;
+      }
+      /* Dropdown styles */
+      .dropdown-content {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+      .group:hover .dropdown-content {
+        opacity: 1;
+        visibility: visible;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- Header -->
+    <header
+      class="bg-slate-900/70 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-800"
+    >
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="index.html" class="flex items-center space-x-3">
+          <img
+            src="company_logo.png"
+            alt="Svaraikyam AI Logo"
+            class="h-10"
+            onerror="this.onerror=null; this.src='https://placehold.co/100x40/0f172a/ffffff?text=Logo';"
+          />
+          <span class="text-2xl font-bold text-white">Svaraikyam AI</span>
+        </a>
+        <!-- Desktop Nav -->
+        <ul class="hidden md:flex items-center space-x-8 text-lg">
+          <li>
+            <a
+              href="index.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >Home</a
+            >
+          </li>
+          <!-- Products Dropdown -->
+          <li class="relative group">
+            <a
+              href="products.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
+            >
+              Products
+              <i class="fas fa-chevron-down text-xs ml-2"></i>
             </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li class="dropdown">
-                    <a href="products.html" class="dropbtn">Products <i class="fas fa-caret-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="smartpurchase-details.html">SmartPurchase</a>
-                        <a href="product-voice-llm.html">Voice LLM</a>
-                        <a href="product-virtual-sales-agent.html">Virtual Sales Agent</a>
-                    </div>
-                </li>
-                 <li class="dropdown">
-                    <a href="blogs.html" class="dropbtn">Blogs <i class="fas fa-caret-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="blog-basics-deep-learning.html">Basics of Deep Learning</a>
-                        <a href="blog-ai-skills-students.html">AI Skills for Students</a>
-                        <a href="blog-ai-skills-undergraduates.html">AI Skills for Undergraduates</a>
-                        <a href="blog-ai-skills-engineers.html">AI Skills for Engineering Professionals</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="services.html" class="dropbtn active">Services <i class="fas fa-caret-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="service-android-ar-vr.html">Android App Dev with AR/VR</a>
-                        <a href="service-android-gen-ai.html">Android App Dev with GenAI</a>
-                        <a href="service-android-cv.html">Android App Dev with CV</a>
-                        <a href="service-llm-cuda.html">LLM Training Optimization with CUDA</a>
-                        <a href="service-ai-model-migration.html">AI Model Migration to Production</a>
-                        <a href="service-data-annotation.html">Data Annotation</a>
-                    </div>
-                </li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+            <div
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
+            >
+              <a
+                href="smartpurchase-details.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
+                >SmartPurchase App</a
+              >
+              <a
+                href="annotation_ui.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Satellite Image Analysis</a
+              >
+              <a
+                href="math_ai_class_6.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
+                >AI Tutors</a
+              >
+            </div>
+          </li>
+          <!-- Services Dropdown -->
+          <li class="relative group">
+            <a
+              href="services.html"
+              class="text-sky-400 transition-colors flex items-center"
+            >
+              Services
+              <i class="fas fa-chevron-down text-xs ml-2"></i>
+            </a>
+            <div
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
+            >
+              <a
+                href="service-android-ar-vr.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
+                >Android App Dev with AR/VR</a
+              >
+              <a
+                href="service-android-gen-ai.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Android App Dev with GenAI</a
+              >
+              <a
+                href="service-llm-cuda.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >LLM Training Optimization</a
+              >
+              <a
+                href="service-ai-model-migration.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
+                >AI Model Migration</a
+              >
+            </div>
+          </li>
+          <!-- Blogs Dropdown -->
+          <li class="relative group">
+            <a
+              href="blogs.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
+            >
+              Blogs
+              <i class="fas fa-chevron-down text-xs ml-2"></i>
+            </a>
+            <div
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
+            >
+              <a
+                href="#"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
+                >Basics of Deep Learning</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >AI Skills for Students</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >AI for Undergraduates</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
+                >AI for Professionals</a
+              >
+            </div>
+          </li>
+          <li>
+            <a
+              href="about.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >About Us</a
+            >
+          </li>
+          <li>
+            <a
+              href="contact.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </nav>
     </header>
     <main>
-        <section id="services-page" class="container">
-            <h1 class="section-title">Our AI Services</h1>
-            <p class="section-subtitle">We offer specialized AI development and consultancy services to bring your projects to life. Explore our offerings below.</p>
-            <div class="card-container">
-                 <div class="card">
-                    <h3>Android App Development with AR/VR</h3>
-                    <p>Create immersive experiences by integrating Augmented and Virtual Reality into your Android applications.</p>
-                    <a href="service-android-ar-vr.html" class="btn-secondary">Learn More</a>
-                </div>
-                 <div class="card">
-                    <h3>Android App Development with Generative AI</h3>
-                    <p>Leverage the power of Generative AI to build intelligent and creative Android applications.</p>
-                    <a href="service-android-gen-ai.html" class="btn-secondary">Learn More</a>
-                </div>
-                <div class="card">
-                    <h3>Android App Development with Computer Vision</h3>
-                    <p>Implement powerful image and video analysis features in your Android apps with our Computer Vision expertise.</p>
-                     <a href="service-android-cv.html" class="btn-secondary">Learn More</a>
-                </div>
-                <div class="card">
-                    <h3>LLM Training Optimization with CUDA</h3>
-                    <p>Accelerate your Large Language Model training pipelines with advanced CUDA optimization techniques.</p>
-                     <a href="service-llm-cuda.html" class="btn-secondary">Learn More</a>
-                </div>
-                <div class="card">
-                    <h3>AI Model Migration to Production</h3>
-                    <p>Seamlessly move your AI models from Python-based research environments to high-performance C/C++/Assembly for production.</p>
-                    <a href="service-ai-model-migration.html" class="btn-secondary">Learn More</a>
-                </div>
-                <div class="card">
-                    <h3>Data Annotation</h3>
-                    <p>Providing high-quality, accurate data annotation and labeling services to power your computer vision models.</p>
-                    <a href="service-data-annotation.html" class="btn-secondary">Learn More</a>
-                </div>
+      <section id="services-page" class="py-16">
+        <div class="container mx-auto px-6">
+          <h1 class="section-title">Our AI Services</h1>
+          <p class="section-subtitle">
+            We offer specialized AI development and consultancy services to
+            bring your projects to life. Explore our offerings below.
+          </p>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="content-card flex flex-col">
+              <i
+                class="fas fa-vr-cardboard text-sky-400 text-5xl mb-4 text-center"
+              ></i>
+              <h3 class="text-2xl font-bold text-white text-center mb-3">
+                Android App Dev with AR/VR
+              </h3>
+              <p class="text-slate-300 flex-grow mb-4">
+                Create immersive experiences by integrating Augmented and
+                Virtual Reality into your Android applications.
+              </p>
+              <a
+                href="service-android-ar-vr.html"
+                class="text-sky-400 font-semibold text-center mt-auto hover:underline"
+                >Learn More &rarr;</a
+              >
             </div>
-        </section>
-    </main>
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Svaraikyam AI. All Rights Reserved.</p>
+            <div class="content-card flex flex-col">
+              <i
+                class="fas fa-robot text-sky-400 text-5xl mb-4 text-center"
+              ></i>
+              <h3 class="text-2xl font-bold text-white text-center mb-3">
+                Android App Dev with GenAI
+              </h3>
+              <p class="text-slate-300 flex-grow mb-4">
+                Leverage the power of Generative AI to build intelligent and
+                creative Android applications.
+              </p>
+              <a
+                href="service-android-gen-ai.html"
+                class="text-sky-400 font-semibold text-center mt-auto hover:underline"
+                >Learn More &rarr;</a
+              >
+            </div>
+            <div class="content-card flex flex-col">
+              <i
+                class="fas fa-camera-retro text-sky-400 text-5xl mb-4 text-center"
+              ></i>
+              <h3 class="text-2xl font-bold text-white text-center mb-3">
+                Android App Dev with CV
+              </h3>
+              <p class="text-slate-300 flex-grow mb-4">
+                Implement powerful image and video analysis features in your
+                Android apps with our Computer Vision expertise.
+              </p>
+              <a
+                href="service-android-cv.html"
+                class="text-sky-400 font-semibold text-center mt-auto hover:underline"
+                >Learn More &rarr;</a
+              >
+            </div>
+            <div class="content-card flex flex-col">
+              <i
+                class="fas fa-microchip text-sky-400 text-5xl mb-4 text-center"
+              ></i>
+              <h3 class="text-2xl font-bold text-white text-center mb-3">
+                LLM Training Optimization
+              </h3>
+              <p class="text-slate-300 flex-grow mb-4">
+                Accelerate your Large Language Model training pipelines with
+                advanced CUDA optimization techniques.
+              </p>
+              <a
+                href="service-llm-cuda.html"
+                class="text-sky-400 font-semibold text-center mt-auto hover:underline"
+                >Learn More &rarr;</a
+              >
+            </div>
+            <div class="content-card flex flex-col">
+              <i class="fas fa-cogs text-sky-400 text-5xl mb-4 text-center"></i>
+              <h3 class="text-2xl font-bold text-white text-center mb-3">
+                AI Model Migration
+              </h3>
+              <p class="text-slate-300 flex-grow mb-4">
+                Seamlessly move your AI models from Python-based research
+                environments to high-performance C/C++ for production.
+              </p>
+              <a
+                href="service-ai-model-migration.html"
+                class="text-sky-400 font-semibold text-center mt-auto hover:underline"
+                >Learn More &rarr;</a
+              >
+            </div>
+            <div class="content-card flex flex-col">
+              <i
+                class="fas fa-pencil-ruler text-sky-400 text-5xl mb-4 text-center"
+              ></i>
+              <h3 class="text-2xl font-bold text-white text-center mb-3">
+                Data Annotation
+              </h3>
+              <p class="text-slate-300 flex-grow mb-4">
+                High-quality, accurate data annotation and labeling services to
+                power your computer vision models.
+              </p>
+              <a
+                href="service-data-annotation.html"
+                class="text-sky-400 font-semibold text-center mt-auto hover:underline"
+                >Learn More &rarr;</a
+              >
+            </div>
+          </div>
         </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800">
+      <div class="container mx-auto px-6 py-8 text-center text-slate-400">
+        <p>&copy; 2025 Svaraikyam AI. All Rights Reserved.</p>
+      </div>
     </footer>
-    <script src="app.js"></script>
-</body>
+  </body>
 </html>
