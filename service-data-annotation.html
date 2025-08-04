@@ -1,108 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Data Annotation Services | Svaraikyam AI</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../style.css" />
+    <!-- Corrected path for CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+  </head>
+  <body>
     <header>
-        <nav class="container">
-            <a href="index.html" class="logo">
-                <img src="company_logo.png" alt="Svaraikyam AI Logo" onerror="this.onerror=null; this.src='https://placehold.co/100x50/e6f2ff/007bff?text=Logo';">
-                <span>Svaraikyam AI</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li class="dropdown">
-                    <a href="products.html" class="dropbtn">Products <i class="fas fa-caret-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="smartpurchase-details.html">SmartPurchase</a>
-                        <a href="product-voice-llm.html">Voice LLM</a>
-                        <a href="product-virtual-sales-agent.html">Virtual Sales Agent</a>
-                    </div>
-                </li>
-                 <li class="dropdown">
-                    <a href="blogs.html" class="dropbtn">Blogs <i class="fas fa-caret-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="blog-basics-deep-learning.html">Basics of Deep Learning</a>
-                        <a href="blog-ai-skills-students.html">AI Skills for Students</a>
-                        <a href="blog-ai-skills-undergraduates.html">AI Skills for Undergraduates</a>
-                        <a href="blog-ai-skills-engineers.html">AI Skills for Engineering Professionals</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="services.html" class="dropbtn active">Services <i class="fas fa-caret-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="service-android-ar-vr.html">Android App Dev with AR/VR</a>
-                        <a href="service-android-gen-ai.html">Android App Dev with GenAI</a>
-                        <a href="service-android-cv.html">Android App Dev with CV</a>
-                        <a href="service-llm-cuda.html">LLM Training Optimization with CUDA</a>
-                        <a href="service-ai-model-migration.html">AI Model Migration to Production</a>
-                        <a href="service-data-annotation.html">Data Annotation</a>
-                    </div>
-                </li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+      <nav class="container">
+        <a href="../index.html" class="logo">
+          <!-- Corrected path for logo link -->
+          <img
+            src="../company_logo.png"
+            alt="Svaraikyam AI Logo"
+            onerror="this.onerror=null; this.src='https://placehold.co/100x50/e6f2ff/007bff?text=Logo';"
+          />
+          <span>Svaraikyam AI</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li class="dropdown">
+            <a href="../products.html" class="dropbtn"
+              >Products <i class="fas fa-caret-down"></i
+            ></a>
+            <div class="dropdown-content">
+              <a href="../smartpurchase-details.html">SmartPurchase</a>
+              <a href="../product-voice-llm.html">Voice LLM</a>
+              <a href="../product-virtual-sales-agent.html"
+                >Virtual Sales Agent</a
+              >
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="../blogs.html" class="dropbtn"
+              >Blogs <i class="fas fa-caret-down"></i
+            ></a>
+            <div class="dropdown-content">
+              <a href="../blog-basics-deep-learning.html"
+                >Basics of Deep Learning</a
+              >
+              <a href="../blog-ai-skills-students.html"
+                >AI Skills for Students</a
+              >
+              <a href="../blog-ai-skills-undergraduates.html"
+                >AI Skills for Undergraduates</a
+              >
+              <a href="../blog-ai-skills-engineers.html"
+                >AI Skills for Engineering Professionals</a
+              >
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="../services.html" class="dropbtn active"
+              >Services <i class="fas fa-caret-down"></i
+            ></a>
+            <div class="dropdown-content">
+              <a href="service-android-ar-vr.html"
+                >Android App Dev with AR/VR</a
+              >
+              <a href="service-android-gen-ai.html"
+                >Android App Dev with GenAI</a
+              >
+              <a href="service-android-cv.html">Android App Dev with CV</a>
+              <a href="service-llm-cuda.html"
+                >LLM Training Optimization with CUDA</a
+              >
+              <a href="service-ai-model-migration.html"
+                >AI Model Migration to Production</a
+              >
+              <a href="service-data-annotation.html">Data Annotation</a>
+            </div>
+          </li>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </header>
     <main>
-        <section class="container">
-            <h1 class="section-title">Data Annotation Services</h1>
-            <p class="section-subtitle">High-quality, reliable data labeling is the backbone of any successful AI model. We provide meticulous annotation services to fuel your machine learning projects.</p>
-            
-            <!-- Video Demonstration Row -->
-            <div class="video-container-page" style="max-width: 900px; margin: 0 auto 40px auto;">
-                 <h3>Annotation in Action</h3>
-                 <iframe 
-                    width="100%" 
-                    height="500" 
-                    src="https://www.youtube.com/embed/PNblCPdxjhs?autoplay=0&mute=1&loop=1&playlist=PNblCPdxjhs&controls=1" 
-                    title="YouTube video player - Data Annotation" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>
+      <section class="container">
+        <h1 class="section-title">Data Annotation Services</h1>
+        <p class="section-subtitle">
+          High-quality, reliable data labeling is the backbone of any successful
+          AI model. We provide meticulous annotation services to fuel your
+          machine learning projects.
+        </p>
 
-            <!-- Image Examples Row -->
-            <div class="media-container">
-                <div class="media-item">
-                    <h3>Annotation Examples</h3>
-                    <div class="image-row">
-                        <div class="image-col">
-                            <h4>Example 1</h4>
-                            <img src="annotated_dataset_example1.png" alt="Example of an annotated dataset with bounding boxes and segmentation masks" onerror="this.onerror=null; this.src='https://placehold.co/400x320/e6f2ff/007bff?text=Example+1';">
-                        </div>
-                        <div class="image-col">
-                            <h4>Example 2</h4>
-                            <img src="annotated_dataset_example2.png" alt="Second example of an annotated dataset" onerror="this.onerror=null; this.src='https://placehold.co/400x320/e6f2ff/007bff?text=Example+2';">
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- *** NEW: LAUNCH BUTTON ADDED HERE *** -->
+        <div style="text-align: center; margin: 30px 0">
+          <a
+            href="annotation_tool/annotation_ui.html"
+            class="btn"
+            style="
+              font-size: 1.2rem;
+              padding: 15px 30px;
+              background-color: #28a745;
+              border-color: #28a745;
+            "
+          >
+            <i class="fas fa-rocket"></i> Launch Annotation Tool
+          </a>
+          <p style="margin-top: 10px; color: #666">
+            Try our interactive remote sensing annotation tool live in your
+            browser!
+          </p>
+        </div>
 
-            <div class="content-block" style="text-align: left; margin-top: 40px;">
-                <h2>Our Expertise</h2>
-                <p>Garbage in, garbage out. The performance of any AI model is directly tied to the quality of the data it's trained on. Our team provides precise and consistent data labeling to ensure your models learn from the best possible information. We offer a wide range of data annotation services, including:</p>
-                <ul>
-                    <li><strong>Image Annotation:</strong> Bounding boxes, polygons, semantic segmentation, keypoint annotation, and classification.</li>
-                    <li><strong>Video Annotation:</strong> Object tracking and video segmentation to understand action, movement, and temporal context.</li>
-                </ul>
-                <p>In the future, more videos will be published here showcasing our annotation capabilities, tool usage, and quality control processes.</p>
+        <!-- Video Demonstration Row -->
+        <div
+          class="video-container-page"
+          style="max-width: 900px; margin: 0 auto 40px auto"
+        >
+          <h3>Annotation in Action</h3>
+          <iframe
+            width="100%"
+            height="500"
+            src="https://www.youtube.com/embed/PNblCPdxjhs?autoplay=0&mute=1&loop=1&playlist=PNblCPdxjhs&controls=1"
+            title="YouTube video player - Data Annotation"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          >
+          </iframe>
+        </div>
+
+        <!-- Image Examples Row -->
+        <div class="media-container">
+          <div class="media-item">
+            <h3>Annotation Examples</h3>
+            <div class="image-row">
+              <div class="image-col">
+                <h4>Example 1</h4>
+                <img
+                  src="../annotated_dataset_example1.png"
+                  alt="Example of an annotated dataset with bounding boxes and segmentation masks"
+                  onerror="this.onerror=null; this.src='https://placehold.co/400x320/e6f2ff/007bff?text=Example+1';"
+                />
+              </div>
+              <div class="image-col">
+                <h4>Example 2</h4>
+                <img
+                  src="../annotated_dataset_example2.png"
+                  alt="Second example of an annotated dataset"
+                  onerror="this.onerror=null; this.src='https://placehold.co/400x320/e6f2ff/007bff?text=Example+2';"
+                />
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+
+        <div class="content-block" style="text-align: left; margin-top: 40px">
+          <h2>Our Expertise</h2>
+          <p>
+            Garbage in, garbage out. The performance of any AI model is directly
+            tied to the quality of the data it's trained on. Our team provides
+            precise and consistent data labeling to ensure your models learn
+            from the best possible information. We offer a wide range of data
+            annotation services, including:
+          </p>
+          <ul>
+            <li>
+              <strong>Image Annotation:</strong> Bounding boxes, polygons,
+              semantic segmentation, keypoint annotation, and classification.
+            </li>
+            <li>
+              <strong>Video Annotation:</strong> Object tracking and video
+              segmentation to understand action, movement, and temporal context.
+            </li>
+          </ul>
+          <p>
+            In the future, more videos will be published here showcasing our
+            annotation capabilities, tool usage, and quality control processes.
+          </p>
+        </div>
+      </section>
     </main>
     <footer>
-        <div class="container">
-            <p>&copy; 2025 Svaraikyam AI. All Rights Reserved.</p>
-        </div>
+      <div class="container">
+        <p>&copy; 2025 Svaraikyam AI. All Rights Reserved.</p>
+      </div>
     </footer>
-</body>
+  </body>
 </html>

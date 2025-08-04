@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Satellite Analysis Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- JSZip for creating zip files on the client side -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      /* --- CHANGE: Enable scrolling for the canvas container --- */
+      .canvas-container {
+        position: relative;
+        width: 100%;
+        height: 85vh;
+        overflow: auto;
+        cursor: crosshair;
+        background-color: #e5e7eb;
+      }
+      .canvas-container.panning {
+        cursor: grabbing;
+      }
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .ann-item.selected {
+        background-color: #e0f2fe;
+        border-left: 4px solid #0ea5e9;
+      }
+      #search-modal {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .search-result-item {
+        transition: transform 0.2s;
+      }
+      .search-result-item:hover {
+        transform: scale(1.05);
+      }
+      #processing-overlay {
+        background-color: rgba(0, 0, 0, 0.75);
+      }
+      .hidden-input {
+        display: none;
+      }
+      .file-item.active {
+        background-color: #dbeafe;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <!-- Processing Overlay -->
+    <div
+      id="processing-overlay"
+      class="fixed inset-0 z-50 hidden items-center justify-center text-white"
+    >
+      <div class="text-center">
+        <svg
+          class="animate-spin h-10 w-10 mx-auto mb-4"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            class="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"
+          ></circle>
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          ></path>
+        </svg>
+        <h2 id="processing-status" class="text-2xl font-bold">Processing...</h2>
+      </div>
+    </div>
+
+    <div class="container mx-auto p-4">
+      <header class="text-center mb-6">
+        <h1 class="text-4xl font-bold text-gray-900">
+          Satellite Object Analysis Tool
+        </h1>
+        <p class="text-md text-gray-600 mt-1">
+          Your dynamic environment for ad-hoc object detection and similarity
+          search.
+        </p>
+        <div id="session-info" class="mt-2 text-xs text-gray-500"></div>
+      </header>
+
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <!-- Left Panel -->
+        <div
+          class="lg:col-span-1 bg-white p-5 rounded-lg shadow-lg flex flex-col h-[85vh]"
+        >
+          <!-- Session & Upload Controls -->
+          <div class="mb-4">
+            <h2 class="text-xl font-semibold mb-3 border-b pb-2">Controls</h2>
+            <label
+              for="file-upload"
+              class="w-full text-center cursor-pointer bg-sky-600 text-white font-bold py-2 px-4 rounded-md hover:bg-sky-700 block"
+              >Upload Image(s)</label
+            >
+            <input
+              type="file"
+              id="file-upload"
+              multiple
+              accept="image/*"
+              class="hidden-input"
+            />
+            <button
+              id="save-changes-btn"
+              class="w-full mt-2 bg-green-600 text-white font-bold py-2 px-4 rounded-md hover:bg-green-700 hidden"
+            >
+              Save Changes
+            </button>
+            <button
+              id="export-btn"
+              class="w-full mt-2 bg-purple-600 text-white font-bold py-2 px-4 rounded-md hover:bg-purple-700 disabled:bg-gray-400"
+              disabled
+            >
+              Export as ZIP
+            </button>
+            <button
+              id="reset-session-btn"
+              class="w-full mt-2 bg-red-600 text-white font-bold py-2 px-4 rounded-md hover:bg-red-700"
+            >
+              Reset Session
+            </button>
+          </div>
+
+          <!-- Session Files -->
+          <div class="mb-4 flex-shrink-0">
+            <h2 class="text-xl font-semibold mb-3 border-b pb-2">
+              Session Files
+            </h2>
+            <div
+              id="session-files-list"
+              class="space-y-1 max-h-40 overflow-y-auto"
+            >
+              <p class="text-gray-500 text-sm">Upload an image to start.</p>
+            </div>
+          </div>
+
+          <!-- Annotations -->
+          <div class="flex-grow flex flex-col min-h-0">
+            <div class="flex justify-between items-center mb-3 border-b pb-2">
+              <h2 class="text-xl font-semibold">
+                Annotations
+                <span
+                  id="local-search-info"
+                  class="text-sm font-normal text-gray-500"
+                ></span>
+              </h2>
+              <button
+                id="toggle-annotations-btn"
+                class="text-sm bg-gray-200 px-3 py-1 rounded-md hover:bg-gray-300"
+              >
+                Toggle View
+              </button>
+            </div>
+            <div
+              id="annotation-list"
+              class="flex-grow overflow-y-auto space-y-2 pr-2"
+            >
+              <p class="text-gray-500 text-sm">No annotations to display.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Panel (Canvas & Search) -->
+        <div
+          class="lg:col-span-3 bg-white p-2 rounded-lg shadow-lg flex flex-col"
+        >
+          <!-- Search Controls -->
+          <div id="search-controls" class="p-2 border-b mb-2 hidden">
+            <h3 class="font-semibold text-lg mb-2">
+              Actions for Selected Object:
+            </h3>
+            <div class="flex space-x-2">
+              <button
+                id="search-local-btn"
+                class="flex-1 bg-indigo-600 text-white font-bold py-2 px-4 rounded-md hover:bg-indigo-700"
+              >
+                Find in This Image
+              </button>
+              <button
+                id="search-global-btn"
+                class="flex-1 bg-teal-600 text-white font-bold py-2 px-4 rounded-md hover:bg-teal-700 disabled:bg-gray-400"
+                disabled
+              >
+                Find Similar (All Images)
+              </button>
+            </div>
+          </div>
+          <div
+            id="canvas-container"
+            class="canvas-container flex-grow flex items-center justify-center rounded-md"
+          >
+            <canvas id="image-canvas"></canvas>
+            <p id="canvas-placeholder" class="text-gray-500 text-lg">
+              Upload an image to begin your analysis session
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Results Modal -->
+    <div
+      id="search-modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center p-4"
+    >
+      <div
+        class="bg-white rounded-lg shadow-2xl w-full max-w-6xl h-full max-h-[90vh] flex flex-col"
+      >
+        <div class="flex justify-between items-center p-4 border-b">
+          <h2 id="search-modal-title" class="text-2xl font-bold">
+            Similarity Search Results
+          </h2>
+          <button
+            id="close-modal-btn"
+            class="text-gray-500 hover:text-gray-800 text-3xl"
+          >
+            &times;
+          </button>
+        </div>
+        <div
+          id="search-results-container"
+          class="p-6 overflow-y-auto bg-gray-50"
+        >
+          <p id="search-status" class="text-center text-gray-500">
+            Searching...
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // --- Configuration ---
+      const SERVER_URL =
+        "https://annotation-backend-service-499523167907.us-central1.run.app";
+
+      // --- DOM Elements ---
+      const fileUpload = document.getElementById("file-upload");
+      const processingOverlay = document.getElementById("processing-overlay");
+      const processingStatus = document.getElementById("processing-status");
+      const annotationList = document.getElementById("annotation-list");
+      const canvas = document.getElementById("image-canvas");
+      const ctx = canvas.getContext("2d");
+      const canvasPlaceholder = document.getElementById("canvas-placeholder");
+      const canvasContainer = document.getElementById("canvas-container");
+      const searchModal = document.getElementById("search-modal");
+      const searchModalTitle = document.getElementById("search-modal-title");
+      const closeModalBtn = document.getElementById("close-modal-btn");
+      const searchResultsContainer = document.getElementById(
+        "search-results-container"
+      );
+      const sessionInfo = document.getElementById("session-info");
+      const resetSessionBtn = document.getElementById("reset-session-btn");
+      const saveChangesBtn = document.getElementById("save-changes-btn");
+      const exportBtn = document.getElementById("export-btn");
+      const sessionFilesList = document.getElementById("session-files-list");
+      const searchControls = document.getElementById("search-controls");
+      const searchLocalBtn = document.getElementById("search-local-btn");
+      const searchGlobalBtn = document.getElementById("search-global-btn");
+      const toggleAnnotationsBtn = document.getElementById(
+        "toggle-annotations-btn"
+      );
+      const localSearchInfo = document.getElementById("local-search-info");
+
+      // --- State ---
+      let state = {
+        sessionId: null,
+        img: new Image(),
+        allSessionData: new Map(),
+        currentFilename: null,
+        selectedAnnIndex: -1,
+        isDrawing: false,
+        drawStart: { x: 0, y: 0 },
+        annotationsVisible: true,
+        hasUnsavedChanges: false,
+        classList: [
+          "building",
+          "vehicle",
+          "road",
+          "field",
+          "tree",
+          "water",
+          "playground",
+          "hut",
+          "other",
+        ],
+        highlightedBox: null,
+        isPanning: false,
+        panStart: { x: 0, y: 0 },
+      };
+
+      const CLASS_COLORS = {
+        building: "#3b82f6", // blue-500
+        vehicle: "#f43f5e", // rose-500
+        road: "#6b7280", // gray-500
+        field: "#22c55e", // green-500
+        tree: "#16a34a", // green-600
+        water: "#06b6d4", // cyan-500
+        playground: "#f97316", // orange-500
+        hut: "#a16207", // yellow-700
+        other: "#a855f7", // purple-500
+        default: "#f59e0b", // amber-500
+      };
+
+      function getColorForClass(className) {
+        return CLASS_COLORS[className] || CLASS_COLORS["default"];
+      }
+
+      // --- Initialization ---
+      window.onload = async () => {
+        console.log("DEBUG: window.onload triggered.");
+        await startNewSession();
+        resetSessionBtn.addEventListener("click", startNewSession);
+        saveChangesBtn.addEventListener("click", saveAnnotationChanges);
+        exportBtn.addEventListener("click", handleExport);
+        fileUpload.addEventListener("change", handleFileUpload);
+        closeModalBtn.addEventListener("click", () =>
+          searchModal.classList.add("hidden")
+        );
+        searchLocalBtn.addEventListener("click", handleLocalSearch);
+        searchGlobalBtn.addEventListener("click", handleGlobalSearch);
+        toggleAnnotationsBtn.addEventListener("click", toggleAnnotations);
+        setupCanvasMouseListeners();
+        console.log("DEBUG: Initialization complete.");
+      };
+
+      async function startNewSession() {
+        console.log("DEBUG: Attempting to start new session...");
+        if (state.sessionId && state.hasUnsavedChanges) {
+          if (
+            !confirm(
+              "You have unsaved changes. Are you sure you want to reset?"
+            )
+          )
+            return;
+        }
+        if (state.sessionId)
+          await fetch(`${SERVER_URL}/reset_session/${state.sessionId}`, {
+            method: "POST",
+          });
+
+        const response = await fetch(`${SERVER_URL}/start_session`, {
+          method: "POST",
+        });
+        const data = await response.json();
+        state.sessionId = data.session_id;
+        sessionInfo.textContent = `Session ID: ${state.sessionId}`;
+        resetUI();
+      }
+
+      function resetUI() {
+        console.log("DEBUG: resetUI() called.");
+        state.allSessionData.clear();
+        state.currentFilename = null;
+        state.selectedAnnIndex = -1;
+        state.img = new Image();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        canvas.style.display = "none";
+        canvasPlaceholder.style.display = "block";
+        setUnsavedChanges(false);
+        exportBtn.disabled = true;
+        localSearchInfo.textContent = "";
+        updateSessionFilesList();
+        updateAnnotationList();
+        updateSearchButtonStates();
+      }
+
+      function setUnsavedChanges(status) {
+        state.hasUnsavedChanges = status;
+        saveChangesBtn.classList.toggle("hidden", !status);
+      }
+
+      // --- File & Data Handling ---
+      async function handleFileUpload(e) {
+        const files = e.target.files;
+        if (files.length === 0 || !state.sessionId) return;
+        processingOverlay.classList.remove("hidden");
+        for (const file of files) {
+          processingStatus.textContent = `Processing ${file.name}...`;
+          const formData = new FormData();
+          formData.append("image", file);
+          try {
+            const response = await fetch(
+              `${SERVER_URL}/process_image/${state.sessionId}`,
+              { method: "POST", body: formData }
+            );
+            if (!response.ok)
+              throw new Error(`Server error: ${await response.text()}`);
+            const result = await response.json();
+            const imageObject = new Image();
+            imageObject.crossOrigin = "Anonymous";
+            imageObject.src = `${SERVER_URL}/image/${state.sessionId}/${result.image_filename}`;
+            await imageObject.decode();
+            state.allSessionData.set(result.image_filename, {
+              annotations: result.annotations,
+              imageObject: imageObject,
+            });
+            if (!state.currentFilename) displayImage(result.image_filename);
+          } catch (error) {
+            alert(`Error processing ${file.name}: ${error.message}`);
+            console.error(error);
+          }
+        }
+        updateSessionFilesList();
+        updateSearchButtonStates();
+        processingOverlay.classList.add("hidden");
+        e.target.value = "";
+      }
+
+      function displayImage(filename) {
+        console.log(`DEBUG: displayImage() called for: ${filename}`);
+        if (!state.allSessionData.has(filename)) return;
+        state.currentFilename = filename;
+        state.img = state.allSessionData.get(filename).imageObject;
+        state.selectedAnnIndex = -1;
+        canvasPlaceholder.style.display = "none";
+        canvas.style.display = "block";
+        exportBtn.disabled = false;
+        localSearchInfo.textContent = "";
+        resizeAndDrawCanvas();
+        updateAnnotationList();
+        updateSessionFilesList();
+      }
+
+      function displayImageAndHighlightBox(filename, boxToHighlight) {
+        console.log(`DEBUG: Highlighting box on ${filename}:`, boxToHighlight);
+        state.highlightedBox = boxToHighlight;
+        displayImage(filename);
+      }
+
+      async function saveAnnotationChanges() {
+        if (!state.currentFilename || !state.hasUnsavedChanges) return true;
+        console.log(`DEBUG: Saving changes for ${state.currentFilename}`);
+        const currentData = state.allSessionData.get(state.currentFilename);
+        try {
+          const response = await fetch(
+            `${SERVER_URL}/update_annotations/${state.sessionId}`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                filename: state.currentFilename,
+                annotations: currentData.annotations,
+              }),
+            }
+          );
+          if (!response.ok)
+            throw new Error(`Server error: ${await response.text()}`);
+          setUnsavedChanges(false);
+          console.log("DEBUG: Changes saved successfully!");
+          return true;
+        } catch (error) {
+          alert(`Failed to save changes: ${error.message}`);
+          console.error(error);
+          return false;
+        }
+      }
+
+      async function handleExport() {
+        if (!state.currentFilename) {
+          alert("No image is currently loaded to export.");
+          return;
+        }
+        console.log(`DEBUG: Starting export for ${state.currentFilename}`);
+
+        const currentData = state.allSessionData.get(state.currentFilename);
+        const zip = new JSZip();
+
+        try {
+          const tempCanvas = document.createElement("canvas");
+          tempCanvas.width = state.img.naturalWidth;
+          tempCanvas.height = state.img.naturalHeight;
+          const tempCtx = tempCanvas.getContext("2d");
+
+          tempCtx.drawImage(state.img, 0, 0);
+
+          currentData.annotations.forEach((ann) => {
+            tempCtx.lineWidth = 4;
+            tempCtx.strokeStyle = getColorForClass(ann.class_name);
+            tempCtx.strokeRect(
+              ann.box[0],
+              ann.box[1],
+              ann.box[2] - ann.box[0],
+              ann.box[3] - ann.box[1]
+            );
+
+            tempCtx.fillStyle = "rgba(0, 0, 0, 0.7)";
+            tempCtx.font = "bold 24px Inter";
+            const labelText = ann.class_name;
+            const textMetrics = tempCtx.measureText(labelText);
+            const textX = ann.box[0];
+            const textY = ann.box[1] - 8;
+            tempCtx.fillRect(textX, textY - 24, textMetrics.width + 10, 30);
+            tempCtx.fillStyle = "#ffffff";
+            tempCtx.fillText(labelText, textX + 5, textY);
+          });
+          console.log(
+            "DEBUG: Drew annotations on temporary canvas for export."
+          );
+
+          const annotatedImageBlob = await new Promise((resolve) =>
+            tempCanvas.toBlob(resolve, "image/png")
+          );
+          const annotatedImageFilename =
+            state.currentFilename.replace(/\.[^/.]+$/, "") + "_annotated.png";
+          zip.file(annotatedImageFilename, annotatedImageBlob);
+          console.log("DEBUG: Added annotated image to zip.");
+
+          const annotationsJson = JSON.stringify(
+            currentData.annotations,
+            null,
+            2
+          );
+          const jsonBlob = new Blob([annotationsJson], {
+            type: "application/json",
+          });
+          const jsonFilename =
+            state.currentFilename.replace(/\.[^/.]+$/, "") +
+            "_annotations.json";
+          zip.file(jsonFilename, jsonBlob);
+          console.log("DEBUG: Added annotations JSON to zip.");
+
+          const zipBlob = await zip.generateAsync({ type: "blob" });
+          const zipFilename =
+            state.currentFilename.replace(/\.[^/.]+$/, "") + ".zip";
+
+          const link = document.createElement("a");
+          link.href = URL.createObjectURL(zipBlob);
+          link.download = zipFilename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(link.href);
+          console.log(`DEBUG: Zip file '${zipFilename}' download triggered.`);
+        } catch (error) {
+          alert(`Export failed: ${error.message}`);
+          console.error("Export error:", error);
+        }
+      }
+
+      // --- UI Updates ---
+      function updateSessionFilesList() {
+        sessionFilesList.innerHTML = "";
+        if (state.allSessionData.size === 0) {
+          sessionFilesList.innerHTML =
+            '<p class="text-gray-500 text-sm">Upload an image to start.</p>';
+          return;
+        }
+        state.allSessionData.forEach((_, filename) => {
+          const item = document.createElement("div");
+          item.className = `file-item p-2 rounded-md cursor-pointer hover:bg-gray-100 ${
+            filename === state.currentFilename ? "active" : ""
+          }`;
+          item.textContent = filename;
+          item.onclick = () => displayImage(filename);
+          sessionFilesList.appendChild(item);
+        });
+      }
+
+      function updateAnnotationList() {
+        annotationList.innerHTML = "";
+        searchControls.classList.add("hidden");
+        const currentData = state.allSessionData.get(state.currentFilename);
+        if (!currentData || currentData.annotations.length === 0) {
+          annotationList.innerHTML =
+            '<p class="text-gray-500 text-sm">No annotations. Draw one!</p>';
+          return;
+        }
+
+        currentData.annotations.forEach((ann, index) => {
+          const item = document.createElement("div");
+          item.className = `ann-item p-3 border rounded-md cursor-pointer ${
+            index === state.selectedAnnIndex ? "selected" : ""
+          }`;
+          item.dataset.index = index;
+
+          const selectOptions = state.classList
+            .map(
+              (c) =>
+                `<option value="${c}" ${
+                  ann.class_name === c ? "selected" : ""
+                }>${c}</option>`
+            )
+            .join("");
+
+          let actionButton = "";
+          if (!ann.feature_vector) {
+            actionButton = `<button class="get-features-btn mt-2 w-full text-sm bg-blue-500 text-white py-1 rounded hover:bg-blue-600" data-index="${index}">Get Features</button>`;
+          }
+
+          item.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <select class="class-selector bg-gray-50 border border-gray-300 text-sm rounded-lg p-1.5" data-index="${index}">${selectOptions}</select>
+                        <button class="delete-btn text-red-400 hover:text-red-600 font-bold text-xl px-2" data-index="${index}">&times;</button>
+                    </div>
+                    ${actionButton}
+                `;
+          item.onclick = (e) => {
+            if (
+              e.target.tagName !== "SELECT" &&
+              e.target.tagName !== "BUTTON"
+            ) {
+              state.selectedAnnIndex = index;
+              localSearchInfo.textContent = "";
+              state.highlightedBox = null;
+              updateAnnotationList();
+              draw();
+            }
+          };
+          annotationList.appendChild(item);
+        });
+
+        annotationList
+          .querySelectorAll(".class-selector")
+          .forEach((sel) => (sel.onchange = handleClassChange));
+        annotationList
+          .querySelectorAll(".delete-btn")
+          .forEach((btn) => (btn.onclick = handleDelete));
+        annotationList
+          .querySelectorAll(".get-features-btn")
+          .forEach((btn) => (btn.onclick = handleGetFeatures));
+
+        if (
+          state.selectedAnnIndex !== -1 &&
+          currentData.annotations[state.selectedAnnIndex]?.feature_vector
+        ) {
+          searchControls.classList.remove("hidden");
+        }
+        updateSearchButtonStates();
+      }
+
+      function updateSearchButtonStates() {
+        const hasMultipleImages = state.allSessionData.size > 1;
+        searchGlobalBtn.disabled = !hasMultipleImages;
+        if (!hasMultipleImages) {
+          searchGlobalBtn.title =
+            "Upload at least two images to enable cross-image search.";
+        } else {
+          searchGlobalBtn.title = "";
+        }
+      }
+
+      function handleClassChange(e) {
+        const index = parseInt(e.target.dataset.index);
+        const newClass = e.target.value;
+        const ann = state.allSessionData.get(state.currentFilename).annotations[
+          index
+        ];
+        ann.class_name = newClass;
+        setUnsavedChanges(true);
+        draw();
+      }
+
+      function handleDelete(e) {
+        const index = parseInt(e.target.dataset.index);
+        if (confirm(`Are you sure you want to delete this annotation?`)) {
+          state.allSessionData
+            .get(state.currentFilename)
+            .annotations.splice(index, 1);
+          if (state.selectedAnnIndex === index) state.selectedAnnIndex = -1;
+          else if (state.selectedAnnIndex > index) state.selectedAnnIndex--;
+          setUnsavedChanges(true);
+          updateAnnotationList();
+          draw();
+        }
+      }
+
+      async function handleGetFeatures(e) {
+        const index = parseInt(e.target.dataset.index);
+        const ann = state.allSessionData.get(state.currentFilename).annotations[
+          index
+        ];
+        e.target.textContent = "Analyzing...";
+        e.target.disabled = true;
+        try {
+          const response = await fetch(
+            `${SERVER_URL}/get_feature_vector/${state.sessionId}`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                image_filename: state.currentFilename,
+                box: ann.box,
+              }),
+            }
+          );
+          if (!response.ok)
+            throw new Error(`Server error: ${await response.text()}`);
+          const result = await response.json();
+          ann.feature_vector = result.feature_vector;
+          setUnsavedChanges(true);
+          const saved = await saveAnnotationChanges();
+          if (saved) {
+            updateAnnotationList();
+          }
+        } catch (error) {
+          alert(`Failed to get features: ${error.message}`);
+          console.error(error);
+          e.target.textContent = "Get Features";
+          e.target.disabled = false;
+        }
+      }
+
+      // --- Canvas & Drawing ---
+      function resizeAndDrawCanvas() {
+        if (!state.img.src) return;
+        canvas.width = state.img.naturalWidth;
+        canvas.height = state.img.naturalHeight;
+        draw();
+      }
+
+      function draw() {
+        if (!state.img.src) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(state.img, 0, 0, canvas.width, canvas.height);
+
+        const currentData = state.allSessionData.get(state.currentFilename);
+        if (!currentData) return;
+
+        currentData.annotations.forEach((ann, index) => {
+          const isHighlighted =
+            state.highlightedBox &&
+            ann.box.every((v, i) => v === state.highlightedBox[i]);
+          const isSelected = index === state.selectedAnnIndex;
+
+          const showAsSearchResult =
+            isHighlighted || isSelected || ann.isLocalMatch;
+          if (!state.annotationsVisible && !showAsSearchResult) {
+            return;
+          }
+
+          ctx.lineWidth = isSelected || isHighlighted ? 4 : 2;
+          if (isHighlighted) {
+            ctx.strokeStyle = "#ffffff";
+          } else if (isSelected) {
+            ctx.strokeStyle = "#0ea5e9";
+          } else if (ann.isLocalMatch) {
+            ctx.strokeStyle = "#10b981";
+          } else {
+            ctx.strokeStyle = getColorForClass(ann.class_name);
+          }
+
+          const [x1, y1, x2, y2] = ann.box;
+          const [boxW, boxH] = [x2 - x1, y2 - y1];
+
+          ctx.strokeRect(x1, y1, boxW, boxH);
+
+          if (state.annotationsVisible) {
+            const labelText = ann.class_name;
+            ctx.font = "bold 14px Inter";
+            const textMetrics = ctx.measureText(labelText);
+            const textX = x1;
+            const textY = y1 - 5;
+            ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+            ctx.fillRect(textX - 2, textY - 14, textMetrics.width + 4, 18);
+            ctx.fillStyle = "#ffffff";
+            ctx.fillText(labelText, textX, textY);
+          }
+
+          let overlayText = null;
+          if (isHighlighted) {
+            overlayText = "Match";
+          } else if (isSelected) {
+            overlayText = "Selected";
+          } else if (ann.isLocalMatch) {
+            overlayText = "Match";
+          }
+
+          if (overlayText) {
+            const overlayMetrics = ctx.measureText(overlayText);
+            const overlayX = x1;
+            const overlayY = y1 + boxH + 18;
+            ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+            ctx.fillRect(
+              overlayX - 2,
+              overlayY - 14,
+              overlayMetrics.width + 4,
+              18
+            );
+            ctx.fillStyle = "#ffffff";
+            ctx.font = "bold 14px Inter";
+            ctx.fillText(overlayText, overlayX, overlayY);
+          }
+        });
+      }
+
+      function toggleAnnotations() {
+        state.annotationsVisible = !state.annotationsVisible;
+        draw();
+      }
+
+      function setupCanvasMouseListeners() {
+        window.addEventListener("keydown", (e) => {
+          if (e.code === "Space" && !state.isPanning) {
+            state.isPanning = true;
+            canvasContainer.classList.add("panning");
+          }
+        });
+        window.addEventListener("keyup", (e) => {
+          if (e.code === "Space") {
+            state.isPanning = false;
+            canvasContainer.classList.remove("panning");
+          }
+        });
+
+        canvas.addEventListener("mousedown", (e) => {
+          if (!state.currentFilename) return;
+
+          if (state.isPanning) {
+            state.panStart = { x: e.clientX, y: e.clientY };
+            return;
+          }
+
+          state.highlightedBox = null;
+          const currentAnns = state.allSessionData.get(
+            state.currentFilename
+          ).annotations;
+          currentAnns.forEach((ann) => (ann.isLocalMatch = false));
+
+          const pos = getMousePos(e);
+          const clickedIndex = currentAnns.findIndex(
+            (ann) =>
+              pos.x >= ann.box[0] &&
+              pos.x <= ann.box[2] &&
+              pos.y >= ann.box[1] &&
+              pos.y <= ann.box[3]
+          );
+
+          if (clickedIndex !== -1) {
+            state.selectedAnnIndex = clickedIndex;
+          } else {
+            state.isDrawing = true;
+            state.drawStart = pos;
+            state.selectedAnnIndex = -1;
+          }
+          localSearchInfo.textContent = "";
+          updateAnnotationList();
+          draw();
+        });
+
+        canvas.addEventListener("mousemove", (e) => {
+          if (state.isPanning) {
+            const dx = e.clientX - state.panStart.x;
+            const dy = e.clientY - state.panStart.y;
+            canvasContainer.scrollTop -= dy;
+            canvasContainer.scrollLeft -= dx;
+            state.panStart = { x: e.clientX, y: e.clientY };
+            return;
+          }
+
+          if (!state.isDrawing) return;
+          const pos = getMousePos(e);
+          draw();
+          ctx.strokeStyle = "#22c55e";
+          ctx.lineWidth = 2;
+          ctx.strokeRect(
+            state.drawStart.x,
+            state.drawStart.y,
+            pos.x - state.drawStart.x,
+            pos.y - state.drawStart.y
+          );
+        });
+
+        canvas.addEventListener("mouseup", (e) => {
+          if (!state.isDrawing) return;
+          state.isDrawing = false;
+          const pos = getMousePos(e);
+          const x1 = Math.min(state.drawStart.x, pos.x),
+            y1 = Math.min(state.drawStart.y, pos.y);
+          const x2 = Math.max(state.drawStart.x, pos.x),
+            y2 = Math.max(state.drawStart.y, pos.y);
+
+          if (x2 - x1 > 5 && y2 - y1 > 5) {
+            const newAnn = {
+              class_name: "other",
+              confidence: null,
+              box: [x1, y1, x2, y2],
+              feature_vector: null,
+            };
+            const currentAnns = state.allSessionData.get(
+              state.currentFilename
+            ).annotations;
+            currentAnns.push(newAnn);
+            state.selectedAnnIndex = currentAnns.length - 1;
+            setUnsavedChanges(true);
+          }
+          updateAnnotationList();
+          draw();
+        });
+      }
+
+      function getMousePos(e) {
+        const rect = canvas.getBoundingClientRect();
+        return {
+          x: e.clientX - rect.left + canvasContainer.scrollLeft,
+          y: e.clientY - rect.top + canvasContainer.scrollTop,
+        };
+      }
+
+      // --- Search Functionality ---
+      function handleLocalSearch() {
+        const currentData = state.allSessionData.get(state.currentFilename);
+        const selectedAnn = currentData?.annotations[state.selectedAnnIndex];
+        if (!selectedAnn) return;
+        let matchCount = 0;
+        currentData.annotations.forEach((ann) => {
+          ann.isLocalMatch =
+            ann.class_name === selectedAnn.class_name && ann !== selectedAnn;
+          if (ann.isLocalMatch) matchCount++;
+        });
+        localSearchInfo.textContent = `(Found ${matchCount} other matches)`;
+        draw();
+      }
+
+      async function handleGlobalSearch() {
+        const currentData = state.allSessionData.get(state.currentFilename);
+        const selectedAnn = currentData?.annotations[state.selectedAnnIndex];
+        if (!selectedAnn || !selectedAnn.feature_vector) return;
+        searchModal.classList.remove("hidden");
+        searchModalTitle.textContent = "Similarity Search Results";
+        searchResultsContainer.innerHTML =
+          '<p id="search-status" class="text-center text-gray-500">Searching...</p>';
+
+        const response = await fetch(
+          `${SERVER_URL}/search/${state.sessionId}`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              vector: selectedAnn.feature_vector,
+              k: 50,
+              class_name: selectedAnn.class_name,
+              exclude_filename: state.currentFilename,
+            }),
+          }
+        );
+
+        if (!response.ok) {
+          document.getElementById(
+            "search-status"
+          ).textContent = `Search failed: ${await response.text()}`;
+          return;
+        }
+        const results = await response.json();
+        displaySearchResults(results);
+      }
+
+      function displaySearchResults(results) {
+        searchResultsContainer.innerHTML = "";
+        searchModalTitle.textContent = `Similarity Search Results (${results.length} found)`;
+
+        if (results.length === 0) {
+          searchResultsContainer.innerHTML =
+            '<p class="text-center text-gray-500">No similar objects found in other images.</p>';
+          return;
+        }
+        const grid = document.createElement("div");
+        grid.className =
+          "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4";
+        results.forEach((res) => {
+          const item = document.createElement("div");
+          item.className =
+            "search-result-item bg-white rounded-lg overflow-hidden shadow-md cursor-pointer border";
+          const imageUrl = `${SERVER_URL}/image/${state.sessionId}/${res.source_image}`;
+          item.innerHTML = `
+                    <div class="w-full h-32 bg-gray-200 bg-cover bg-center" style="background-image: url('${imageUrl}')"></div>
+                    <div class="p-2 text-sm">
+                        <p class="font-semibold">${res.class_name}</p>
+                        <p class="text-xs text-gray-600 truncate">${res.source_image}</p>
+                    </div>`;
+          item.onclick = () => {
+            displayImageAndHighlightBox(res.source_image, res.box);
+            searchModal.classList.add("hidden");
+          };
+          grid.appendChild(item);
+        });
+        searchResultsContainer.appendChild(grid);
+      }
+    </script>
+  </body>
+</html>
