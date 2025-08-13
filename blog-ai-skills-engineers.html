@@ -148,11 +148,60 @@
               >
             </div>
           </li>
+          <!-- Trainings Dropdown -->
+          <li class="relative group">
+            <a
+              href="embedded-ai-trainings.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
+            >
+              Trainings
+              <i class="fas fa-chevron-down text-xs ml-2"></i>
+            </a>
+            <div
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
+            >
+              <a
+                href="embedded-ai-trainings.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
+                >Embedded Systems & Edge AI</a
+              >
+              <a
+                href="training-firmware.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Firmware Development</a
+              >
+              <a
+                href="training-linux-drivers.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Linux Drivers</a
+              >
+              <a
+                href="training-android-hal.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Android HAL</a
+              >
+              <a
+                href="training-android-security.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Android Security</a
+              >
+              <a
+                href="training-android-frameworks.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Android Frameworks</a
+              >
+              <a
+                href="training-x86.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
+                >x86 Training (Intel & AMD)</a
+              >
+            </div>
+          </li>
           <!-- Blogs Dropdown -->
           <li class="relative group">
             <a
               href="blogs.html"
-              class="text-sky-400 transition-colors flex items-center"
+              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
             >
               Blogs
               <i class="fas fa-chevron-down text-xs ml-2"></i>
@@ -161,67 +210,116 @@
               class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
             >
               <a
-                href="blog-basics-deep-learning.html"
+                href="blog-embedded-systems-1.html"
                 class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
-                >Basics of Deep Learning</a
+                >Introduction to Embedded Linux</a
               >
               <a
-                href="blog-ai-skills-students.html"
+                href="blog-embedded-systems-2.html"
                 class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >AI Skills for Students</a
+                >Firmware Updates on Edge Devices</a
               >
               <a
-                href="blog-ai-skills-undergraduates.html"
+                href="blog-embedded-systems-3.html"
                 class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >AI Skills for Undergraduates</a
+                >Porting an AI Model to x86</a
               >
               <a
                 href="blog-ai-skills-engineers.html"
-                class="block px-4 py-3 text-white bg-slate-700 rounded-b-lg"
-                >AI Skills for Professionals</a
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
+                >AI for Professionals</a
               >
             </div>
           </li>
           <li>
             <a
-              href="about.html"
+              href="about-contact.html"
               class="text-slate-300 hover:text-sky-400 transition-colors"
-              >About Us</a
-            >
-          </li>
-          <li>
-            <a
-              href="contact.html"
-              class="text-slate-300 hover:text-sky-400 transition-colors"
-              >Contact</a
+              >About & Contact</a
             >
           </li>
         </ul>
       </nav>
     </header>
     <main>
-      <section id="blog-category-page" class="py-16">
+      <section id="blogs-page" class="py-16">
         <div class="container mx-auto px-6">
-          <h1 class="section-title">AI Skills for Engineering Professionals</h1>
+          <h1 class="section-title">Latest Blogs & Insights</h1>
           <p class="section-subtitle">
-            Practical guides and advanced topics for professionals looking to
-            upskill in AI.
+            Stay up-to-date with our latest articles on Embedded Systems, Edge
+            AI, and more.
           </p>
-          <div class="space-y-8 max-w-4xl mx-auto">
-            <div class="content-card">
-              <h2 class="text-2xl font-bold text-sky-400 mb-2">
-                Deploying Machine Learning Models with Docker
-              </h2>
-              <p class="text-slate-400 mb-4">
-                By Svaraikyam AI Team | July 12, 2025
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <a
+              href="blog-embedded-systems-1.html"
+              class="blog-card flex flex-col items-center text-center p-4"
+            >
+              <i class="fas fa-microchip text-sky-400 text-5xl mb-4"></i>
+              <h3 class="text-2xl font-bold text-white mb-2">
+                Introduction to Embedded Linux
+              </h3>
+              <p class="text-slate-300 flex-grow">
+                A beginner's guide to the core concepts of Linux on embedded
+                systems, including bootloaders, the kernel, and root
+                filesystems.
               </p>
-              <p class="text-slate-300">
-                You've trained a model, now what? This guide provides a
-                step-by-step walkthrough of containerizing a Python machine
-                learning application with Docker for scalable deployment...
+              <span
+                class="text-sky-400 font-semibold text-center mt-4 hover:underline"
+                >Read More &rarr;</span
+              >
+            </a>
+            <a
+              href="blog-embedded-systems-2.html"
+              class="blog-card flex flex-col items-center text-center p-4"
+            >
+              <i class="fas fa-sync text-sky-400 text-5xl mb-4"></i>
+              <h3 class="text-2xl font-bold text-white mb-2">
+                Firmware Updates on Edge Devices
+              </h3>
+              <p class="text-slate-300 flex-grow">
+                Learn best practices for over-the-air (OTA) and secure firmware
+                updates to ensure the reliability of your edge AI devices.
               </p>
-              <p class="text-sky-500 mt-4">Coming Soon</p>
-            </div>
+              <span
+                class="text-sky-400 font-semibold text-center mt-4 hover:underline"
+                >Read More &rarr;</span
+              >
+            </a>
+            <a
+              href="blog-embedded-systems-3.html"
+              class="blog-card flex flex-col items-center text-center p-4"
+            >
+              <i class="fas fa-laptop-code text-sky-400 text-5xl mb-4"></i>
+              <h3 class="text-2xl font-bold text-white mb-2">
+                Porting an AI Model to x86
+              </h3>
+              <p class="text-slate-300 flex-grow">
+                A step-by-step tutorial on optimizing and deploying a
+                Python-based AI model to an x86 architecture for
+                high-performance inference.
+              </p>
+              <span
+                class="text-sky-400 font-semibold text-center mt-4 hover:underline"
+                >Read More &rarr;</span
+              >
+            </a>
+            <a
+              href="blog-ai-skills-engineers.html"
+              class="blog-card flex flex-col items-center text-center p-4"
+            >
+              <i class="fas fa-user-tie text-sky-400 text-5xl mb-4"></i>
+              <h3 class="text-2xl font-bold text-white mb-2">
+                AI for Professionals
+              </h3>
+              <p class="text-slate-300 flex-grow">
+                Upskill with cutting-edge techniques in machine learning and
+                data science.
+              </p>
+              <span
+                class="text-sky-400 font-semibold text-center mt-4 hover:underline"
+                >Read More &rarr;</span
+              >
+            </a>
           </div>
         </div>
       </section>

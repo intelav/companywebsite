@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blogs | Svaraikyam AI</title>
+    <title>Porting an AI Model to x86 | Svaraikyam AI</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
@@ -46,22 +46,6 @@
         border: 1px solid #334155; /* slate-700 */
         border-radius: 0.75rem;
         padding: 2rem;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      .content-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      }
-      .blog-card {
-        background-color: #1e293b;
-        border: 1px solid #334155;
-        border-radius: 0.75rem;
-        padding: 2rem;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      .blog-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
       }
       /* Dropdown styles */
       .dropdown-content {
@@ -226,19 +210,19 @@
               class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
             >
               <a
-                href="blog-basics-deep-learning.html"
+                href="blog-embedded-systems-1.html"
                 class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
-                >Basics of Deep Learning</a
+                >Introduction to Embedded Linux</a
               >
               <a
-                href="blog-ai-skills-students.html"
+                href="blog-embedded-systems-2.html"
                 class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >AI Skills for Students</a
+                >Firmware Updates on Edge Devices</a
               >
               <a
-                href="blog-ai-skills-undergraduates.html"
+                href="blog-embedded-systems-3.html"
                 class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >AI for Undergraduates</a
+                >Porting an AI Model to x86</a
               >
               <a
                 href="blog-ai-skills-engineers.html"
@@ -320,46 +304,12 @@
               >
             </a>
             <a
-              href="blog-basics-deep-learning.html"
-              class="blog-card flex flex-col items-center text-center p-4"
-            >
-              <i class="fas fa-brain text-sky-400 text-5xl mb-4"></i>
-              <h3 class="text-2xl font-bold text-white mb-2">
-                Basics of Deep Learning
-              </h3>
-              <p class="text-slate-300 flex-grow">
-                Fundamental concepts and practical introductions to deep
-                learning models.
-              </p>
-              <span
-                class="text-sky-400 font-semibold text-center mt-4 hover:underline"
-                >Read More &rarr;</span
-              >
-            </a>
-            <a
-              href="blog-ai-skills-students.html"
-              class="blog-card flex flex-col items-center text-center p-4"
-            >
-              <i class="fas fa-user-graduate text-sky-400 text-5xl mb-4"></i>
-              <h3 class="text-2xl font-bold text-white mb-2">
-                AI Skills for Students
-              </h3>
-              <p class="text-slate-300 flex-grow">
-                Building foundational AI knowledge for the next generation of
-                innovators.
-              </p>
-              <span
-                class="text-sky-400 font-semibold text-center mt-4 hover:underline"
-                >Read More &rarr;</span
-              >
-            </a>
-            <a
               href="blog-ai-skills-engineers.html"
               class="blog-card flex flex-col items-center text-center p-4"
             >
               <i class="fas fa-user-tie text-sky-400 text-5xl mb-4"></i>
               <h3 class="text-2xl font-bold text-white mb-2">
-                AI Skills for Professionals
+                AI for Professionals
               </h3>
               <p class="text-slate-300 flex-grow">
                 Upskill with cutting-edge techniques in machine learning and

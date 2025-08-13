@@ -183,6 +183,55 @@
               >
             </div>
           </li>
+          <!-- Trainings Dropdown -->
+          <li class="relative group">
+            <a
+              href="embedded-ai-trainings.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
+            >
+              Trainings
+              <i class="fas fa-chevron-down text-xs ml-2"></i>
+            </a>
+            <div
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
+            >
+              <a
+                href="embedded-ai-trainings.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
+                >Embedded Systems & Edge AI</a
+              >
+              <a
+                href="training-firmware.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Firmware Development</a
+              >
+              <a
+                href="training-linux-drivers.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Linux Drivers</a
+              >
+              <a
+                href="training-android-hal.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Android HAL</a
+              >
+              <a
+                href="training-android-security.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Android Security</a
+              >
+              <a
+                href="training-android-frameworks.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Android Frameworks</a
+              >
+              <a
+                href="training-x86.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
+                >x86 Training (Intel & AMD)</a
+              >
+            </div>
+          </li>
           <!-- Blogs Dropdown -->
           <li class="relative group">
             <a
@@ -196,22 +245,22 @@
               class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
             >
               <a
-                href="#"
+                href="blog-embedded-systems-1.html"
                 class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
-                >Basics of Deep Learning</a
+                >Introduction to Embedded Linux</a
               >
               <a
-                href="#"
+                href="blog-embedded-systems-2.html"
                 class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >AI Skills for Students</a
+                >Firmware Updates on Edge Devices</a
               >
               <a
-                href="#"
+                href="blog-embedded-systems-3.html"
                 class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >AI for Undergraduates</a
+                >Porting an AI Model to x86</a
               >
               <a
-                href="#"
+                href="blog-ai-skills-engineers.html"
                 class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
                 >AI for Professionals</a
               >
@@ -219,16 +268,9 @@
           </li>
           <li>
             <a
-              href="about.html"
+              href="about-contact.html"
               class="text-slate-300 hover:text-sky-400 transition-colors"
-              >About Us</a
-            >
-          </li>
-          <li>
-            <a
-              href="contact.html"
-              class="text-slate-300 hover:text-sky-400 transition-colors"
-              >Contact</a
+              >About & Contact</a
             >
           </li>
         </ul>
@@ -263,7 +305,7 @@
             <div class="content-card grid md:grid-cols-2 gap-12 items-center">
               <div class="video-responsive">
                 <iframe
-                  src="https://www.youtube.com/embed/rcaSwFkBH3g?autoplay=1&mute=1"
+                  src="https://www.youtube.com/embed/wqSR-2ARQZc"
                   title="SmartPurchase App Demo"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -300,7 +342,7 @@
               <div class="md:order-2">
                 <div class="video-responsive">
                   <iframe
-                    src="https://www.youtube.com/embed/ZpciamC_MMs"
+                    src="https://www.youtube.com/embed/v3gq_fhGSlE"
                     title="Satellite Image Analysis using customized Yolo Model"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -321,7 +363,7 @@
                 <a
                   href="annotation_ui.html"
                   class="text-sky-400 font-semibold text-lg hover:underline"
-                  >Explore Use Cases &rarr;</a
+                  >Launch Tool &rarr;</a
                 >
               </div>
             </div>
@@ -443,31 +485,79 @@
         </div>
       </section>
 
+      <!-- Trainings Section -->
+      <section id="trainings" class="py-16">
+        <div class="container mx-auto px-6">
+          <h2 class="section-title">Our Trainings</h2>
+          <p class="section-subtitle">
+            Hands-on training programs to help you master the skills needed for
+            the future of embedded systems and edge AI.
+          </p>
+
+          <div class="space-y-16">
+            <!-- Training 1: Embedded Systems and Edge AI -->
+            <div class="content-card grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <!-- Placeholder for the AI Lab picture -->
+                <img
+                  src="lab.png"
+                  alt="AI Lab for Trainings"
+                  class="rounded-lg shadow-lg w-full h-auto"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=AI+Lab+Trainings';"
+                />
+              </div>
+              <div>
+                <h3 class="text-3xl font-bold text-sky-400 mb-4">
+                  Embedded Systems and Edge AI
+                </h3>
+                <p class="text-lg text-slate-300 mb-4">
+                  Our comprehensive training program provides hands-on,
+                  immersive experience on platforms like RB5, RB3, Jetson Orin,
+                  RiscV, Realsense and Intel & AMD x86. We cover everything from
+                  foundational firmware to advanced Android frameworks,
+                  equipping you with the practical skills to build and deploy
+                  intelligent systems on edge devices.
+                </p>
+                <a
+                  href="embedded-ai-trainings.html"
+                  class="text-sky-400 font-semibold text-lg hover:underline"
+                  >Learn More &rarr;</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Blogs Section -->
-      <section id="blogs" class="py-16">
+      <section id="blogs" class="py-16 bg-slate-900/50">
         <div class="container mx-auto px-6">
           <div class="content-card grid md:grid-cols-2 gap-12 items-center">
             <div class="grid grid-cols-2 gap-4">
               <a
-                href="#"
+                href="blog-embedded-systems-1.html"
                 class="bg-slate-700 p-4 rounded-lg text-center hover:bg-slate-600 transition-colors"
               >
-                <h4 class="font-bold text-white">Basics of Deep Learning</h4>
+                <h4 class="font-bold text-white">
+                  Introduction to Embedded Linux
+                </h4>
               </a>
               <a
-                href="#"
+                href="blog-embedded-systems-2.html"
                 class="bg-slate-700 p-4 rounded-lg text-center hover:bg-slate-600 transition-colors"
               >
-                <h4 class="font-bold text-white">AI Skills for Students</h4>
+                <h4 class="font-bold text-white">
+                  Firmware Updates on Edge Devices
+                </h4>
               </a>
               <a
-                href="#"
+                href="blog-embedded-systems-3.html"
                 class="bg-slate-700 p-4 rounded-lg text-center hover:bg-slate-600 transition-colors"
               >
-                <h4 class="font-bold text-white">AI for Undergraduates</h4>
+                <h4 class="font-bold text-white">Porting an AI Model to x86</h4>
               </a>
               <a
-                href="#"
+                href="blog-ai-skills-engineers.html"
                 class="bg-slate-700 p-4 rounded-lg text-center hover:bg-slate-600 transition-colors"
               >
                 <h4 class="font-bold text-white">AI for Professionals</h4>
@@ -475,7 +565,7 @@
             </div>
             <div>
               <h3 class="text-3xl font-bold text-sky-400 mb-4">
-                Edge AI Blogs for Upskilling
+                Embedded Systems & AI Blogs
               </h3>
               <p class="text-lg text-slate-300 mb-4">
                 Explore our collection of articles, tutorials, and insights
