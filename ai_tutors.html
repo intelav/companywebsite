@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Tutors | Svaraikyam AI</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <style>
+      /* Custom styles for the page */
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0f172a; /* slate-900 */
+        color: #f8fafc; /* slate-50 */
+      }
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #ffffff;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      .section-subtitle {
+        font-size: 1.125rem;
+        color: #cbd5e1; /* slate-300 */
+        text-align: center;
+        max-width: 48rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 4rem;
+      }
+      .content-card {
+        background-color: #1e293b; /* slate-800 */
+        border: 1px solid #334155; /* slate-700 */
+        border-radius: 0.75rem;
+        padding: 2rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .content-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      .quiz-card {
+        background-color: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 0.75rem;
+        padding: 2rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+      }
+      .quiz-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- Header -->
+    <header
+      class="bg-slate-900/70 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-800"
+    >
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="index.html" class="flex items-center space-x-3">
+          <img
+            src="company_logo.png"
+            alt="Svaraikyam AI Logo"
+            class="h-10"
+            onerror="this.onerror=null; this.src='https://placehold.co/100x40/0f172a/ffffff?text=Logo';"
+          />
+          <span class="text-2xl font-bold text-white">Svaraikyam AI</span>
+        </a>
+        <ul class="hidden md:flex items-center space-x-8 text-lg">
+          <li>
+            <a
+              href="index.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="products.html"
+              class="text-sky-400 hover:text-sky-400 transition-colors"
+              >Products</a
+            >
+          </li>
+          <li>
+            <a
+              href="services.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a
+              href="embedded-ai-trainings.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >Trainings</a
+            >
+          </li>
+          <li>
+            <a
+              href="blogs.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >Blogs</a
+            >
+          </li>
+          <li>
+            <a
+              href="about-contact.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >About & Contact</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="py-16">
+      <div class="container mx-auto px-6">
+        <h1 class="section-title">AI Tutors</h1>
+        <p class="section-subtitle">
+          Explore our range of AI-powered tutors designed to make learning
+          engaging and effective.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Math AI Card for Class 6 -->
+          <a href="math_ai_class_6.html" class="content-card flex flex-col items-center text-center">
+            <i class="fas fa-calculator text-sky-400 text-5xl mb-4"></i>
+            <h3 class="text-2xl font-bold text-white mb-2">Math AI</h3>
+            <p class="text-slate-300 font-bold mb-1">For Class 6</p>
+            <p class="text-slate-300 flex-grow">
+              A dynamic quiz generator for students to practice key mathematical concepts.
+            </p>
+          </a>
+          <!-- Math AI Card for Class 11 & 12 (Coming Soon) -->
+          <a href="#" class="content-card flex flex-col items-center text-center">
+            <i class="fas fa-calculator text-sky-400 text-5xl mb-4"></i>
+            <h3 class="text-2xl font-bold text-white mb-2">Math AI</h3>
+            <p class="text-slate-300 font-bold mb-1">For Class 11 & 12</p>
+            <p class="text-slate-300 flex-grow">
+              Advanced problem-solving and quiz generation for high school mathematics (Coming Soon).
+            </p>
+          </a>
+          <!-- Social Science AI Card -->
+          <div class="content-card flex flex-col items-center text-center">
+            <i class="fas fa-book-open text-sky-400 text-5xl mb-4"></i>
+            <h3 class="text-2xl font-bold text-white mb-2">Social Science AI</h3>
+            <p class="text-slate-300 font-bold mb-1">For Class 6</p>
+            <p class="text-slate-300 flex-grow">
+              Interactive quizzes to test and reinforce knowledge of history and culture.
+            </p>
+            <a href="quizzes/social_science/class_6/quiz_hub.html" class="text-sky-400 font-semibold text-lg hover:underline mt-4">Take a Quiz &rarr;</a>
+          </div>
+          <!-- Science AI Card for Class 6 -->
+          <a href="#" class="content-card flex flex-col items-center text-center">
+            <i class="fas fa-flask text-sky-400 text-5xl mb-4"></i>
+            <h3 class="text-2xl font-bold text-white mb-2">Science AI</h3>
+            <p class="text-slate-300 font-bold mb-1">For Class 6</p>
+            <p class="text-slate-300 flex-grow">
+              An AI tutor for a wide range of science topics and experiments (Coming Soon).
+            </p>
+          </a>
+          <!-- Physics AI Card for Class 11 & 12 -->
+          <a href="#" class="content-card flex flex-col items-center text-center">
+            <i class="fas fa-atom text-sky-400 text-5xl mb-4"></i>
+            <h3 class="text-2xl font-bold text-white mb-2">Physics AI</h3>
+            <p class="text-slate-300 font-bold mb-1">For Class 11 & 12</p>
+            <p class="text-slate-300 flex-grow">
+              Simulations and quizzes for understanding physics principles (Coming Soon).
+            </p>
+          </a>
+          <!-- Chemistry AI Card for Class 11 & 12 -->
+          <a href="#" class="content-card flex flex-col items-center text-center">
+            <i class="fas fa-vial text-sky-400 text-5xl mb-4"></i>
+            <h3 class="text-2xl font-bold text-white mb-2">Chemistry AI</h3>
+            <p class="text-slate-300 font-bold mb-1">For Class 11 & 12</p>
+            <p class="text-slate-300 flex-grow">
+              Interactive exercises for mastering chemical equations and concepts (Coming Soon).
+            </p>
+          </a>
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800">
+      <div class="container mx-auto px-6 py-8 text-center text-slate-400">
+        <p>&copy; 2025 Svaraikyam AI. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
