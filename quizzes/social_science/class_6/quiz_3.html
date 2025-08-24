@@ -46,6 +46,17 @@
       .btn:hover {
         background-color: #2563eb;
       }
+      .correct-input {
+        background-color: #22c55e;
+      }
+      .incorrect-input {
+        background-color: #ef4444;
+      }
+      .feedback-text {
+        color: #ef4444;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+      }
     </style>
   </head>
   <body class="antialiased">
@@ -65,51 +76,117 @@
           <span class="text-2xl font-bold text-white">Svaraikyam AI</span>
         </a>
         <a href="quiz_hub.html" class="text-sky-400 hover:underline">
-            &larr; Back to Quizzes
+          &larr; Back to Quizzes
         </a>
       </nav>
     </header>
     <main>
       <div class="quiz-container">
-        <h1 class="text-3xl font-bold text-center mb-2">Quiz 3: The Storyteller's Match-Up</h1>
-        <p class="text-center text-slate-400 mb-6">Match the story or debate to the key idea it illustrates. Each question is worth 20 points.</p>
+        <h1 class="text-3xl font-bold text-center mb-2">
+          Quiz 3: The Storyteller's Match-Up
+        </h1>
+        <p class="text-center text-slate-400 mb-6">
+          Match the story or debate to the key idea it illustrates. Each
+          question is worth 20 points.
+        </p>
         <div id="quiz-form" class="space-y-6">
           <div class="grid grid-cols-2 gap-4">
             <div>
               <ul class="space-y-4">
-                <li class="p-2 bg-slate-700 rounded">1. The story of the monkey-king</li>
+                <li class="p-2 bg-slate-700 rounded">
+                  1. The story of the monkey-king
+                </li>
                 <li class="p-2 bg-slate-700 rounded">2. Rohineya</li>
-                <li class="p-2 bg-slate-700 rounded">3. The debate of Gārgī and Yājñavalkya</li>
+                <li class="p-2 bg-slate-700 rounded">
+                  3. The debate of Gārgī and Yājñavalkya
+                </li>
                 <li class="p-2 bg-slate-700 rounded">4. Nachiketa's Quest</li>
                 <li class="p-2 bg-slate-700 rounded">5. The Jataka tales</li>
               </ul>
             </div>
             <div>
               <ul class="space-y-4">
-                <li class="p-2 bg-slate-700 rounded">A. Illustrates the importance of a king's role to his subjects.</li>
-                <li class="p-2 bg-slate-700 rounded">B. Teaches that the 'atman' is immortal.</li>
-                <li class="p-2 bg-slate-700 rounded">C. Showcases a debate on the nature of 'brahman'.</li>
-                <li class="p-2 bg-slate-700 rounded">D. Tells a story about a burglar who found a second chance.</li>
-                <li class="p-2 bg-slate-700 rounded">E. A collection of stories about the Buddha's former births.</li>
+                <li class="p-2 bg-slate-700 rounded">
+                  A. Illustrates the importance of a king's role to his
+                  subjects.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  B. Teaches that the 'atman' is immortal.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  C. Showcases a debate on the nature of 'brahman'.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  D. Tells a story about a burglar who found a second chance.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  E. A collection of stories about the Buddha's former births.
+                </li>
               </ul>
             </div>
           </div>
           <div class="space-y-4">
             <p>Match the numbers to the letters:</p>
             <div class="grid grid-cols-5 gap-4">
-              <input type="text" id="q1" class="input-field text-center" placeholder="1->">
-              <input type="text" id="q2" class="input-field text-center" placeholder="2->">
-              <input type="text" id="q3" class="input-field text-center" placeholder="3->">
-              <input type="text" id="q4" class="input-field text-center" placeholder="4->">
-              <input type="text" id="q5" class="input-field text-center" placeholder="5->">
+              <div>
+                <input
+                  type="text"
+                  id="q1"
+                  class="input-field text-center"
+                  placeholder="1->"
+                />
+                <span id="q1-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q2"
+                  class="input-field text-center"
+                  placeholder="2->"
+                />
+                <span id="q2-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q3"
+                  class="input-field text-center"
+                  placeholder="3->"
+                />
+                <span id="q3-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q4"
+                  class="input-field text-center"
+                  placeholder="4->"
+                />
+                <span id="q4-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q5"
+                  class="input-field text-center"
+                  placeholder="5->"
+                />
+                <span id="q5-feedback" class="feedback-text"></span>
+              </div>
             </div>
           </div>
-          <button id="submit-btn" class="w-full btn mt-4">Check My Answers</button>
+          <button id="submit-btn" class="w-full btn mt-4">
+            Check My Answers
+          </button>
         </div>
         <div id="results" class="hidden mt-6 text-center">
-            <h3 class="text-xl font-bold mb-2">Your Score: <span id="score-display">0</span> / 100</h3>
-            <p id="message" class="text-lg"></p>
-            <button onclick="window.location.reload()" class="btn mt-4">Try Again</button>
+          <h3 class="text-xl font-bold mb-2">
+            Your Score: <span id="score-display">0</span> / 100
+          </h3>
+          <p id="message" class="text-lg"></p>
+          <button onclick="window.location.reload()" class="btn mt-4">
+            Try Again
+          </button>
         </div>
       </div>
     </main>
@@ -122,32 +199,42 @@
         q5: "E",
       };
 
-      document.getElementById('submit-btn').addEventListener('click', () => {
+      document.getElementById("submit-btn").addEventListener("click", () => {
         let score = 0;
         let allCorrect = true;
 
         for (const key in answers) {
           const input = document.getElementById(key);
+          const feedbackSpan = document.getElementById(`${key}-feedback`);
           const inputValue = input.value.trim().toUpperCase();
+          input.disabled = true;
+
           if (inputValue === answers[key]) {
             score += 20;
-            input.style.backgroundColor = '#16a34a';
+            input.classList.add("correct-input");
+            feedbackSpan.textContent = "Correct!";
+            feedbackSpan.style.color = "#22c55e"; // green
           } else {
             allCorrect = false;
-            input.style.backgroundColor = '#dc2626';
+            input.classList.add("incorrect-input");
+            feedbackSpan.textContent = `Correct: ${answers[key]}`;
+            feedbackSpan.style.color = "#ef4444"; // red
           }
         }
 
-        document.getElementById('score-display').textContent = score;
-        document.getElementById('quiz-form').classList.add('hidden');
-        document.getElementById('results').classList.remove('hidden');
+        document.getElementById("score-display").textContent = score;
+        document.getElementById("submit-btn").classList.add("hidden");
+        document.getElementById("results").classList.remove("hidden");
 
         if (allCorrect) {
-          document.getElementById('message').textContent = "Excellent! You got all the answers correct!";
+          document.getElementById("message").textContent =
+            "Excellent! You got all the answers correct!";
         } else if (score >= 60) {
-          document.getElementById('message').textContent = "Good job! You're on your way to mastering the chapter.";
+          document.getElementById("message").textContent =
+            "Good job! You're on your way to mastering the chapter.";
         } else {
-          document.getElementById('message').textContent = "Keep practicing! You can do it.";
+          document.getElementById("message").textContent =
+            "Keep practicing! You can do it.";
         }
       });
     </script>

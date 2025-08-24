@@ -1,160 +1,219 @@
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Quiz 1: The Seeker's Scramble</title>
-      <script src="https://cdn.tailwindcss.com"></script>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-      />
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-      />
-      <style>
-        body {
-          font-family: "Inter", sans-serif;
-          background-color: #0f172a;
-          color: #f8fafc;
-        }
-        .quiz-container {
-          background-color: #1e293b;
-          border: 1px solid #334155;
-          border-radius: 0.75rem;
-          padding: 2rem;
-          max-width: 600px;
-          margin: 4rem auto;
-        }
-        .input-field {
-          background-color: #2e3b4a;
-          border: 1px solid #4a5568;
-          color: #f8fafc;
-          padding: 0.5rem 0.75rem;
-          border-radius: 0.5rem;
-          width: 100%;
-        }
-        .btn {
-          background-color: #3b82f6;
-          color: white;
-          padding: 0.75rem 1.5rem;
-          border-radius: 0.5rem;
-          font-weight: 600;
-          transition: background-color 0.3s ease;
-        }
-        .btn:hover {
-          background-color: #2563eb;
-        }
-      </style>
-    </head>
-    <body class="antialiased">
-      <header
-        class="bg-slate-900/70 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-800"
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz 1: The Seeker's Scramble</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0f172a;
+        color: #f8fafc;
+      }
+      .quiz-container {
+        background-color: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 0.75rem;
+        padding: 2rem;
+        max-width: 600px;
+        margin: 4rem auto;
+      }
+      .input-field {
+        background-color: #2e3b4a;
+        border: 1px solid #4a5568;
+        color: #f8fafc;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        width: 100%;
+      }
+      .btn {
+        background-color: #3b82f6;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+      }
+      .btn:hover {
+        background-color: #2563eb;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <header
+      class="bg-slate-900/70 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-800"
+    >
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
       >
-        <nav
-          class="container mx-auto px-6 py-4 flex justify-between items-center"
-        >
-          <a href="../../../index.html" class="flex items-center space-x-3">
-            <img
-              src="../../../company_logo.png"
-              alt="Svaraikyam AI Logo"
-              class="h-10"
-              onerror="this.onerror=null; this.src='../../../https://placehold.co/100x40/0f172a/ffffff?text=Logo';"
+        <a href="../../../index.html" class="flex items-center space-x-3">
+          <img
+            src="../../../company_logo.png"
+            alt="Svaraikyam AI Logo"
+            class="h-10"
+            onerror="this.onerror=null; this.src='../../../https://placehold.co/100x40/0f172a/ffffff?text=Logo';"
+          />
+          <span class="text-2xl font-bold text-white">Svaraikyam AI</span>
+        </a>
+        <a href="quiz_hub.html" class="text-sky-400 hover:underline">
+          &larr; Back to Quizzes
+        </a>
+      </nav>
+    </header>
+    <main>
+      <div class="quiz-container">
+        <h1 class="text-3xl font-bold text-center mb-2">
+          Quiz 1: The Seeker's Scramble
+        </h1>
+        <p class="text-center text-slate-400 mb-6">
+          Unscramble the words to find key terms from the chapter. Each question
+          is worth 20 points.
+        </p>
+        <div id="quiz-form" class="space-y-6">
+          <div class="quiz-question">
+            <p class="mb-2">
+              1. The Vedas consist of thousands of these, in the form of
+              prayers, poems, and songs.
+            </p>
+            <p class="font-bold text-lg mb-2">(Y N H S M)</p>
+            <input
+              type="text"
+              id="q1"
+              class="input-field"
+              placeholder="Enter your answer..."
             />
-            <span class="text-2xl font-bold text-white">Svaraikyam AI</span>
-          </a>
-          <a href="quiz_hub.html" class="text-sky-400 hover:underline">
-              &larr; Back to Quizzes
-          </a>
-        </nav>
-      </header>
-      <main>
-        <div class="quiz-container">
-          <h1 class="text-3xl font-bold text-center mb-2">Quiz 1: The Seeker's Scramble</h1>
-          <p class="text-center text-slate-400 mb-6">Unscramble the words to find key terms from the chapter. Each question is worth 20 points.</p>
-          <div id="quiz-form" class="space-y-6">
-            <div class="quiz-question">
-              <p class="mb-2">1. The Vedas consist of thousands of these, in the form of prayers, poems, and songs.</p>
-              <p class="font-bold text-lg mb-2">(Y N H S M)</p>
-              <input type="text" id="q1" class="input-field" placeholder="Enter your answer...">
-              <p id="q1-feedback" class="mt-2 text-sm hidden"></p>
-            </div>
-            <div class="quiz-question">
-              <p class="mb-2">2. This is the quality of being aware or conscious of something within oneself.</p>
-              <p class="font-bold text-lg mb-2">(S S S O C N S I N E U O)</p>
-              <input type="text" id="q2" class="input-field" placeholder="Enter your answer...">
-              <p id="q2-feedback" class="mt-2 text-sm hidden"></p>
-            </div>
-            <div class="quiz-question">
-              <p class="mb-2">3. The Buddha left his palace life and became one of these, searching for the root cause of suffering.</p>
-              <p class="font-bold text-lg mb-2">(C A T E S I C)</p>
-              <input type="text" id="q3" class="input-field" placeholder="Enter your answer...">
-              <p id="q3-feedback" class="mt-2 text-sm hidden"></p>
-            </div>
-            <div class="quiz-question">
-              <p class="mb-2">4. This term is generally translated as 'non-violence,' but originally means 'non-hurting.'</p>
-              <p class="font-bold text-lg mb-2">(H S A A I M)</p>
-              <input type="text" id="q4" class="input-field" placeholder="Enter your answer...">
-              <p id="q4-feedback" class="mt-2 text-sm hidden"></p>
-            </div>
-            <div class="quiz-question">
-              <p class="mb-2">5. This is a common prayer that begins with "May all creatures be happy."</p>
-              <p class="font-bold text-lg mb-2">(V E R A S U N A T B U H Y)</p>
-              <input type="text" id="q5" class="input-field" placeholder="Enter your answer...">
-              <p id="q5-feedback" class="mt-2 text-sm hidden"></p>
-            </div>
-            <button id="submit-btn" class="w-full btn mt-4">Check My Answers</button>
+            <p id="q1-feedback" class="mt-2 text-sm hidden"></p>
           </div>
-          <div id="results" class="hidden mt-6 text-center">
-              <h3 class="text-xl font-bold mb-2">Your Score: <span id="score-display">0</span> / 100</h3>
-              <p id="message" class="text-lg"></p>
-              <button onclick="window.location.reload()" class="btn mt-4">Try Again</button>
+          <div class="quiz-question">
+            <p class="mb-2">
+              2. This is the quality of being aware or conscious of something
+              within oneself.
+            </p>
+            <p class="font-bold text-lg mb-2">(S S S O C N S I N E U O)</p>
+            <input
+              type="text"
+              id="q2"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q2-feedback" class="mt-2 text-sm hidden"></p>
           </div>
+          <div class="quiz-question">
+            <p class="mb-2">
+              3. The Buddha left his palace life and became one of these,
+              searching for the root cause of suffering.
+            </p>
+            <p class="font-bold text-lg mb-2">(C A T E S I C)</p>
+            <input
+              type="text"
+              id="q3"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q3-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">
+              4. This term is generally translated as 'non-violence,' but
+              originally means 'non-hurting.'
+            </p>
+            <p class="font-bold text-lg mb-2">(H S A A I M)</p>
+            <input
+              type="text"
+              id="q4"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q4-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">
+              5. This is a common prayer that begins with "May all creatures be
+              happy."
+            </p>
+            <p class="font-bold text-lg mb-2">(V E R A S U N A T B U H Y)</p>
+            <input
+              type="text"
+              id="q5"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q5-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <button id="submit-btn" class="w-full btn mt-4">
+            Check My Answers
+          </button>
         </div>
-      </main>
-      <script>
-        const answers = {
-          q1: "HYMNS",
-          q2: "CONSCIOUSNESS",
-          q3: "ASCETIC",
-          q4: "AHIMSA",
-          q5: "SARVE BHAVANTU SUKHINAH",
-        };
+        <div id="results" class="hidden mt-6 text-center">
+          <h3 class="text-xl font-bold mb-2">
+            Your Score: <span id="score-display">0</span> / 100
+          </h3>
+          <p id="message" class="text-lg"></p>
+          <button onclick="window.location.reload()" class="btn mt-4">
+            Try Again
+          </button>
+        </div>
+      </div>
+    </main>
+    <script>
+      const answers = {
+        q1: "HYMNS",
+        q2: "CONSCIOUSNESS",
+        q3: "ASCETIC",
+        q4: "AHIMSA",
+        q5: "SARVE BHAVANTU SUKHINAH",
+      };
 
-        document.getElementById('submit-btn').addEventListener('click', () => {
-          let score = 0;
-          let allCorrect = true;
+      document.getElementById("submit-btn").addEventListener("click", () => {
+        let score = 0;
+        let allCorrect = true;
 
-          for (const key in answers) {
-            const input = document.getElementById(key);
-            const feedback = document.getElementById(`${key}-feedback`);
-            const inputValue = input.value.trim().toUpperCase();
-            
-            if (inputValue === answers[key].toUpperCase()) {
-              score += 20;
-              feedback.textContent = "Correct!";
-              feedback.className = "mt-2 text-sm text-green-500";
-            } else {
-              allCorrect = false;
-              feedback.textContent = `Incorrect. The correct answer is ${answers[key]}.`;
-              feedback.className = "mt-2 text-sm text-red-500";
-            }
-            feedback.classList.remove('hidden');
-          }
+        for (const key in answers) {
+          const input = document.getElementById(key);
+          const feedback = document.getElementById(`${key}-feedback`);
+          const inputValue = input.value.trim().toUpperCase();
 
-          document.getElementById('score-display').textContent = score;
-          document.getElementById('quiz-form').classList.add('hidden');
-          document.getElementById('results').classList.remove('hidden');
-
-          if (allCorrect) {
-            document.getElementById('message').textContent = "Excellent! You got all the answers correct!";
-          } else if (score >= 60) {
-            document.getElementById('message').textContent = "Good job! You're on your way to mastering the chapter.";
+          if (inputValue === answers[key].toUpperCase()) {
+            score += 20;
+            feedback.textContent = "Correct!";
+            feedback.className = "mt-2 text-sm text-green-500";
+            input.classList.remove("text-red-500");
+            input.classList.add("text-green-500");
+            input.disabled = true;
           } else {
-            document.getElementById('message').textContent = "Keep practicing! You can do it.";
+            allCorrect = false;
+            feedback.textContent = `Incorrect. The correct answer is ${answers[key]}.`;
+            feedback.className = "mt-2 text-sm text-red-500";
+            input.classList.add("text-red-500");
+            input.disabled = true;
           }
-        });
-      </script>
-    </body>
-  </html>
+          feedback.classList.remove("hidden");
+        }
+
+        document.getElementById("score-display").textContent = score;
+        document.getElementById("submit-btn").classList.add("hidden");
+        document.getElementById("results").classList.remove("hidden");
+
+        if (allCorrect) {
+          document.getElementById("message").textContent =
+            "Excellent! You got all the answers correct!";
+        } else if (score >= 60) {
+          document.getElementById("message").textContent =
+            "Good job! You're on your way to mastering the chapter.";
+        } else {
+          document.getElementById("message").textContent =
+            "Keep practicing! You can do it.";
+        }
+      });
+    </script>
+  </body>
+</html>

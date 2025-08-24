@@ -47,6 +47,11 @@
         background-color: #ef4444;
         color: white;
       }
+      .feedback-message {
+        display: none;
+        margin-top: 0.5rem;
+        font-size: 0.875rem;
+      }
     </style>
   </head>
   <body class="antialiased">
@@ -66,55 +71,86 @@
           <span class="text-2xl font-bold text-white">Svaraikyam AI</span>
         </a>
         <a href="quiz_hub.html" class="text-sky-400 hover:underline">
-            &larr; Back to Quizzes
+          &larr; Back to Quizzes
         </a>
       </nav>
     </header>
     <main>
       <div class="quiz-container">
-        <h1 class="text-3xl font-bold text-center mb-2">Quiz 2: Fact or Fiction?</h1>
-        <p class="text-center text-slate-400 mb-6">Choose Fact or Fiction for each statement. Each question is worth 20 points.</p>
+        <h1 class="text-3xl font-bold text-center mb-2">
+          Quiz 2: Fact or Fiction?
+        </h1>
+        <p class="text-center text-slate-400 mb-6">
+          Choose Fact or Fiction for each statement. Each question is worth 20
+          points.
+        </p>
         <div id="quiz-questions" class="space-y-6">
           <div class="quiz-question" data-answer="Fact">
-            <p class="mb-2">1. The Vedas are India's oldest texts, and indeed among the most ancient in the world.</p>
-            <div class="flex space-x-4">
-              <button class="option-btn" onclick="checkAnswer(this, 'Fact', 0)">Fact</button>
-              <button class="option-btn" onclick="checkAnswer(this, 'Fact', 0)">Fiction</button>
+            <p class="mb-2">
+              1. The Vedas are India's oldest texts, and indeed among the most
+              ancient in the world.
+            </p>
+            <div class="flex space-x-4" data-question-index="0">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
             </div>
+            <p class="feedback-message" data-feedback-index="0"></p>
           </div>
           <div class="quiz-question" data-answer="Fiction">
-            <p class="mb-2">2. The debate between Gārgī and Yājñavalkya showed that women were not allowed to ask philosophical questions.</p>
-            <div class="flex space-x-4">
-              <button class="option-btn" onclick="checkAnswer(this, 'Fiction', 1)">Fact</button>
-              <button class="option-btn" onclick="checkAnswer(this, 'Fiction', 1)">Fiction</button>
+            <p class="mb-2">
+              2. The debate between Gārgī and Yājñavalkya showed that women were
+              not allowed to ask philosophical questions.
+            </p>
+            <div class="flex space-x-4" data-question-index="1">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
             </div>
+            <p class="feedback-message" data-feedback-index="1"></p>
           </div>
           <div class="quiz-question" data-answer="Fact">
-            <p class="mb-2">3. The word 'Jain' comes from 'jina,' meaning 'conqueror' of ignorance and attachments.</p>
-            <div class="flex space-x-4">
-              <button class="option-btn" onclick="checkAnswer(this, 'Fact', 2)">Fact</button>
-              <button class="option-btn" onclick="checkAnswer(this, 'Fact', 2)">Fiction</button>
+            <p class="mb-2">
+              3. The word 'Jain' comes from 'jina,' meaning 'conqueror' of
+              ignorance and attachments.
+            </p>
+            <div class="flex space-x-4" data-question-index="2">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
             </div>
+            <p class="feedback-message" data-feedback-index="2"></p>
           </div>
           <div class="quiz-question" data-answer="Fact">
-            <p class="mb-2">4. Both Buddhism and Jainism insisted on the importance of ahimsa (non-harming).</p>
-            <div class="flex space-x-4">
-              <button class="option-btn" onclick="checkAnswer(this, 'Fact', 3)">Fact</button>
-              <button class="option-btn" onclick="checkAnswer(this, 'Fact', 3)">Fiction</button>
+            <p class="mb-2">
+              4. Both Buddhism and Jainism insisted on the importance of ahimsa
+              (non-harming).
+            </p>
+            <div class="flex space-x-4" data-question-index="3">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
             </div>
+            <p class="feedback-message" data-feedback-index="3"></p>
           </div>
           <div class="quiz-question" data-answer="Fiction">
-            <p class="mb-2">5. The Jataka tales tell stories of Mahāvīra's former births.</p>
-            <div class="flex space-x-4">
-              <button class="option-btn" onclick="checkAnswer(this, 'Fiction', 4)">Fact</button>
-              <button class="option-btn" onclick="checkAnswer(this, 'Fiction', 4)">Fiction</button>
+            <p class="mb-2">
+              5. The Jataka tales tell stories of Mahāvīra's former births.
+            </p>
+            <div class="flex space-x-4" data-question-index="4">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
             </div>
+            <p class="feedback-message" data-feedback-index="4"></p>
           </div>
         </div>
+        <div id="quiz-footer" class="mt-6 text-center">
+          <button id="submit-btn" class="btn">Check My Answers</button>
+        </div>
         <div id="results" class="hidden mt-6 text-center">
-            <h3 class="text-xl font-bold mb-2">Your Score: <span id="score-display">0</span> / 100</h3>
-            <p id="message" class="text-lg"></p>
-            <button onclick="window.location.reload()" class="btn mt-4">Try Again</button>
+          <h3 class="text-xl font-bold mb-2">
+            Your Score: <span id="score-display">0</span> / 100
+          </h3>
+          <p id="message" class="text-lg"></p>
+          <button onclick="window.location.reload()" class="btn mt-4">
+            Try Again
+          </button>
         </div>
       </div>
     </main>
@@ -122,46 +158,66 @@
       let score = 0;
       let questionsAnswered = 0;
       const totalQuestions = 5;
+      let isSubmitted = false;
 
-      function checkAnswer(button, expectedAnswer, questionIndex) {
-        if (button.parentElement.dataset.answered) return;
-        
-        const isCorrect = button.textContent.trim() === expectedAnswer;
-        questionsAnswered++;
+      document.getElementById("submit-btn").addEventListener("click", () => {
+        if (isSubmitted) return;
+        isSubmitted = true;
+        document.getElementById("submit-btn").classList.add("hidden");
 
-        if (isCorrect) {
-          button.classList.add('correct');
-          score += 20;
+        const questions = document.querySelectorAll(".quiz-question");
+        let finalScore = 0;
+
+        questions.forEach((question, index) => {
+          const userAnswer = question.querySelector(
+            ".option-btn.correct-choice"
+          )?.dataset.value;
+          const correctAnswer = question.dataset.answer;
+          const feedbackEl = document.querySelector(
+            `[data-feedback-index="${index}"]`
+          );
+
+          if (userAnswer === correctAnswer) {
+            finalScore += 20;
+            feedbackEl.textContent = "Correct!";
+            feedbackEl.classList.add("text-green-500");
+          } else {
+            feedbackEl.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
+            feedbackEl.classList.add("text-red-500");
+          }
+          feedbackEl.style.display = "block";
+
+          // Disable all buttons for this question
+          question
+            .querySelectorAll(".option-btn")
+            .forEach((btn) => (btn.disabled = true));
+        });
+
+        document.getElementById("score-display").textContent = finalScore;
+        document.getElementById("results").classList.remove("hidden");
+
+        if (finalScore === 100) {
+          document.getElementById("message").textContent =
+            "Excellent! You got all the answers correct!";
+        } else if (finalScore >= 60) {
+          document.getElementById("message").textContent =
+            "Good job! You're on your way to mastering the chapter.";
         } else {
-          button.classList.add('incorrect');
-          const siblingButtons = button.parentElement.querySelectorAll('button');
-          siblingButtons.forEach(btn => {
-            if (btn.textContent.trim() === expectedAnswer) {
-              btn.classList.add('correct');
-            }
+          document.getElementById("message").textContent =
+            "Keep practicing! You can do it.";
+        }
+      });
+
+      document.querySelectorAll(".option-btn").forEach((button) => {
+        button.addEventListener("click", (e) => {
+          if (isSubmitted) return;
+          const parentDiv = e.target.parentElement;
+          parentDiv.querySelectorAll(".option-btn").forEach((btn) => {
+            btn.classList.remove("correct-choice", "incorrect-choice");
           });
-        }
-
-        button.parentElement.dataset.answered = 'true';
-
-        if (questionsAnswered === totalQuestions) {
-          showResults();
-        }
-      }
-
-      function showResults() {
-        document.getElementById('score-display').textContent = score;
-        document.getElementById('quiz-questions').classList.add('hidden');
-        document.getElementById('results').classList.remove('hidden');
-
-        if (score === 100) {
-          document.getElementById('message').textContent = "Excellent! You got all the answers correct!";
-        } else if (score >= 60) {
-          document.getElementById('message').textContent = "Good job! You're on your way to mastering the chapter.";
-        } else {
-          document.getElementById('message').textContent = "Keep practicing! You can do it.";
-        }
-      }
+          e.target.classList.add("correct-choice");
+        });
+      });
     </script>
   </body>
 </html>
