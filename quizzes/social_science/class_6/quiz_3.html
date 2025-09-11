@@ -33,7 +33,7 @@
         color: #f8fafc;
         padding: 0.5rem 0.75rem;
         border-radius: 0.5rem;
-        width: 100px;
+        width: 100%;
       }
       .btn {
         background-color: #3b82f6;
@@ -87,7 +87,7 @@
         </h1>
         <p class="text-center text-slate-400 mb-6">
           Match the story or debate to the key idea it illustrates. Each
-          question is worth 20 points.
+          question is worth 5 points.
         </p>
         <div id="quiz-form" class="space-y-6">
           <div class="grid grid-cols-2 gap-4">
@@ -102,6 +102,49 @@
                 </li>
                 <li class="p-2 bg-slate-700 rounded">4. Nachiketa's Quest</li>
                 <li class="p-2 bg-slate-700 rounded">5. The Jataka tales</li>
+                <li class="p-2 bg-slate-700 rounded">
+                  6. The story of Shvetaketu
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  7. The Buddha's experience in the city
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  8. Mahāvīra's teachings on *ahimsa*
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  9. The teachings of the Upanishads
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  10. The Chārvāka school of thought
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  11. The quote "You are That" (*tat tvam asi*)
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  12. The legend of Jagannath
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  13. The story of a banyan tree
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  14. The quote "Not by water is one made pure..."
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  15. The concept of *anekāntavāda*
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  16. The concept of *aparigraha*
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  17. Tribal belief systems
+                </li>
+                <li class="p-2 bg-slate-700 rounded">18. The Sangha</li>
+                <li class="p-2 bg-slate-700 rounded">
+                  19. The Upanishads' story of Nachiketa
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  20. The concept of *ritam*
+                </li>
               </ul>
             </div>
             <div>
@@ -122,11 +165,65 @@
                 <li class="p-2 bg-slate-700 rounded">
                   E. A collection of stories about the Buddha's former births.
                 </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  F. Explains how an invisible essence can be everywhere, like a
+                  tree in a seed.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  G. Inspired a prince to search for the cause of suffering.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  H. States that living creatures should not be slain or
+                  tormented.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  I. Introduced new ideas such as rebirth and karma.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  J. Believed that the material world is the only thing that
+                  exists.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  K. Means that all living beings are connected and divine.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  L. An example of how tribal deities were incorporated into
+                  Hinduism.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  M. A symbol for Indian civilization, with a common trunk and
+                  many roots and branches.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  N. Emphasizes inner purity over external rituals like bathing.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  O. The belief that truth has many aspects and cannot be fully
+                  described by one statement.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  P. Advises detachment from material possessions and limiting
+                  oneself to what is necessary.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  Q. Regard elements of nature like mountains and rivers as
+                  sacred.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  R. A community of monks and nuns founded to practice and
+                  spread the Buddha's teachings.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  S. Taught that the 'atman' is immortal and not born.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  T. The truth and order in human life and the cosmos.
+                </li>
               </ul>
             </div>
           </div>
-          <div class="space-y-4">
-            <p>Match the numbers to the letters:</p>
+          <div class="space-y-4 mt-6">
+            <p class="font-bold">Match the numbers to the letters:</p>
             <div class="grid grid-cols-5 gap-4">
               <div>
                 <input
@@ -134,8 +231,7 @@
                   id="q1"
                   class="input-field text-center"
                   placeholder="1->"
-                />
-                <span id="q1-feedback" class="feedback-text"></span>
+                /><span id="q1-feedback" class="feedback-text"></span>
               </div>
               <div>
                 <input
@@ -143,8 +239,7 @@
                   id="q2"
                   class="input-field text-center"
                   placeholder="2->"
-                />
-                <span id="q2-feedback" class="feedback-text"></span>
+                /><span id="q2-feedback" class="feedback-text"></span>
               </div>
               <div>
                 <input
@@ -152,8 +247,7 @@
                   id="q3"
                   class="input-field text-center"
                   placeholder="3->"
-                />
-                <span id="q3-feedback" class="feedback-text"></span>
+                /><span id="q3-feedback" class="feedback-text"></span>
               </div>
               <div>
                 <input
@@ -161,8 +255,7 @@
                   id="q4"
                   class="input-field text-center"
                   placeholder="4->"
-                />
-                <span id="q4-feedback" class="feedback-text"></span>
+                /><span id="q4-feedback" class="feedback-text"></span>
               </div>
               <div>
                 <input
@@ -170,8 +263,127 @@
                   id="q5"
                   class="input-field text-center"
                   placeholder="5->"
-                />
-                <span id="q5-feedback" class="feedback-text"></span>
+                /><span id="q5-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q6"
+                  class="input-field text-center"
+                  placeholder="6->"
+                /><span id="q6-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q7"
+                  class="input-field text-center"
+                  placeholder="7->"
+                /><span id="q7-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q8"
+                  class="input-field text-center"
+                  placeholder="8->"
+                /><span id="q8-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q9"
+                  class="input-field text-center"
+                  placeholder="9->"
+                /><span id="q9-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q10"
+                  class="input-field text-center"
+                  placeholder="10->"
+                /><span id="q10-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q11"
+                  class="input-field text-center"
+                  placeholder="11->"
+                /><span id="q11-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q12"
+                  class="input-field text-center"
+                  placeholder="12->"
+                /><span id="q12-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q13"
+                  class="input-field text-center"
+                  placeholder="13->"
+                /><span id="q13-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q14"
+                  class="input-field text-center"
+                  placeholder="14->"
+                /><span id="q14-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q15"
+                  class="input-field text-center"
+                  placeholder="15->"
+                /><span id="q15-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q16"
+                  class="input-field text-center"
+                  placeholder="16->"
+                /><span id="q16-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q17"
+                  class="input-field text-center"
+                  placeholder="17->"
+                /><span id="q17-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q18"
+                  class="input-field text-center"
+                  placeholder="18->"
+                /><span id="q18-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q19"
+                  class="input-field text-center"
+                  placeholder="19->"
+                /><span id="q19-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q20"
+                  class="input-field text-center"
+                  placeholder="20->"
+                /><span id="q20-feedback" class="feedback-text"></span>
               </div>
             </div>
           </div>
@@ -197,6 +409,21 @@
         q3: "C",
         q4: "B",
         q5: "E",
+        q6: "F",
+        q7: "G",
+        q8: "H",
+        q9: "I",
+        q10: "J",
+        q11: "K",
+        q12: "L",
+        q13: "M",
+        q14: "N",
+        q15: "O",
+        q16: "P",
+        q17: "Q",
+        q18: "R",
+        q19: "S",
+        q20: "T",
       };
 
       document.getElementById("submit-btn").addEventListener("click", () => {
@@ -210,7 +437,7 @@
           input.disabled = true;
 
           if (inputValue === answers[key]) {
-            score += 20;
+            score += 5;
             input.classList.add("correct-input");
             feedbackSpan.textContent = "Correct!";
             feedbackSpan.style.color = "#22c55e"; // green
