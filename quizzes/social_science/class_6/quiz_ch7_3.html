@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz 3: The Storyteller's Match-Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0f172a;
+        color: #f8fafc;
+      }
+      .quiz-container {
+        background-color: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 0.75rem;
+        padding: 2rem;
+        max-width: 800px;
+        margin: 4rem auto;
+      }
+      .input-field {
+        background-color: #2e3b4a;
+        border: 1px solid #4a5568;
+        color: #f8fafc;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        width: 100%;
+      }
+      .btn {
+        background-color: #3b82f6;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+      }
+      .btn:hover {
+        background-color: #2563eb;
+      }
+      .correct-input {
+        background-color: #22c55e;
+      }
+      .incorrect-input {
+        background-color: #ef4444;
+      }
+      .feedback-text {
+        color: #ef4444;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <header
+      class="bg-slate-900/70 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-800"
+    >
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="../../../index.html" class="flex items-center space-x-3">
+          <img
+            src="../../../company_logo.png"
+            alt="Svaraikyam AI Logo"
+            class="h-10"
+            onerror="this.onerror=null; this.src='../../../https://placehold.co/100x40/0f172a/ffffff?text=Logo';"
+          />
+          <span class="text-2xl font-bold text-white">Svaraikyam AI</span>
+        </a>
+        <a href="quizzes_hub.html" class="text-sky-400 hover:underline">
+          &larr; Back to Quizzes
+        </a>
+      </nav>
+    </header>
+    <main>
+      <div class="quiz-container">
+        <h1 class="text-3xl font-bold text-center mb-2">
+          Quiz 3: The Storyteller's Match-Up
+        </h1>
+        <p class="text-center text-slate-400 mb-6">
+          Match the story or debate to the key idea it illustrates. Each
+          question is worth 5 points.
+        </p>
+        <div id="quiz-form" class="space-y-6">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <ul class="space-y-4">
+                <li class="p-2 bg-slate-700 rounded">
+                  1. The story of the monkey-king
+                </li>
+                <li class="p-2 bg-slate-700 rounded">2. Rohineya</li>
+                <li class="p-2 bg-slate-700 rounded">
+                  3. The debate of Gārgī and Yājñavalkya
+                </li>
+                <li class="p-2 bg-slate-700 rounded">4. Nachiketa's Quest</li>
+                <li class="p-2 bg-slate-700 rounded">5. The Jataka tales</li>
+                <li class="p-2 bg-slate-700 rounded">
+                  6. The story of Shvetaketu
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  7. The Buddha's experience in the city
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  8. Mahāvīra's teachings on *ahimsa*
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  9. The teachings of the Upanishads
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  10. The Chārvāka school of thought
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  11. The quote "You are That" (*tat tvam asi*)
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  12. The legend of Jagannath
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  13. The story of a banyan tree
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  14. The quote "Not by water is one made pure..."
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  15. The concept of *anekāntavāda*
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  16. The concept of *aparigraha*
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  17. Tribal belief systems
+                </li>
+                <li class="p-2 bg-slate-700 rounded">18. The Sangha</li>
+                <li class="p-2 bg-slate-700 rounded">
+                  19. The Upanishads' story of Nachiketa
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  20. The concept of *ritam*
+                </li>
+              </ul>
+            </div>
+            <div>
+              <ul class="space-y-4">
+                <li class="p-2 bg-slate-700 rounded">
+                  A. Illustrates the importance of a king's role to his
+                  subjects.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  B. Teaches that the 'atman' is immortal.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  C. Showcases a debate on the nature of 'brahman'.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  D. Tells a story about a burglar who found a second chance.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  E. A collection of stories about the Buddha's former births.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  F. Explains how an invisible essence can be everywhere, like a
+                  tree in a seed.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  G. Inspired a prince to search for the cause of suffering.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  H. States that living creatures should not be slain or
+                  tormented.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  I. Introduced new ideas such as rebirth and karma.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  J. Believed that the material world is the only thing that
+                  exists.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  K. Means that all living beings are connected and divine.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  L. An example of how tribal deities were incorporated into
+                  Hinduism.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  M. A symbol for Indian civilization, with a common trunk and
+                  many roots and branches.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  N. Emphasizes inner purity over external rituals like bathing.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  O. The belief that truth has many aspects and cannot be fully
+                  described by one statement.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  P. Advises detachment from material possessions and limiting
+                  oneself to what is necessary.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  Q. Regard elements of nature like mountains and rivers as
+                  sacred.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  R. A community of monks and nuns founded to practice and
+                  spread the Buddha's teachings.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  S. Taught that the 'atman' is immortal and not born.
+                </li>
+                <li class="p-2 bg-slate-700 rounded">
+                  T. The truth and order in human life and the cosmos.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="space-y-4 mt-6">
+            <p class="font-bold">Match the numbers to the letters:</p>
+            <div class="grid grid-cols-5 gap-4">
+              <div>
+                <input
+                  type="text"
+                  id="q1"
+                  class="input-field text-center"
+                  placeholder="1->"
+                /><span id="q1-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q2"
+                  class="input-field text-center"
+                  placeholder="2->"
+                /><span id="q2-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q3"
+                  class="input-field text-center"
+                  placeholder="3->"
+                /><span id="q3-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q4"
+                  class="input-field text-center"
+                  placeholder="4->"
+                /><span id="q4-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q5"
+                  class="input-field text-center"
+                  placeholder="5->"
+                /><span id="q5-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q6"
+                  class="input-field text-center"
+                  placeholder="6->"
+                /><span id="q6-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q7"
+                  class="input-field text-center"
+                  placeholder="7->"
+                /><span id="q7-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q8"
+                  class="input-field text-center"
+                  placeholder="8->"
+                /><span id="q8-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q9"
+                  class="input-field text-center"
+                  placeholder="9->"
+                /><span id="q9-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q10"
+                  class="input-field text-center"
+                  placeholder="10->"
+                /><span id="q10-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q11"
+                  class="input-field text-center"
+                  placeholder="11->"
+                /><span id="q11-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q12"
+                  class="input-field text-center"
+                  placeholder="12->"
+                /><span id="q12-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q13"
+                  class="input-field text-center"
+                  placeholder="13->"
+                /><span id="q13-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q14"
+                  class="input-field text-center"
+                  placeholder="14->"
+                /><span id="q14-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q15"
+                  class="input-field text-center"
+                  placeholder="15->"
+                /><span id="q15-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q16"
+                  class="input-field text-center"
+                  placeholder="16->"
+                /><span id="q16-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q17"
+                  class="input-field text-center"
+                  placeholder="17->"
+                /><span id="q17-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q18"
+                  class="input-field text-center"
+                  placeholder="18->"
+                /><span id="q18-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q19"
+                  class="input-field text-center"
+                  placeholder="19->"
+                /><span id="q19-feedback" class="feedback-text"></span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="q20"
+                  class="input-field text-center"
+                  placeholder="20->"
+                /><span id="q20-feedback" class="feedback-text"></span>
+              </div>
+            </div>
+          </div>
+          <button id="submit-btn" class="w-full btn mt-4">
+            Check My Answers
+          </button>
+        </div>
+        <div id="results" class="hidden mt-6 text-center">
+          <h3 class="text-xl font-bold mb-2">
+            Your Score: <span id="score-display">0</span> / 100
+          </h3>
+          <p id="message" class="text-lg"></p>
+          <button onclick="window.location.reload()" class="btn mt-4">
+            Try Again
+          </button>
+        </div>
+      </div>
+    </main>
+    <script>
+      const answers = {
+        q1: "A",
+        q2: "D",
+        q3: "C",
+        q4: "B",
+        q5: "E",
+        q6: "F",
+        q7: "G",
+        q8: "H",
+        q9: "I",
+        q10: "J",
+        q11: "K",
+        q12: "L",
+        q13: "M",
+        q14: "N",
+        q15: "O",
+        q16: "P",
+        q17: "Q",
+        q18: "R",
+        q19: "S",
+        q20: "T",
+      };
+
+      document.getElementById("submit-btn").addEventListener("click", () => {
+        let score = 0;
+        let allCorrect = true;
+
+        for (const key in answers) {
+          const input = document.getElementById(key);
+          const feedbackSpan = document.getElementById(`${key}-feedback`);
+          const inputValue = input.value.trim().toUpperCase();
+          input.disabled = true;
+
+          if (inputValue === answers[key]) {
+            score += 5;
+            input.classList.add("correct-input");
+            feedbackSpan.textContent = "Correct!";
+            feedbackSpan.style.color = "#22c55e"; // green
+          } else {
+            allCorrect = false;
+            input.classList.add("incorrect-input");
+            feedbackSpan.textContent = `Correct: ${answers[key]}`;
+            feedbackSpan.style.color = "#ef4444"; // red
+          }
+        }
+
+        document.getElementById("score-display").textContent = score;
+        document.getElementById("submit-btn").classList.add("hidden");
+        document.getElementById("results").classList.remove("hidden");
+
+        if (allCorrect) {
+          document.getElementById("message").textContent =
+            "Excellent! You got all the answers correct!";
+        } else if (score >= 60) {
+          document.getElementById("message").textContent =
+            "Good job! You're on your way to mastering the chapter.";
+        } else {
+          document.getElementById("message").textContent =
+            "Keep practicing! You can do it.";
+        }
+      });
+    </script>
+  </body>
+</html>

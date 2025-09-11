@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quiz 3: The Storyteller's Match-Up</title>
+    <title>Quiz 3: Concept Match-Up</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
@@ -34,6 +34,7 @@
         padding: 0.5rem 0.75rem;
         border-radius: 0.5rem;
         width: 100%;
+        transition: background-color 0.3s ease;
       }
       .btn {
         background-color: #3b82f6;
@@ -53,7 +54,6 @@
         background-color: #ef4444;
       }
       .feedback-text {
-        color: #ef4444;
         font-size: 0.875rem;
         margin-top: 0.25rem;
       }
@@ -66,16 +66,16 @@
       <nav
         class="container mx-auto px-6 py-4 flex justify-between items-center"
       >
-        <a href="../../../index.html" class="flex items-center space-x-3">
+        <a href="../../../../index.html" class="flex items-center space-x-3">
           <img
-            src="../../../company_logo.png"
+            src="../../../../company_logo.png"
             alt="Svaraikyam AI Logo"
             class="h-10"
-            onerror="this.onerror=null; this.src='../../../https://placehold.co/100x40/0f172a/ffffff?text=Logo';"
+            onerror="this.onerror=null; this.src='../../../../https://placehold.co/100x40/0f172a/ffffff?text=Logo';"
           />
           <span class="text-2xl font-bold text-white">Svaraikyam AI</span>
         </a>
-        <a href="quiz_hub.html" class="text-sky-400 hover:underline">
+        <a href="quizzes_hub.html" class="text-sky-400 hover:underline">
           &larr; Back to Quizzes
         </a>
       </nav>
@@ -83,141 +83,115 @@
     <main>
       <div class="quiz-container">
         <h1 class="text-3xl font-bold text-center mb-2">
-          Quiz 3: The Storyteller's Match-Up
+          Quiz 3: Concept Match-Up
         </h1>
         <p class="text-center text-slate-400 mb-6">
-          Match the story or debate to the key idea it illustrates. Each
-          question is worth 5 points.
+          Match the concept to the key idea it illustrates. Each question is
+          worth 5 points.
         </p>
         <div id="quiz-form" class="space-y-6">
           <div class="grid grid-cols-2 gap-4">
             <div>
               <ul class="space-y-4">
+                <li class="p-2 bg-slate-700 rounded">1. Nuclear Family</li>
+                <li class="p-2 bg-slate-700 rounded">2. Joint Family</li>
+                <li class="p-2 bg-slate-700 rounded">3. *Halma*</li>
+                <li class="p-2 bg-slate-700 rounded">4. *Dharma*</li>
+                <li class="p-2 bg-slate-700 rounded">5. *Ahimsa*</li>
+                <li class="p-2 bg-slate-700 rounded">6. *Tyāga*</li>
+                <li class="p-2 bg-slate-700 rounded">7. Community</li>
                 <li class="p-2 bg-slate-700 rounded">
-                  1. The story of the monkey-king
-                </li>
-                <li class="p-2 bg-slate-700 rounded">2. Rohineya</li>
-                <li class="p-2 bg-slate-700 rounded">
-                  3. The debate of Gārgī and Yājñavalkya
-                </li>
-                <li class="p-2 bg-slate-700 rounded">4. Nachiketa's Quest</li>
-                <li class="p-2 bg-slate-700 rounded">5. The Jataka tales</li>
-                <li class="p-2 bg-slate-700 rounded">
-                  6. The story of Shvetaketu
+                  8. Kamal Parmar's Initiative
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  7. The Buddha's experience in the city
+                  9. Residents' Welfare Association
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  8. Mahāvīra's teachings on *ahimsa*
+                  10. The story of Shalini
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  9. The teachings of the Upanishads
+                  11. The story of Tenzing
                 </li>
-                <li class="p-2 bg-slate-700 rounded">
-                  10. The Chārvāka school of thought
-                </li>
-                <li class="p-2 bg-slate-700 rounded">
-                  11. The quote "You are That" (*tat tvam asi*)
-                </li>
-                <li class="p-2 bg-slate-700 rounded">
-                  12. The legend of Jagannath
-                </li>
-                <li class="p-2 bg-slate-700 rounded">
-                  13. The story of a banyan tree
-                </li>
-                <li class="p-2 bg-slate-700 rounded">
-                  14. The quote "Not by water is one made pure..."
-                </li>
-                <li class="p-2 bg-slate-700 rounded">
-                  15. The concept of *anekāntavāda*
-                </li>
-                <li class="p-2 bg-slate-700 rounded">
-                  16. The concept of *aparigraha*
-                </li>
-                <li class="p-2 bg-slate-700 rounded">
-                  17. Tribal belief systems
-                </li>
-                <li class="p-2 bg-slate-700 rounded">18. The Sangha</li>
-                <li class="p-2 bg-slate-700 rounded">
-                  19. The Upanishads' story of Nachiketa
-                </li>
-                <li class="p-2 bg-slate-700 rounded">
-                  20. The concept of *ritam*
-                </li>
+                <li class="p-2 bg-slate-700 rounded">12. Chennai Floods</li>
+                <li class="p-2 bg-slate-700 rounded">13. *Dāna*</li>
+                <li class="p-2 bg-slate-700 rounded">14. *Sevā*</li>
+                <li class="p-2 bg-slate-700 rounded">15. Cooperation</li>
+                <li class="p-2 bg-slate-700 rounded">16. Tiruvalluvar</li>
+                <li class="p-2 bg-slate-700 rounded">17. Kinship</li>
+                <li class="p-2 bg-slate-700 rounded">18. *bua* and *chacha*</li>
+                <li class="p-2 bg-slate-700 rounded">19. `jāti`</li>
+                <li class="p-2 bg-slate-700 rounded">20. Urban Community</li>
               </ul>
             </div>
             <div>
               <ul class="space-y-4">
                 <li class="p-2 bg-slate-700 rounded">
-                  A. Illustrates the importance of a king's role to his
-                  subjects.
+                  A. The principle of non-violence.
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  B. Teaches that the 'atman' is immortal.
+                  B. The value of service.
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  C. Showcases a debate on the nature of 'brahman'.
+                  C. A family with multiple generations living together.
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  D. Tells a story about a burglar who found a second chance.
+                  D. A subdivision that can also be called a community.
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  E. A collection of stories about the Buddha's former births.
+                  E. A family limited to a couple and their children.
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  F. Explains how an invisible essence can be everywhere, like a
-                  tree in a seed.
+                  F. The Bhil community's tradition of helping each other
+                  without expecting payment.
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  G. Inspired a prince to search for the cause of suffering.
+                  G. A story that illustrates the value of *tyāga* and family
+                  support.
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  H. States that living creatures should not be slain or
-                  tormented.
+                  H. A new type of urban community that makes its own rules and
+                  regulations.
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  I. Introduced new ideas such as rebirth and karma.
+                  I. The value of giving.
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  J. Believed that the material world is the only thing that
-                  exists.
+                  J. The principle of doing one's duty.
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  K. Means that all living beings are connected and divine.
+                  K. A group of connected people who come together for various
+                  reasons.
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  L. An example of how tribal deities were incorporated into
-                  Hinduism.
+                  L. A real-life example of community service in an urban
+                  context.
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  M. A symbol for Indian civilization, with a common trunk and
-                  many roots and branches.
+                  M. The relationships between family members.
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  N. Emphasizes inner purity over external rituals like bathing.
+                  N. A real-life example of a community coming together to
+                  provide food and help during a disaster.
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  O. The belief that truth has many aspects and cannot be fully
-                  described by one statement.
+                  O. A story from Meghalaya that shows changing gender roles and
+                  family cooperation.
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  P. Advises detachment from material possessions and limiting
-                  oneself to what is necessary.
+                  P. The act of giving up one's needs for others.
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  Q. Regard elements of nature like mountains and rivers as
-                  sacred.
+                  Q. The poet who said 'Love and dharma are the flower and fruit
+                  of family life.'
                 </li>
                 <li class="p-2 bg-slate-700 rounded">
-                  R. A community of monks and nuns founded to practice and
-                  spread the Buddha's teachings.
+                  R. A community that functions differently from a rural
+                  community.
                 </li>
+                <li class="p-2 bg-slate-700 rounded">S. Working together.</li>
                 <li class="p-2 bg-slate-700 rounded">
-                  S. Taught that the 'atman' is immortal and not born.
-                </li>
-                <li class="p-2 bg-slate-700 rounded">
-                  T. The truth and order in human life and the cosmos.
+                  T. Hindi terms for family relationships that have no single
+                  word equivalent in English.
                 </li>
               </ul>
             </div>
@@ -404,26 +378,26 @@
     </main>
     <script>
       const answers = {
-        q1: "A",
-        q2: "D",
-        q3: "C",
-        q4: "B",
-        q5: "E",
-        q6: "F",
-        q7: "G",
-        q8: "H",
-        q9: "I",
-        q10: "J",
-        q11: "K",
-        q12: "L",
-        q13: "M",
-        q14: "N",
-        q15: "O",
-        q16: "P",
-        q17: "Q",
-        q18: "R",
-        q19: "S",
-        q20: "T",
+        q1: "E",
+        q2: "C",
+        q3: "F",
+        q4: "J",
+        q5: "A",
+        q6: "P",
+        q7: "K",
+        q8: "L",
+        q9: "H",
+        q10: "G",
+        q11: "O",
+        q12: "N",
+        q13: "I",
+        q14: "B",
+        q15: "S",
+        q16: "Q",
+        q17: "M",
+        q18: "T",
+        q19: "D",
+        q20: "R",
       };
 
       document.getElementById("submit-btn").addEventListener("click", () => {
@@ -440,12 +414,12 @@
             score += 5;
             input.classList.add("correct-input");
             feedbackSpan.textContent = "Correct!";
-            feedbackSpan.style.color = "#22c55e"; // green
+            feedbackSpan.classList.add("text-green-500");
           } else {
             allCorrect = false;
             input.classList.add("incorrect-input");
             feedbackSpan.textContent = `Correct: ${answers[key]}`;
-            feedbackSpan.style.color = "#ef4444"; // red
+            feedbackSpan.classList.add("text-red-500");
           }
         }
 

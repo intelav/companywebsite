@@ -64,6 +64,16 @@
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
       }
+      /* Styles for the dropdown menus */
+      .dropdown-content {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+      .group:hover .dropdown-content {
+        opacity: 1;
+        visibility: visible;
+      }
     </style>
   </head>
   <body class="antialiased">
@@ -91,33 +101,151 @@
               >Home</a
             >
           </li>
-          <li>
+          <!-- Products Dropdown -->
+          <li class="relative group">
             <a
               href="products.html"
-              class="text-sky-400 hover:text-sky-400 transition-colors"
-              >Products</a
+              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
             >
+              Products
+              <i class="fas fa-chevron-down text-xs ml-2"></i>
+            </a>
+            <div
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
+            >
+              <a
+                href="smartpurchase-details.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
+                >SmartPurchase App</a
+              >
+              <a
+                href="annotation_ui.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Satellite Image Analysis</a
+              >
+              <a
+                href="ai_tutors.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
+                >AI Tutors</a
+              >
+            </div>
           </li>
-          <li>
+          <!-- Services Dropdown -->
+          <li class="relative group">
             <a
               href="services.html"
-              class="text-slate-300 hover:text-sky-400 transition-colors"
-              >Services</a
+              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
             >
+              Services
+              <i class="fas fa-chevron-down text-xs ml-2"></i>
+            </a>
+            <div
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
+            >
+              <a
+                href="service-android-ar-vr.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
+                >Android App Dev with AR/VR</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Android App Dev with GenAI</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >LLM Training Optimization</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
+                >AI Model Migration</a
+              >
+            </div>
           </li>
-          <li>
+          <!-- Trainings Dropdown -->
+          <li class="relative group">
             <a
               href="embedded-ai-trainings.html"
-              class="text-slate-300 hover:text-sky-400 transition-colors"
-              >Trainings</a
+              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
             >
+              Trainings
+              <i class="fas fa-chevron-down text-xs ml-2"></i>
+            </a>
+            <div
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
+            >
+              <a
+                href="embedded-ai-trainings.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
+                >Embedded Systems & Edge AI</a
+              >
+              <a
+                href="training-firmware.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Firmware Development</a
+              >
+              <a
+                href="training-linux-drivers.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Linux Drivers</a
+              >
+              <a
+                href="training-android-hal.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Android HAL</a
+              >
+              <a
+                href="training-android-security.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Android Security</a
+              >
+              <a
+                href="training-android-frameworks.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Android Frameworks</a
+              >
+              <a
+                href="training-x86.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
+                >x86 Training (Intel & AMD)</a
+              >
+            </div>
           </li>
-          <li>
+          <!-- Blogs Dropdown -->
+          <li class="relative group">
             <a
               href="blogs.html"
-              class="text-slate-300 hover:text-sky-400 transition-colors"
-              >Blogs</a
+              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
             >
+              Blogs
+              <i class="fas fa-chevron-down text-xs ml-2"></i>
+            </a>
+            <div
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
+            >
+              <a
+                href="blog-embedded-systems-1.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
+                >Introduction to Embedded Linux</a
+              >
+              <a
+                href="blog-embedded-systems-2.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Firmware Updates on Edge Devices</a
+              >
+              <a
+                href="blog-embedded-systems-3.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Porting an AI Model to x86</a
+              >
+              <a
+                href="blog-ai-skills-engineers.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
+                >AI for Professionals</a
+              >
+            </div>
           </li>
           <li>
             <a
@@ -138,58 +266,86 @@
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Math AI Card for Class 6 -->
-          <a href="math_ai_class_6.html" class="content-card flex flex-col items-center text-center">
+          <a
+            href="math_ai_class_6.html"
+            class="content-card flex flex-col items-center text-center"
+          >
             <i class="fas fa-calculator text-sky-400 text-5xl mb-4"></i>
             <h3 class="text-2xl font-bold text-white mb-2">Math AI</h3>
             <p class="text-slate-300 font-bold mb-1">For Class 6</p>
             <p class="text-slate-300 flex-grow">
-              A dynamic quiz generator for students to practice key mathematical concepts.
+              A dynamic quiz generator for students to practice key mathematical
+              concepts.
             </p>
           </a>
           <!-- Math AI Card for Class 11 & 12 (Coming Soon) -->
-          <a href="#" class="content-card flex flex-col items-center text-center">
+          <a
+            href="#"
+            class="content-card flex flex-col items-center text-center"
+          >
             <i class="fas fa-calculator text-sky-400 text-5xl mb-4"></i>
             <h3 class="text-2xl font-bold text-white mb-2">Math AI</h3>
             <p class="text-slate-300 font-bold mb-1">For Class 11 & 12</p>
             <p class="text-slate-300 flex-grow">
-              Advanced problem-solving and quiz generation for high school mathematics (Coming Soon).
+              Advanced problem-solving and quiz generation for high school
+              mathematics (Coming Soon).
             </p>
           </a>
           <!-- Social Science AI Card -->
           <div class="content-card flex flex-col items-center text-center">
             <i class="fas fa-book-open text-sky-400 text-5xl mb-4"></i>
-            <h3 class="text-2xl font-bold text-white mb-2">Social Science AI</h3>
+            <h3 class="text-2xl font-bold text-white mb-2">
+              Social Science AI
+            </h3>
             <p class="text-slate-300 font-bold mb-1">For Class 6</p>
             <p class="text-slate-300 flex-grow">
-              Interactive quizzes to test and reinforce knowledge of history and culture.
+              Interactive quizzes to test and reinforce knowledge of history and
+              culture.
             </p>
-            <a href="quizzes/social_science/class_6/quiz_hub.html" class="text-sky-400 font-semibold text-lg hover:underline mt-4">Take a Quiz &rarr;</a>
+            <!-- UPDATED LINK TO NEW QUIZ HUB -->
+            <a
+              href="quizzes/social_science/class_6/quizzes_hub.html"
+              class="text-sky-400 font-semibold text-lg hover:underline mt-4"
+              >Take a Quiz &rarr;</a
+            >
           </div>
           <!-- Science AI Card for Class 6 -->
-          <a href="#" class="content-card flex flex-col items-center text-center">
+          <a
+            href="#"
+            class="content-card flex flex-col items-center text-center"
+          >
             <i class="fas fa-flask text-sky-400 text-5xl mb-4"></i>
             <h3 class="text-2xl font-bold text-white mb-2">Science AI</h3>
             <p class="text-slate-300 font-bold mb-1">For Class 6</p>
             <p class="text-slate-300 flex-grow">
-              An AI tutor for a wide range of science topics and experiments (Coming Soon).
+              An AI tutor for a wide range of science topics and experiments
+              (Coming Soon).
             </p>
           </a>
           <!-- Physics AI Card for Class 11 & 12 -->
-          <a href="#" class="content-card flex flex-col items-center text-center">
+          <a
+            href="#"
+            class="content-card flex flex-col items-center text-center"
+          >
             <i class="fas fa-atom text-sky-400 text-5xl mb-4"></i>
             <h3 class="text-2xl font-bold text-white mb-2">Physics AI</h3>
             <p class="text-slate-300 font-bold mb-1">For Class 11 & 12</p>
             <p class="text-slate-300 flex-grow">
-              Simulations and quizzes for understanding physics principles (Coming Soon).
+              Simulations and quizzes for understanding physics principles
+              (Coming Soon).
             </p>
           </a>
           <!-- Chemistry AI Card for Class 11 & 12 -->
-          <a href="#" class="content-card flex flex-col items-center text-center">
+          <a
+            href="#"
+            class="content-card flex flex-col items-center text-center"
+          >
             <i class="fas fa-vial text-sky-400 text-5xl mb-4"></i>
             <h3 class="text-2xl font-bold text-white mb-2">Chemistry AI</h3>
             <p class="text-slate-300 font-bold mb-1">For Class 11 & 12</p>
             <p class="text-slate-300 flex-grow">
-              Interactive exercises for mastering chemical equations and concepts (Coming Soon).
+              Interactive exercises for mastering chemical equations and
+              concepts (Coming Soon).
             </p>
           </a>
         </div>

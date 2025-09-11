@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz 2: Fact or Fiction?</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0f172a;
+        color: #f8fafc;
+      }
+      .quiz-container {
+        background-color: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 0.75rem;
+        padding: 2rem;
+        max-width: 800px;
+        margin: 4rem auto;
+      }
+      .option-btn {
+        background-color: #2e3b4a;
+        border: 1px solid #4a5568;
+        color: #f8fafc;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+      }
+      .option-btn:hover:not(.correct):not(.incorrect) {
+        background-color: #3b82f6;
+      }
+      .correct {
+        background-color: #22c55e;
+        color: white;
+      }
+      .incorrect {
+        background-color: #ef4444;
+        color: white;
+      }
+      .feedback-message {
+        display: none;
+        margin-top: 0.5rem;
+        font-size: 0.875rem;
+      }
+      .selected {
+        background-color: #3b82f6;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <header
+      class="bg-slate-900/70 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-800"
+    >
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="../../../index.html" class="flex items-center space-x-3">
+          <img
+            src="../../../company_logo.png"
+            alt="Svaraikyam AI Logo"
+            class="h-10"
+            onerror="this.onerror=null; this.src='../../../https://placehold.co/100x40/0f172a/ffffff?text=Logo';"
+          />
+          <span class="text-2xl font-bold text-white">Svaraikyam AI</span>
+        </a>
+        <a href="quizzes_hub.html" class="text-sky-400 hover:underline">
+          &larr; Back to Quizzes
+        </a>
+      </nav>
+    </header>
+    <main>
+      <div class="quiz-container">
+        <h1 class="text-3xl font-bold text-center mb-2">
+          Quiz 2: Fact or Fiction?
+        </h1>
+        <p class="text-center text-slate-400 mb-6">
+          Choose Fact or Fiction for each statement. Each question is worth 5
+          points.
+        </p>
+        <div id="quiz-questions" class="space-y-6">
+          <div class="quiz-question" data-answer="Fact">
+            <p class="mb-2">
+              1. The Vedas are India's oldest texts, and indeed among the most
+              ancient in the world.
+            </p>
+            <div class="flex space-x-4" data-question-index="0">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="0"></p>
+          </div>
+          <div class="quiz-question" data-answer="Fiction">
+            <p class="mb-2">
+              2. The debate between Gārgī and Yājñavalkya showed that women were
+              not allowed to ask philosophical questions.
+            </p>
+            <div class="flex space-x-4" data-question-index="1">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="1"></p>
+          </div>
+          <div class="quiz-question" data-answer="Fact">
+            <p class="mb-2">
+              3. The word 'Jain' comes from 'jina,' meaning 'conqueror' of
+              ignorance and attachments.
+            </p>
+            <div class="flex space-x-4" data-question-index="2">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="2"></p>
+          </div>
+          <div class="quiz-question" data-answer="Fact">
+            <p class="mb-2">
+              4. Both Buddhism and Jainism insisted on the importance of ahimsa
+              (non-harming).
+            </p>
+            <div class="flex space-x-4" data-question-index="3">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="3"></p>
+          </div>
+          <div class="quiz-question" data-answer="Fiction">
+            <p class="mb-2">
+              5. The Jataka tales tell stories of Mahāvīra's former births.
+            </p>
+            <div class="flex space-x-4" data-question-index="4">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="4"></p>
+          </div>
+          <div class="quiz-question" data-answer="Fiction">
+            <p class="mb-2">
+              6. The Vedic statement 'ekam sat viprā bahudhā vadanti' means that
+              there are many different supreme gods.
+            </p>
+            <div class="flex space-x-4" data-question-index="5">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="5"></p>
+          </div>
+          <div class="quiz-question" data-answer="Fact">
+            <p class="mb-2">
+              7. The Upanishads introduced concepts like rebirth and karma,
+              building on Vedic ideas.
+            </p>
+            <div class="flex space-x-4" data-question-index="6">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="6"></p>
+          </div>
+          <div class="quiz-question" data-answer="Fact">
+            <p class="mb-2">
+              8. The story of Shvetaketu illustrates the idea that an invisible
+              essence can be everywhere, like a tree in a seed.
+            </p>
+            <div class="flex space-x-4" data-question-index="7">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="7"></p>
+          </div>
+          <div class="quiz-question" data-answer="Fiction">
+            <p class="mb-2">
+              9. The Buddha became enlightened by studying ancient texts and
+              performing many rituals.
+            </p>
+            <div class="flex space-x-4" data-question-index="8">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="8"></p>
+          </div>
+          <div class="quiz-question" data-answer="Fact">
+            <p class="mb-2">
+              10. The Buddha taught that conquering oneself is a greater
+              accomplishment than conquering a thousand men.
+            </p>
+            <div class="flex space-x-4" data-question-index="9">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="9"></p>
+          </div>
+          <div class="quiz-question" data-answer="Fact">
+            <p class="mb-2">
+              11. The Sangha was a community of monks and nuns founded by the
+              Buddha to spread his teachings.
+            </p>
+            <div class="flex space-x-4" data-question-index="10">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="10"></p>
+          </div>
+          <div class="quiz-question" data-answer="Fact">
+            <p class="mb-2">
+              12. The word 'jina' means 'conqueror' of ignorance and
+              attachments.
+            </p>
+            <div class="flex space-x-4" data-question-index="11">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="11"></p>
+          </div>
+          <div class="quiz-question" data-answer="Fact">
+            <p class="mb-2">
+              13. The principle of *anekāntavāda* in Jainism means the truth has
+              many aspects.
+            </p>
+            <div class="flex space-x-4" data-question-index="12">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="12"></p>
+          </div>
+          <div class="quiz-question" data-answer="Fact">
+            <p class="mb-2">
+              14. The principle of *aparigraha* advises detachment from material
+              possessions.
+            </p>
+            <div class="flex space-x-4" data-question-index="13">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="13"></p>
+          </div>
+          <div class="quiz-question" data-answer="Fiction">
+            <p class="mb-2">
+              15. The story of Rohineya teaches that a thief can never find a
+              second chance.
+            </p>
+            <div class="flex space-x-4" data-question-index="14">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="14"></p>
+          </div>
+          <div class="quiz-question" data-answer="Fact">
+            <p class="mb-2">
+              16. The Chārvāka school believed that the material world is the
+              only thing that exists.
+            </p>
+            <div class="flex space-x-4" data-question-index="15">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="15"></p>
+          </div>
+          <div class="quiz-question" data-answer="Fact">
+            <p class="mb-2">
+              17. Tribal belief systems often regard elements of nature as
+              sacred.
+            </p>
+            <div class="flex space-x-4" data-question-index="16">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="16"></p>
+          </div>
+          <div class="quiz-question" data-answer="Fact">
+            <p class="mb-2">
+              18. The sociologist André Béteille noted that Hinduism was
+              influenced by tribal religions.
+            </p>
+            <div class="flex space-x-4" data-question-index="17">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="17"></p>
+          </div>
+          <div class="quiz-question" data-answer="Fiction">
+            <p class="mb-2">
+              19. In both Buddhism and Jainism, *ahimsa* is a practice that only
+              applies to physical violence against people or animals.
+            </p>
+            <div class="flex space-x-4" data-question-index="18">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="18"></p>
+          </div>
+          <div class="quiz-question" data-answer="Fact">
+            <p class="mb-2">
+              20. The banyan tree is used as a symbol for Indian civilization
+              because of its deep roots and wide branches.
+            </p>
+            <div class="flex space-x-4" data-question-index="19">
+              <button class="option-btn" data-value="Fact">Fact</button>
+              <button class="option-btn" data-value="Fiction">Fiction</button>
+            </div>
+            <p class="feedback-message" data-feedback-index="19"></p>
+          </div>
+        </div>
+        <div id="quiz-footer" class="mt-6 text-center">
+          <button id="submit-btn" class="btn">Check My Answers</button>
+        </div>
+        <div id="results" class="hidden mt-6 text-center">
+          <h3 class="text-xl font-bold mb-2">
+            Your Score: <span id="score-display">0</span> / 100
+          </h3>
+          <p id="message" class="text-lg"></p>
+          <button onclick="window.location.reload()" class="btn mt-4">
+            Try Again
+          </button>
+        </div>
+      </div>
+    </main>
+    <script>
+      let score = 0;
+      let isSubmitted = false;
+      const questions = document.querySelectorAll(".quiz-question");
+
+      document.getElementById("submit-btn").addEventListener("click", () => {
+        if (isSubmitted) return;
+        isSubmitted = true;
+        document.getElementById("submit-btn").classList.add("hidden");
+
+        let finalScore = 0;
+
+        questions.forEach((question, index) => {
+          const userAnswerButton = question.querySelector(
+            ".option-btn.selected"
+          );
+          const userAnswer = userAnswerButton
+            ? userAnswerButton.dataset.value
+            : null;
+          const correctAnswer = question.dataset.answer;
+          const feedbackEl = document.querySelector(
+            `[data-feedback-index="${index}"]`
+          );
+
+          const correctButton = question.querySelector(
+            `[data-value="${correctAnswer}"]`
+          );
+
+          if (userAnswer === correctAnswer) {
+            finalScore += 5;
+            if (userAnswerButton) userAnswerButton.classList.add("correct");
+            feedbackEl.textContent = "Correct!";
+            feedbackEl.classList.add("text-green-500");
+          } else {
+            if (userAnswerButton) userAnswerButton.classList.add("incorrect");
+            if (correctButton) correctButton.classList.add("correct");
+            feedbackEl.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
+            feedbackEl.classList.add("text-red-500");
+          }
+          feedbackEl.style.display = "block";
+
+          // Disable all buttons for this question
+          question
+            .querySelectorAll(".option-btn")
+            .forEach((btn) => (btn.disabled = true));
+        });
+
+        document.getElementById("score-display").textContent = finalScore;
+        document.getElementById("results").classList.remove("hidden");
+
+        if (finalScore === 100) {
+          document.getElementById("message").textContent =
+            "Excellent! You got all the answers correct!";
+        } else if (finalScore >= 60) {
+          document.getElementById("message").textContent =
+            "Good job! You're on your way to mastering the chapter.";
+        } else {
+          document.getElementById("message").textContent =
+            "Keep practicing! You can do it.";
+        }
+      });
+
+      document.querySelectorAll(".option-btn").forEach((button) => {
+        button.addEventListener("click", (e) => {
+          if (isSubmitted) return;
+          const parentDiv = e.target.parentElement;
+          parentDiv.querySelectorAll(".option-btn").forEach((btn) => {
+            btn.classList.remove("selected");
+          });
+          e.target.classList.add("selected");
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz 1: The Family Scramble</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0f172a;
+        color: #f8fafc;
+      }
+      .quiz-container {
+        background-color: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 0.75rem;
+        padding: 2rem;
+        max-width: 800px;
+        margin: 4rem auto;
+      }
+      .input-field {
+        background-color: #2e3b4a;
+        border: 1px solid #4a5568;
+        color: #f8fafc;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        width: 100%;
+        transition: background-color 0.3s ease;
+      }
+      .btn {
+        background-color: #3b82f6;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+      }
+      .btn:hover {
+        background-color: #2563eb;
+      }
+      .correct-input {
+        background-color: #22c55e;
+      }
+      .incorrect-input {
+        background-color: #ef4444;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <header
+      class="bg-slate-900/70 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-800"
+    >
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="../../../../index.html" class="flex items-center space-x-3">
+          <img
+            src="../../../../company_logo.png"
+            alt="Svaraikyam AI Logo"
+            class="h-10"
+            onerror="this.onerror=null; this.src='../../../../https://placehold.co/100x40/0f172a/ffffff?text=Logo';"
+          />
+          <span class="text-2xl font-bold text-white">Svaraikyam AI</span>
+        </a>
+        <a href="quizzes_hub.html" class="text-sky-400 hover:underline">
+          &larr; Back to Quizzes
+        </a>
+      </nav>
+    </header>
+    <main>
+      <div class="quiz-container">
+        <h1 class="text-3xl font-bold text-center mb-2">
+          Quiz 1: The Family Scramble
+        </h1>
+        <p class="text-center text-slate-400 mb-6">
+          Unscramble the words to find key terms from the chapter. Each question
+          is worth 5 points.
+        </p>
+        <div id="quiz-form" class="space-y-6">
+          <div class="quiz-question">
+            <p class="mb-2">1. The fundamental unit of any society.</p>
+            <p class="font-bold text-lg mb-2">(Y L F I A M)</p>
+            <input
+              type="text"
+              id="q1"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q1-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">
+              2. A group of connected people who support each other.
+            </p>
+            <p class="font-bold text-lg mb-2">(M U C O M I T Y N)</p>
+            <input
+              type="text"
+              id="q2"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q2-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">
+              3. A family limited to a couple and their children.
+            </p>
+            <p class="font-bold text-lg mb-2">(C L A E N U R)</p>
+            <input
+              type="text"
+              id="q3"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q3-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">
+              4. A family with several generations living together.
+            </p>
+            <p class="font-bold text-lg mb-2">(O J I N T)</p>
+            <input
+              type="text"
+              id="q4"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q4-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">
+              5. An important principle of Indian culture meaning 'duty'.
+            </p>
+            <p class="font-bold text-lg mb-2">(A H D R A M)</p>
+            <input
+              type="text"
+              id="q5"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q5-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">
+              6. A value learned in the family, meaning 'giving'.
+            </p>
+            <p class="font-bold text-lg mb-2">(A N D A)</p>
+            <input
+              type="text"
+              id="q6"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q6-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">
+              7. A value learned in the family, meaning 'service'.
+            </p>
+            <p class="font-bold text-lg mb-2">(A E V S)</p>
+            <input
+              type="text"
+              id="q7"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q7-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">
+              8. The act of giving up one's needs to take care of the family.
+            </p>
+            <p class="font-bold text-lg mb-2">(Y A G T A)</p>
+            <input
+              type="text"
+              id="q8"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q8-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">
+              9. The poet who said 'Love and dharma are the flower and fruit of
+              family life.'
+            </p>
+            <p class="font-bold text-lg mb-2">(V I R L L V U A R U)</p>
+            <input
+              type="text"
+              id="q9"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q9-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">
+              10. The Bhil community's tradition of helping each other.
+            </p>
+            <p class="font-bold text-lg mb-2">(M A L H A)</p>
+            <input
+              type="text"
+              id="q10"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q10-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">11. The state where Tenzing's story is set.</p>
+            <p class="font-bold text-lg mb-2">(L A Y A G H E M A)</p>
+            <input
+              type="text"
+              id="q11"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q11-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">
+              12. The city where Kamal Parmar's initiative started.
+            </p>
+            <p class="font-bold text-lg mb-2">(M E D A B H A D A)</p>
+            <input
+              type="text"
+              id="q12"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q12-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">13. The word for 'working together'.</p>
+            <p class="font-bold text-lg mb-2">(E O C O R A I T P N O)</p>
+            <input
+              type="text"
+              id="q13"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q13-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">
+              14. The term for 'father's brother's side' of the family.
+            </p>
+            <p class="font-bold text-lg mb-2">(A L R A T E N P)</p>
+            <input
+              type="text"
+              id="q14"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q14-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">
+              15. The value shown when Shalini gives up her silk dress.
+            </p>
+            <p class="font-bold text-lg mb-2">(C E I F R S A C I)</p>
+            <input
+              type="text"
+              id="q15"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q15-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">16. The organized group of people we live in.</p>
+            <p class="font-bold text-lg mb-2">(E Y T O S C I)</p>
+            <input
+              type="text"
+              id="q16"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q16-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">17. The relationships among family members.</p>
+            <p class="font-bold text-lg mb-2">(I P S N K H I)</p>
+            <input
+              type="text"
+              id="q17"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q17-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">18. Principles and standards of behavior.</p>
+            <p class="font-bold text-lg mb-2">(E S V A U L)</p>
+            <input
+              type="text"
+              id="q18"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q18-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">
+              19. A type of community found in cities and towns.
+            </p>
+            <p class="font-bold text-lg mb-2">(N A B R U)</p>
+            <input
+              type="text"
+              id="q19"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q19-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-2">20. A type of community found in villages.</p>
+            <p class="font-bold text-lg mb-2">(L U R A R)</p>
+            <input
+              type="text"
+              id="q20"
+              class="input-field"
+              placeholder="Enter your answer..."
+            />
+            <p id="q20-feedback" class="mt-2 text-sm hidden"></p>
+          </div>
+          <button id="submit-btn" class="w-full btn mt-4">
+            Check My Answers
+          </button>
+        </div>
+        <div id="results" class="hidden mt-6 text-center">
+          <h3 class="text-xl font-bold mb-2">
+            Your Score: <span id="score-display">0</span> / 100
+          </h3>
+          <p id="message" class="text-lg"></p>
+          <button onclick="window.location.reload()" class="btn mt-4">
+            Try Again
+          </button>
+        </div>
+      </div>
+    </main>
+    <script>
+      const answers = {
+        q1: "FAMILY",
+        q2: "COMMUNITY",
+        q3: "NUCLEAR",
+        q4: "JOINT",
+        q5: "DHARMA",
+        q6: "DANA",
+        q7: "SEVA",
+        q8: "TYAGA",
+        q9: "TIRUVALLUVAR",
+        q10: "HALMA",
+        q11: "MEGHALAYA",
+        q12: "AHMEDABAD",
+        q13: "COOPERATION",
+        q14: "PATERNAL",
+        q15: "SACRIFICE",
+        q16: "SOCIETY",
+        q17: "KINSHIP",
+        q18: "VALUES",
+        q19: "URBAN",
+        q20: "RURAL",
+      };
+
+      document.getElementById("submit-btn").addEventListener("click", () => {
+        let score = 0;
+        let allCorrect = true;
+
+        for (const key in answers) {
+          const input = document.getElementById(key);
+          const feedback = document.getElementById(`${key}-feedback`);
+          const inputValue = input.value.trim().toUpperCase();
+
+          if (inputValue === answers[key]) {
+            score += 5;
+            feedback.textContent = "Correct!";
+            feedback.className = "mt-2 text-sm text-green-500";
+            input.classList.add("correct-input");
+          } else {
+            allCorrect = false;
+            feedback.textContent = `Incorrect. The correct answer is ${answers[key]}.`;
+            feedback.className = "mt-2 text-sm text-red-500";
+            input.classList.add("incorrect-input");
+          }
+          input.disabled = true;
+          feedback.classList.remove("hidden");
+        }
+
+        document.getElementById("score-display").textContent = score;
+        document.getElementById("quiz-form").classList.add("hidden");
+        document.getElementById("results").classList.remove("hidden");
+
+        if (allCorrect) {
+          document.getElementById("message").textContent =
+            "Excellent! You got all the answers correct!";
+        } else if (score >= 60) {
+          document.getElementById("message").textContent =
+            "Good job! You're on your way to mastering the chapter.";
+        } else {
+          document.getElementById("message").textContent =
+            "Keep practicing! You can do it.";
+        }
+      });
+    </script>
+  </body>
+</html>
