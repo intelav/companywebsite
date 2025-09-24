@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Accelerated Learning Hub | Svaraikyam AI</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <style>
+      /* Custom styles for the page */
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0f172a; /* slate-900 */
+        color: #f8fafc; /* slate-50 */
+      }
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #ffffff;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      .section-subtitle {
+        font-size: 1.125rem;
+        color: #cbd5e1; /* slate-300 */
+        text-align: center;
+        max-width: 48rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 4rem;
+      }
+      .content-card {
+        background-color: #1e293b; /* slate-800 */
+        border: 1px solid #334155; /* slate-700 */
+        border-radius: 0.75rem;
+        padding: 2rem;
+      }
+      .video-responsive {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        border-radius: 0.5rem;
+      }
+      .video-responsive iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .btn-download {
+        display: inline-block;
+        background-color: #22c55e; /* green-500 */
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        text-align: center;
+        margin-top: 1rem;
+        transition: background-color 0.3s ease;
+      }
+      .btn-download:hover {
+        background-color: #16a34a; /* green-600 */
+      }
+      /* Dropdown styles */
+      .dropdown-content {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+      .group:hover .dropdown-content {
+        opacity: 1;
+        visibility: visible;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- Header -->
+    <header
+      class="bg-slate-900/70 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-800"
+    >
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="index.html" class="flex items-center space-x-3">
+          <img
+            src="company_logo.png"
+            alt="Svaraikyam AI Logo"
+            class="h-10"
+            onerror="this.onerror=null; this.src='https://placehold.co/100x40/0f172a/ffffff?text=Logo';"
+          />
+          <span class="text-2xl font-bold text-white">Svaraikyam AI</span>
+        </a>
+        <!-- Desktop Nav -->
+        <ul class="hidden md:flex items-center space-x-8 text-lg">
+          <li>
+            <a
+              href="index.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >Home</a
+            >
+          </li>
+          <!-- Research Projects Dropdown -->
+          <li class="relative group">
+            <a
+              href="index.html#research-projects"
+              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
+            >
+              Research Projects
+              <i class="fas fa-chevron-down text-xs ml-2"></i>
+            </a>
+            <div
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
+            >
+              <a
+                href="ai_accelerated_hub.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
+                >AI Accelerated Hub</a
+              >
+              <a
+                href="index.html#research-projects"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Satellite Image Analysis</a
+              >
+              <a
+                href="index.html#research-projects"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Earlier Experiments</a
+              >
+            </div>
+          </li>
+          <!-- Services Dropdown -->
+          <li class="relative group">
+            <a
+              href="services.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
+            >
+              Research Support & Consultancy
+              <i class="fas fa-chevron-down text-xs ml-2"></i>
+            </a>
+            <div
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
+            >
+              <a
+                href="services.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
+                >GPU Benchmarking & Optimization</a
+              >
+              <a
+                href="services.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Geospatial AI Prototyping</a
+              >
+              <a
+                href="services.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
+                >Embedded AI Migration</a
+              >
+            </div>
+          </li>
+          <!-- Blogs Dropdown -->
+          <li class="relative group">
+            <a
+              href="blogs.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
+            >
+              Blogs
+              <i class="fas fa-chevron-down text-xs ml-2"></i>
+            </a>
+            <div
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
+            >
+              <a
+                href="blog-embedded-systems-1.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
+                >Introduction to Embedded Linux</a
+              >
+              <a
+                href="blog-embedded-systems-2.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Firmware Updates on Edge Devices</a
+              >
+              <a
+                href="blog-embedded-systems-3.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Porting an AI Model to x86</a
+              >
+              <a
+                href="blog-ai-skills-engineers.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
+                >AI for Professionals</a
+              >
+            </div>
+          </li>
+          <li>
+            <a
+              href="about-contact.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >About & Contact</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="py-16">
+      <div class="container mx-auto px-6">
+        <h1 class="section-title">AI Accelerated Learning Hub</h1>
+        <p class="section-subtitle">
+          Explore our free knowledge base of **CUDA** and GPU programming. This content is designed to support **India’s GPU Mission** by making complex topics accessible to all.
+        </p>
+
+        <div class="space-y-12">
+          <!-- Main Video Block -->
+          <div class="content-card">
+            <div class="video-responsive">
+              <iframe
+                src="https://www.youtube.com/embed/hPXE96qSctc"
+                title="AI Accelerated YouTube Playlist"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <!-- Episodes Section -->
+          <div class="content-card">
+            <h2 class="text-2xl font-bold text-sky-400 mb-6">
+              Foundational CUDA Programming
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Episode 1 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 1: Why CUDA Matters for AI</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>CPU vs GPU architecture (latency vs throughput)</li>
+                  <li>SIMD (AVX) vs SIMT (CUDA)</li>
+                  <li>CUDA cores, SMs, warps overview</li>
+                  <li>Memory bandwidth difference: CPU DRAM vs GPU VRAM</li>
+                  <li>Demo: CPU vs GPU vector addition</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+              <!-- Episode 2 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 2: CUDA Hello World & Profiling</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>Writing your first CUDA kernel (vectorAdd)</li>
+                  <li>Grids, blocks, and threads explained</li>
+                  <li>Warp scheduling basics</li>
+                  <li>Profiling with Nsight Systems / Nsight Compute</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+              <!-- Episode 3 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 3: GPU Memory Hierarchy</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>Registers, shared, local, and global memory</li>
+                  <li>Memory access patterns: coalescing & bank conflicts</li>
+                  <li>Optimizing memory usage with shared memory</li>
+                  <li>Demo: transpose, reduction samples</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+              <!-- Episode 4 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 4: Overlapping CPU & GPU Work</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>Asynchronous kernel launches</li>
+                  <li>CUDA streams and events</li>
+                  <li>Overlap CPU preprocessing with GPU compute</li>
+                  <li>Demo: cpu_gpu_overlap.cu, simpleStreams</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+              <!-- Episode 5 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 5: From Matrix Multiply to Tensor Cores</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>Why GEMM dominates AI workloads</li>
+                  <li>cuBLAS basics (matrixMulCUBLAS)</li>
+                  <li>Tensor Core introduction (FP16, BF16, TF32, INT8)</li>
+                  <li>Demo: cudaTensorCoreGemm, CUTLASS</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+              <!-- Episode 6 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 6: Scaling to Multi-GPU</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>Multi-GPU programming model</li>
+                  <li>Peer-to-peer GPU communication (p2pBandwidthLatencyTest)</li>
+                  <li>Unified vs explicit memory copies</li>
+                  <li>Demo: simpleMultiGPU</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+              <!-- Episode 7 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 7: Optimizing AI Training</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>Kernel fusion for memory efficiency</li>
+                  <li>CUDA Graphs: reducing kernel launch overhead</li>
+                  <li>Profiling PyTorch loops, replacing ops with custom kernels</li>
+                  <li>Case study: optimized Transformer attention</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+              <!-- Episode 8 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 8: Towards India’s GPU Mission</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>GPU utilization = cost per token trained</li>
+                  <li>Energy efficiency in HPC data centers</li>
+                  <li>India’s GPU Mission and domestic compute needs</li>
+                  <li>Role of HPC AI engineers & startups</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Advanced Section -->
+          <div class="content-card">
+            <h2 class="text-2xl font-bold text-sky-400 mb-6">
+              Advanced CUDA Programming (Episodes 9–16)
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Episode 9 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 9: CUDA Memory Spaces Deep Dive</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>Registers, local, shared, constant, global memory</li>
+                  <li>Bank conflicts, coalescing explained</li>
+                  <li>Demo: shared vs naive transpose, constant memory use</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+              <!-- Episode 10 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 10: CUDA Streams & Asynchronous Execution</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>Streams, concurrency, overlapping kernels</li>
+                  <li>CUDA events for synchronization</li>
+                  <li>Demo: simpleStreams, concurrentKernels, streamOrderedAllocation</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+              <!-- Episode 11 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 11: Textures & Surfaces</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>Texture memory and caching benefits</li>
+                  <li>Surfaces for image/vision workloads</li>
+                  <li>Demo: convolutionTexture, boxFilter, simpleTexture3D</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+              <!-- Episode 12 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 12: Atomics & Warp-Level Primitives</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>Atomic operations in global/shared memory</li>
+                  <li>Warp shuffle (__shfl_sync) and ballot operations</li>
+                  <li>Demo: simpleAtomicIntrinsics, histogram, shfl_scan</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+              <!-- Episode 13 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 13: Math Libraries & Intrinsics</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>Device math functions (sinf, cosf, expf)</li>
+                  <li>Fast math (-use_fast_math)</li>
+                  <li>Demo: scalarProd, fp16ScalarProduct, oceanFFT, simpleCUFFT</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+              <!-- Episode 14 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 14: C++ Language Support in CUDA</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>Host/device annotations</li>
+                  <li>Lambdas, templates, overloading</li>
+                  <li>Demo: c++11_cuda, cppIntegration, simpleTemplates</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+              <!-- Episode 15 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 15: Unified Memory & Advanced Memory Management</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>Unified memory vs explicit memory management</li>
+                  <li>Oversubscription & page migration</li>
+                  <li>Demo: UnifiedMemoryPerf, UnifiedMemoryStreams, memMapIPCDrv</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+              <!-- Episode 16 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 16: Compute Capabilities & GPU Generations</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>What compute capability means (sm_70, sm_90, etc.)</li>
+                  <li>Which features appear in each generation</li>
+                  <li>Demo: deviceQuery, topologyQuery, Tensor Core GEMMs</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Expert Section -->
+          <div class="content-card">
+            <h2 class="text-2xl font-bold text-sky-400 mb-6">
+              Expert CUDA (Episodes 17–20)
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Episode 17 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 17: Modern C++ in CUDA</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>Using C++11/14 features in CUDA</li>
+                  <li>Cleaner kernels with lambdas, auto, templates</li>
+                  <li>Demo: c++11_cuda, cppOverload, cppIntegration</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+              <!-- Episode 18 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 18: Inline PTX & Low-Level GPU Programming</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>What PTX is (NVIDIA’s GPU ISA)</li>
+                  <li>Writing inline PTX for fine-grained control</li>
+                  <li>Demo: inlinePTX, ptxjit, jitLto</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+              <!-- Episode 19 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 19: CUDA Dynamic Parallelism</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>Kernels launching kernels (adaptive workloads)</li>
+                  <li>Pros/cons for irregular workloads (graphs, trees)</li>
+                  <li>Demo: cdpSimpleQuicksort, cdpQuadtree, cdpBezierTessellation</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+              <!-- Episode 20 -->
+              <div class="bg-slate-700 p-6 rounded-lg border border-slate-600">
+                <h3 class="text-xl font-semibold mb-2 text-white">Episode 20: Runtime Compilation & Advanced Graph APIs</h3>
+                <ul class="list-disc list-inside text-slate-300 text-sm mb-4 space-y-1">
+                  <li>NVRTC: compiling kernels at runtime</li>
+                  <li>CUDA Graphs with conditional/memory nodes</li>
+                  <li>Demo: nvrtc, jitLto, graphConditionalNodes, graphMemoryFootprint</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  <a href="#" class="text-sm text-sky-400 hover:underline">Watch Video</a>
+                  <span class="text-slate-400">|</span>
+                  <a href="#" class="text-sm text-sky-400 hover:underline cursor-not-allowed">Download Notebook</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800">
+      <div class="container mx-auto px-6 py-8 text-center text-slate-400">
+        <p class="text-sm mb-2">
+          AI Fusion (SvarAikyam AI) is an independent applied research initiative — not a commercial startup.
+        </p>
+        <p>&copy; 2025 Svaraikyam AI. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
