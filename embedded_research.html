@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Embedded Research & Application | Svaraikyam AI</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <style>
+      /* Custom styles for the page */
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0f172a; /* slate-900 */
+        color: #f8fafc; /* slate-50 */
+      }
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #ffffff;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      .section-subtitle {
+        font-size: 1.125rem;
+        color: #cbd5e1; /* slate-300 */
+        text-align: center;
+        max-width: 48rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 4rem;
+      }
+      .content-card {
+        background-color: #1e293b; /* slate-800 */
+        border: 1px solid #334155; /* slate-700 */
+        border-radius: 0.75rem;
+        padding: 2rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .content-card:hover {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      /* Ensure the video element takes full space in its container */
+      .video-responsive-wide {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 0.5rem;
+        background-color: #000; /* Black background for video areas */
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      }
+      .video-responsive-wide video,
+      .video-responsive-wide iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* SmartPurchase Video Container (Using standard 16:9 aspect for YouTube embed) */
+      .smartpurchase-video-container-youtube {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        border-radius: 0.5rem;
+      }
+      .smartpurchase-video-container-youtube iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Voice LLM Demo Container (Desktop wide video - kept for local video) */
+      .voice-llm-video-container {
+        padding-top: 56.25%; /* 16:9 aspect ratio */
+        position: relative;
+        border-radius: 0.5rem;
+      }
+      .voice-llm-video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Dropdown styles (fixed issue by removing 'group' from the containing <li>) */
+      .dropdown-content {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+      .group:hover .dropdown-content {
+        opacity: 1;
+        visibility: visible;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- Header -->
+    <header
+      class="bg-slate-900/70 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-800"
+    >
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="index.html" class="flex items-center space-x-3">
+          <img
+            src="company_logo.png"
+            alt="Svaraikyam AI Logo"
+            class="h-10"
+            onerror="this.onerror=null; this.src='https://placehold.co/100x40/0f172a/ffffff?text=Logo';"
+          />
+          <span class="text-2xl font-bold text-white">Svaraikyam AI</span>
+        </a>
+        <!-- Desktop Nav -->
+        <ul class="hidden md:flex items-center space-x-8 text-lg">
+          <li>
+            <a
+              href="index.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >Home</a
+            >
+          </li>
+          <!-- Research Projects Dropdown (FIXED: removed 'relative group' from this <li>) -->
+          <li class="relative">
+            <a
+              href="index.html#research-projects"
+              class="text-sky-400 transition-colors flex items-center"
+            >
+              Research Projects
+              <!-- Added 'group' class to the link itself to re-enable hover dropdown -->
+              <i
+                class="fas fa-chevron-down text-xs ml-2 group-hover:block hidden"
+              ></i>
+            </a>
+            <!-- Re-added 'group' class for the hover effect -->
+            <div
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20 group"
+            >
+              <a
+                href="ai_accelerated_hub.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >AI Accelerated Hub</a
+              >
+              <a
+                href="embedded_research.html"
+                class="block px-4 py-3 text-white bg-slate-700 transition-colors"
+                >Embedded Research & App</a
+              >
+              <a
+                href="index.html#research-projects"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Satellite Image Analysis</a
+              >
+              <a
+                href="index.html#research-projects"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Earlier Experiments</a
+              >
+            </div>
+          </li>
+          <li>
+            <a
+              href="services.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >Research Support & Consultancy</a
+            >
+          </li>
+          <li>
+            <a
+              href="blogs.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >Blogs</a
+            >
+          </li>
+          <li>
+            <a
+              href="about-contact.html"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >About & Contact</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="py-16">
+      <div class="container mx-auto px-6">
+        <h1 class="section-title">Embedded Research & Application</h1>
+        <p class="section-subtitle">
+          Dedicated prototypes and experiments focused on optimizing AI,
+          Computer Vision, and LLMs for edge devices and mobile platforms
+          (Android/Jetson).
+        </p>
+
+        <div class="space-y-16">
+          <!-- New Card: Multi-Barcode Detection (Core CV) -->
+          <div class="content-card">
+            <h2 class="text-3xl font-bold text-sky-400 mb-6 flex items-center">
+              <i class="fas fa-camera-retro mr-3 text-2xl"></i> Multi-Barcode
+              Detection (Real-time CV)
+            </h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <div class="video-responsive-wide">
+                  <video
+                    src="shopping_ai_video.mp4"
+                    autoplay
+                    loop
+                    muted
+                    controls
+                    playsinline
+                    alt="Multi-Barcode Detection Demo"
+                  ></video>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-2xl font-semibold text-white mb-4">
+                  Real-time Edge Vision for Inventory & Retail
+                </h3>
+                <p class="text-lg text-slate-300 mb-4">
+                  This prototype focuses purely on **Optimized Object
+                  Detection** on mobile hardware, enabling the device to
+                  simultaneously recognize and track multiple barcodes or
+                  product items with low latency. This core computer vision work
+                  is foundational for fast, intelligent retail applications.
+                </p>
+                <p class="text-md text-slate-400 mt-4">
+                  **Key Technologies:** Android NDK/Kotlin, Optimized YOLO/SSD
+                  models, Fast Inference Engines.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- New Card: AR Engagement Use Case -->
+          <div class="content-card">
+            <h2 class="text-3xl font-bold text-sky-400 mb-6 flex items-center">
+              <i class="fas fa-cube mr-3 text-2xl"></i> AR Engagement Use Case
+              (Augmented Reality)
+            </h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+              <div class="md:order-2">
+                <div class="video-responsive-wide">
+                  <iframe
+                    src="https://www.youtube.com/embed/6NAN73oD1f8"
+                    title="AR Engagement Use Case Demo"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </div>
+              <div class="md:order-1">
+                <h3 class="text-2xl font-semibold text-white mb-4">
+                  Blending Digital Information with the Physical World
+                </h3>
+                <p class="text-lg text-slate-300 mb-4">
+                  This demonstration showcases how **Augmented Reality (AR)**
+                  can be layered onto computer vision results. Once an item is
+                  detected (using the technology from the Multi-Barcode
+                  Project), ARCore is used to overlay digital information,
+                  directions, or interactive 3D models onto the real-world view.
+                </p>
+                <p class="text-md text-slate-400 mt-4">
+                  **Key Technologies:** ARCore, Android SDK, Real-time Visual
+                  Overlays.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Voice LLM Integration on Edge (using voice_llm_demo.mp4) -->
+          <div class="content-card">
+            <h2 class="text-3xl font-bold text-sky-400 mb-6 flex items-center">
+              <i class="fas fa-volume-up mr-3 text-2xl"></i> Voice LLM on Edge
+              Devices
+            </h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+              <div class="md:order-2">
+                <div class="voice-llm-video-container">
+                  <video
+                    src="voice_llm_demo.mp4"
+                    autoplay
+                    loop
+                    muted
+                    controls
+                    playsinline
+                    alt="Voice LLM demonstration video"
+                  ></video>
+                </div>
+              </div>
+              <div class="md:order-1">
+                <h3 class="text-2xl font-semibold text-white mb-4">
+                  Running Generative AI Models Locally
+                </h3>
+                <p class="text-lg text-slate-300 mb-4">
+                  A prototype exploring the deployment of compact
+                  **Voice/Speech-to-Text** and **Large Language Models (LLMs)**
+                  directly on edge hardware. This research focuses on
+                  quantization techniques and accelerated inference engines to
+                  achieve low-latency, privacy-preserving conversational AI
+                  without relying on cloud services.
+                </p>
+                <p class="text-md text-slate-400 mt-4">
+                  **Key Technologies:** Optimized LLM variants (e.g.,
+                  Llama.cpp/Whisper), Android/Embedded C++ deployment,
+                  Quantization.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- SmartPurchase App (Archived Experiment, using YouTube embed) -->
+          <div class="content-card">
+            <h2 class="text-3xl font-bold text-sky-400 mb-6 flex items-center">
+              <i class="fas fa-shopping-basket mr-3 text-2xl"></i> SmartPurchase
+              App
+              <span class="text-base font-normal text-slate-400 ml-3"
+                >(Archived Experiment)</span
+              >
+            </h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <!-- Updated to use the correct YouTube link -->
+                <div class="smartpurchase-video-container-youtube">
+                  <iframe
+                    src="https://www.youtube.com/embed/wqSR-2ARQZc"
+                    title="SmartPurchase App Promotion Video"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-2xl font-semibold text-white mb-4">
+                  Retail AI & Personalized Recommendation System
+                </h3>
+                <p class="text-lg text-slate-300 mb-4">
+                  An early full-stack prototype demonstrating how Computer
+                  Vision and Generative AI can transform the shopping
+                  experience. Features included real-time personalized
+                  discounts, AI-driven shop management tools, and enhanced
+                  product exploration based on user behavior and camera input.
+                </p>
+                <p class="text-md text-slate-400 mt-4">
+                  **Status:** Archived/Proof-of-Concept. Insights inform current
+                  edge AI optimization work.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800">
+      <div class="container mx-auto px-6 py-8 text-center text-slate-400">
+        <p class="text-sm mb-2">
+          AI Fusion (SvarAikyam AI) is an independent applied research
+          initiative — not a commercial startup.
+        </p>
+        <p>&copy; 2025 Svaraikyam AI. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

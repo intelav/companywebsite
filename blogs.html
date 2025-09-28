@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blogs | Svaraikyam AI</title>
+    <title>Blogs | Coming Soon</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
@@ -26,14 +26,14 @@
         color: #f8fafc; /* slate-50 */
       }
       .section-title {
-        font-size: 2.5rem;
+        font-size: 3rem;
         font-weight: 700;
         color: #ffffff;
         text-align: center;
         margin-bottom: 1rem;
       }
       .section-subtitle {
-        font-size: 1.125rem;
+        font-size: 1.5rem;
         color: #cbd5e1; /* slate-300 */
         text-align: center;
         max-width: 48rem;
@@ -41,29 +41,7 @@
         margin-right: auto;
         margin-bottom: 4rem;
       }
-      .content-card {
-        background-color: #1e293b; /* slate-800 */
-        border: 1px solid #334155; /* slate-700 */
-        border-radius: 0.75rem;
-        padding: 2rem;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      .content-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      }
-      .blog-card {
-        background-color: #1e293b;
-        border: 1px solid #334155;
-        border-radius: 0.75rem;
-        padding: 2rem;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      .blog-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      }
-      /* Dropdown styles */
+      /* Dropdown styles (kept for consistency with other navs) */
       .dropdown-content {
         opacity: 0;
         visibility: hidden;
@@ -101,151 +79,50 @@
               >Home</a
             >
           </li>
-          <!-- Products Dropdown -->
           <li class="relative group">
             <a
-              href="products.html"
+              href="index.html#research-projects"
               class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
             >
-              Products
+              Research Projects
               <i class="fas fa-chevron-down text-xs ml-2"></i>
             </a>
             <div
-              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
+              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
             >
               <a
-                href="smartpurchase-details.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
-                >SmartPurchase App</a
+                href="ai_accelerated_hub.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >AI Accelerated Hub</a
               >
               <a
-                href="annotation_ui.html"
+                href="embedded_research.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Embedded Research & App</a
+              >
+              <a
+                href="index.html#research-projects"
                 class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
                 >Satellite Image Analysis</a
               >
               <a
-                href="math_ai_class_6.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
-                >AI Tutors</a
+                href="index.html#research-projects"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Earlier Experiments</a
               >
             </div>
           </li>
-          <!-- Services Dropdown -->
-          <li class="relative group">
+          <li>
             <a
               href="services.html"
-              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >Research Support & Consultancy</a
             >
-              Services
-              <i class="fas fa-chevron-down text-xs ml-2"></i>
-            </a>
-            <div
-              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
-            >
-              <a
-                href="service-android-ar-vr.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
-                >Android App Dev with AR/VR</a
-              >
-              <a
-                href="service-android-gen-ai.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >Android App Dev with GenAI</a
-              >
-              <a
-                href="service-llm-cuda.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >LLM Training Optimization</a
-              >
-              <a
-                href="service-ai-model-migration.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
-                >AI Model Migration</a
-              >
-            </div>
           </li>
-          <!-- Trainings Dropdown -->
-          <li class="relative group">
-            <a
-              href="embedded-ai-trainings.html"
-              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
+          <li>
+            <a href="blogs.html" class="text-sky-400 transition-colors"
+              >Blogs</a
             >
-              Trainings
-              <i class="fas fa-chevron-down text-xs ml-2"></i>
-            </a>
-            <div
-              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
-            >
-              <a
-                href="embedded-ai-trainings.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
-                >Embedded Systems & Edge AI</a
-              >
-              <a
-                href="training-firmware.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >Firmware Development</a
-              >
-              <a
-                href="training-linux-drivers.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >Linux Drivers</a
-              >
-              <a
-                href="training-android-hal.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >Android HAL</a
-              >
-              <a
-                href="training-android-security.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >Android Security</a
-              >
-              <a
-                href="training-android-frameworks.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >Android Frameworks</a
-              >
-              <a
-                href="training-x86.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
-                >x86 Training (Intel & AMD)</a
-              >
-            </div>
-          </li>
-          <!-- Blogs Dropdown -->
-          <li class="relative group">
-            <a
-              href="blogs.html"
-              class="text-sky-400 transition-colors flex items-center"
-            >
-              Blogs
-              <i class="fas fa-chevron-down text-xs ml-2"></i>
-            </a>
-            <div
-              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
-            >
-              <a
-                href="blog-basics-deep-learning.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
-                >Basics of Deep Learning</a
-              >
-              <a
-                href="blog-ai-skills-students.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >AI Skills for Students</a
-              >
-              <a
-                href="blog-ai-skills-undergraduates.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >AI for Undergraduates</a
-              >
-              <a
-                href="blog-ai-skills-engineers.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
-                >AI for Professionals</a
-              >
-            </div>
           </li>
           <li>
             <a
@@ -257,126 +134,37 @@
         </ul>
       </nav>
     </header>
-    <main>
-      <section id="blogs-page" class="py-16">
-        <div class="container mx-auto px-6">
-          <h1 class="section-title">Latest Blogs & Insights</h1>
-          <p class="section-subtitle">
-            Stay up-to-date with our latest articles on Embedded Systems, Edge
-            AI, and more.
+
+    <main class="py-32 flex flex-col items-center justify-center min-h-[70vh]">
+      <div class="container mx-auto px-6 text-center">
+        <i
+          class="fas fa-feather-alt text-sky-400 text-6xl mb-6 animate-pulse"
+        ></i>
+        <h1 class="section-title">AI & Engineering Insights</h1>
+        <p class="section-subtitle">
+          We are currently curating content from our research to provide
+          in-depth blogs and notes on Edge AI, GPU programming, and embedded
+          systems.
+        </p>
+        <div
+          class="mt-12 p-8 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl max-w-xl mx-auto"
+        >
+          <h2 class="text-4xl font-extrabold text-white mb-2">Coming Soon</h2>
+          <p class="text-lg text-slate-400">
+            Please check back later for our independent research articles and
+            tutorials.
           </p>
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <a
-              href="blog-embedded-systems-1.html"
-              class="blog-card flex flex-col items-center text-center p-4"
-            >
-              <i class="fas fa-microchip text-sky-400 text-5xl mb-4"></i>
-              <h3 class="text-2xl font-bold text-white mb-2">
-                Introduction to Embedded Linux
-              </h3>
-              <p class="text-slate-300 flex-grow">
-                A beginner's guide to the core concepts of Linux on embedded
-                systems, including bootloaders, the kernel, and root
-                filesystems.
-              </p>
-              <span
-                class="text-sky-400 font-semibold text-center mt-4 hover:underline"
-                >Read More &rarr;</span
-              >
-            </a>
-            <a
-              href="blog-embedded-systems-2.html"
-              class="blog-card flex flex-col items-center text-center p-4"
-            >
-              <i class="fas fa-sync text-sky-400 text-5xl mb-4"></i>
-              <h3 class="text-2xl font-bold text-white mb-2">
-                Firmware Updates on Edge Devices
-              </h3>
-              <p class="text-slate-300 flex-grow">
-                Learn best practices for over-the-air (OTA) and secure firmware
-                updates to ensure the reliability of your edge AI devices.
-              </p>
-              <span
-                class="text-sky-400 font-semibold text-center mt-4 hover:underline"
-                >Read More &rarr;</span
-              >
-            </a>
-            <a
-              href="blog-embedded-systems-3.html"
-              class="blog-card flex flex-col items-center text-center p-4"
-            >
-              <i class="fas fa-laptop-code text-sky-400 text-5xl mb-4"></i>
-              <h3 class="text-2xl font-bold text-white mb-2">
-                Porting an AI Model to x86
-              </h3>
-              <p class="text-slate-300 flex-grow">
-                A step-by-step tutorial on optimizing and deploying a
-                Python-based AI model to an x86 architecture for
-                high-performance inference.
-              </p>
-              <span
-                class="text-sky-400 font-semibold text-center mt-4 hover:underline"
-                >Read More &rarr;</span
-              >
-            </a>
-            <a
-              href="blog-basics-deep-learning.html"
-              class="blog-card flex flex-col items-center text-center p-4"
-            >
-              <i class="fas fa-brain text-sky-400 text-5xl mb-4"></i>
-              <h3 class="text-2xl font-bold text-white mb-2">
-                Basics of Deep Learning
-              </h3>
-              <p class="text-slate-300 flex-grow">
-                Fundamental concepts and practical introductions to deep
-                learning models.
-              </p>
-              <span
-                class="text-sky-400 font-semibold text-center mt-4 hover:underline"
-                >Read More &rarr;</span
-              >
-            </a>
-            <a
-              href="blog-ai-skills-students.html"
-              class="blog-card flex flex-col items-center text-center p-4"
-            >
-              <i class="fas fa-user-graduate text-sky-400 text-5xl mb-4"></i>
-              <h3 class="text-2xl font-bold text-white mb-2">
-                AI Skills for Students
-              </h3>
-              <p class="text-slate-300 flex-grow">
-                Building foundational AI knowledge for the next generation of
-                innovators.
-              </p>
-              <span
-                class="text-sky-400 font-semibold text-center mt-4 hover:underline"
-                >Read More &rarr;</span
-              >
-            </a>
-            <a
-              href="blog-ai-skills-engineers.html"
-              class="blog-card flex flex-col items-center text-center p-4"
-            >
-              <i class="fas fa-user-tie text-sky-400 text-5xl mb-4"></i>
-              <h3 class="text-2xl font-bold text-white mb-2">
-                AI Skills for Professionals
-              </h3>
-              <p class="text-slate-300 flex-grow">
-                Upskill with cutting-edge techniques in machine learning and
-                data science.
-              </p>
-              <span
-                class="text-sky-400 font-semibold text-center mt-4 hover:underline"
-                >Read More &rarr;</span
-              >
-            </a>
-          </div>
         </div>
-      </section>
+      </div>
     </main>
+
     <!-- Footer -->
     <footer class="bg-slate-900 border-t border-slate-800">
       <div class="container mx-auto px-6 py-8 text-center text-slate-400">
+        <p class="text-sm mb-2">
+          AI Fusion (SvarAikyam AI) is an independent applied research
+          initiative — not a commercial startup.
+        </p>
         <p>&copy; 2025 Svaraikyam AI. All Rights Reserved.</p>
       </div>
     </footer>

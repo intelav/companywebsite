@@ -68,6 +68,23 @@
         width: 100%;
         height: 100%;
       }
+      /* Style for the SmartPurchase preview in index.html (now a standard YouTube embed) */
+      .vertical-video-preview {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%; /* Standard 16:9 Aspect Ratio */
+        border-radius: 0.5rem;
+      }
+      .vertical-video-preview iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+      }
       .btn-download {
         display: inline-block;
         background-color: #22c55e; /* green-500 */
@@ -134,8 +151,13 @@
             >
               <a
                 href="ai_accelerated_hub.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
                 >AI Accelerated Hub</a
+              >
+              <a
+                href="embedded_research.html"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                >Embedded Research & App</a
               >
               <a
                 href="index.html#research-projects"
@@ -178,39 +200,13 @@
               >
             </div>
           </li>
-          <!-- Blogs Dropdown -->
-          <li class="relative group">
+          <!-- Blogs Direct Link (Removed Dropdown) -->
+          <li>
             <a
               href="blogs.html"
-              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >Blogs</a
             >
-              Blogs
-              <i class="fas fa-chevron-down text-xs ml-2"></i>
-            </a>
-            <div
-              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
-            >
-              <a
-                href="blog-embedded-systems-1.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
-                >Introduction to Embedded Linux</a
-              >
-              <a
-                href="blog-embedded-systems-2.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >Firmware Updates on Edge Devices</a
-              >
-              <a
-                href="blog-embedded-systems-3.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >Porting an AI Model to x86</a
-              >
-              <a
-                href="blog-ai-skills-engineers.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
-                >AI for Professionals</a
-              >
-            </div>
           </li>
           <li>
             <a
@@ -278,7 +274,7 @@
               </div>
             </div>
 
-            <!-- New Project: AI Accelerated Learning Hub -->
+            <!-- Project 2: AI Accelerated Learning Hub (GPU Programming) -->
             <div class="content-card grid md:grid-cols-2 gap-12 items-center">
               <div class="video-responsive">
                 <iframe
@@ -308,7 +304,44 @@
               </div>
             </div>
 
-            <!-- Future Projects -->
+            <!-- Project 3: Embedded AI & Edge Computing -->
+            <div class="content-card grid md:grid-cols-2 gap-12 items-center">
+              <div class="md:order-2">
+                <!-- Updated to use the YouTube embed for SmartPurchase -->
+                <div class="vertical-video-preview">
+                  <iframe
+                    src="https://www.youtube.com/embed/wqSR-2ARQZc"
+                    title="SmartPurchase App Promotion Video"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </div>
+              <div class="md:order-1">
+                <h3 class="text-3xl font-bold text-sky-400 mb-4">
+                  Embedded AI & Edge Computing
+                  <span class="text-sm font-normal text-slate-400 block mt-1">
+                    (SmartPurchase App, Voice LLM Prototypes)
+                  </span>
+                </h3>
+                <p class="text-lg text-slate-300 mb-4">
+                  This section contains our research into optimizing AI models
+                  for deployment on edge devices like Android and embedded
+                  systems. It includes early prototypes for real-time object
+                  detection (multi-barcode detection) and voice-enabled LLM
+                  interaction on mobile hardware.
+                </p>
+                <a
+                  href="embedded_research.html"
+                  class="text-sky-400 font-semibold text-lg hover:underline"
+                >
+                  Explore Embedded Research &rarr;
+                </a>
+              </div>
+            </div>
+
+            <!-- Project 4: Future Experiments (Keep this last) -->
             <div class="content-card grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h3 class="text-3xl font-bold text-sky-400 mb-4">
