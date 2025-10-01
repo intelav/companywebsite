@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blogs | Coming Soon</title>
+    <title>Svaraikyam AI | Blogs & Insights</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
@@ -26,14 +26,14 @@
         color: #f8fafc; /* slate-50 */
       }
       .section-title {
-        font-size: 3rem;
+        font-size: 2.5rem;
         font-weight: 700;
         color: #ffffff;
         text-align: center;
         margin-bottom: 1rem;
       }
       .section-subtitle {
-        font-size: 1.5rem;
+        font-size: 1.125rem;
         color: #cbd5e1; /* slate-300 */
         text-align: center;
         max-width: 48rem;
@@ -41,7 +41,36 @@
         margin-right: auto;
         margin-bottom: 4rem;
       }
-      /* Dropdown styles (kept for consistency with other navs) */
+      .blog-card {
+        background-color: #1e293b; /* slate-800 */
+        border: 1px solid #334155; /* slate-700 */
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        transition: background-color 0.3s ease;
+      }
+      .blog-card:hover {
+        background-color: #334155; /* slate-700 */
+      }
+      .blog-link {
+        text-decoration: none;
+        display: block;
+      }
+      .blog-link h2 {
+        color: #8dd8f8; /* A light sky blue */
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+      .blog-link p {
+        color: #cbd5e1;
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+      }
+      .blog-meta {
+        font-size: 0.875rem;
+        color: #94a3b8; /* slate-400 */
+      }
+      /* Dropdown styles */
       .dropdown-content {
         opacity: 0;
         visibility: hidden;
@@ -92,7 +121,7 @@
             >
               <a
                 href="ai_accelerated_hub.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
                 >AI Accelerated Hub</a
               >
               <a
@@ -102,13 +131,8 @@
               >
               <a
                 href="index.html#research-projects"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
                 >Satellite Image Analysis</a
-              >
-              <a
-                href="index.html#research-projects"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >Earlier Experiments</a
               >
             </div>
           </li>
@@ -120,7 +144,9 @@
             >
           </li>
           <li>
-            <a href="blogs.html" class="text-sky-400 transition-colors"
+            <a
+              href="blogs.html"
+              class="text-sky-400 transition-colors"
               >Blogs</a
             >
           </li>
@@ -135,26 +161,114 @@
       </nav>
     </header>
 
-    <main class="py-32 flex flex-col items-center justify-center min-h-[70vh]">
-      <div class="container mx-auto px-6 text-center">
-        <i
-          class="fas fa-feather-alt text-sky-400 text-6xl mb-6 animate-pulse"
-        ></i>
-        <h1 class="section-title">AI & Engineering Insights</h1>
+    <main class="py-16">
+      <div class="container mx-auto px-6 max-w-4xl">
+        <h1 class="section-title">Independent Research Blogs & Insights</h1>
         <p class="section-subtitle">
-          We are currently curating content from our research to provide
-          in-depth blogs and notes on Edge AI, GPU programming, and embedded
-          systems.
+          A collection of published articles and notes from our work in Embedded AI, Geospatial ML, and GPU performance optimization, ordered by latest publication.
         </p>
-        <div
-          class="mt-12 p-8 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl max-w-xl mx-auto"
-        >
-          <h2 class="text-4xl font-extrabold text-white mb-2">Coming Soon</h2>
-          <p class="text-lg text-slate-400">
-            Please check back later for our independent research articles and
-            tutorials.
+
+        <div class="space-y-6">
+
+          <!-- Post 1 (Latest) -->
+          <a href="https://medium.com/@av2019/how-to-avoid-choking-your-gpu-with-inefficient-python-code-688ab2bd141a" target="_blank" class="blog-link">
+            <div class="blog-card">
+              <h2>How to Avoid Choking Your GPU with Inefficient Python Code</h2>
+              <p>Critical tips and techniques for optimizing Python preprocessing and data loading to ensure your GPU remains fully utilized, drastically improving training speed.</p>
+              <p class="blog-meta">Published: October 2025 | Topic: GPU Optimization, CUDA, Python</p>
+            </div>
+          </a>
+          
+          <!-- Post 2 -->
+          <a href="https://medium.com/embedded-systems-edge-ai-esea/deep-dive-on-speech-recognition-in-android-linux-with-whisper-21a541c21ba1" target="_blank" class="blog-link">
+            <div class="blog-card">
+              <h2>Deep Dive on Speech Recognition in Android/Linux with Whisper</h2>
+              <p>A comprehensive guide on porting and optimizing OpenAI's Whisper model for local, low-latency speech-to-text functionality on Android and embedded Linux platforms.</p>
+              <p class="blog-meta">Published: September 2025 | Topic: Edge AI, Embedded Systems, LLMs</p>
+            </div>
+          </a>
+
+          <!-- Post 3 -->
+          <a href="https://medium.com/embedded-systems-edge-ai-esea/bootloaders-for-rb5-rb3-dev-kit-from-qualcomm-9f855aebe7fb" target="_blank" class="blog-link">
+            <div class="blog-card">
+              <h2>Bootloaders for RB5/RB3 Dev Kit from Qualcomm</h2>
+              <p>An engineer's perspective on understanding and customizing the boot process for the Qualcomm Robotics RB5/RB3 development kits, focusing on system startup control.</p>
+              <p class="blog-meta">Published: August 2025 | Topic: Embedded Systems, Firmware</p>
+            </div>
+          </a>
+
+          <!-- Post 4 -->
+          <a href="https://medium.com/@av2019/power-management-on-intel-x86-51f13082051f" target="_blank" class="blog-link">
+            <div class="blog-card">
+              <h2>Power Management on Intel x86</h2>
+              <p>Exploring essential power states, thermal management, and optimization techniques for ensuring stable and efficient operation of Intel x86 architectures in embedded roles.</p>
+              <p class="blog-meta">Published: July 2025 | Topic: Embedded Systems, x86</p>
+            </div>
+          </a>
+
+          <!-- Post 5 -->
+          <a href="https://medium.com/deep-dive-tensorflow-with-cuda/anatomy-of-creating-image-dataset-for-xception-network-with-keras-sample-pythonic-c-83093b99852c" target="_blank" class="blog-link">
+            <div class="blog-card">
+              <h2>Anatomy of Creating Image Dataset for Xception Network (Keras/C++)</h2>
+              <p>A detailed walkthrough on preparing and structuring high-quality image datasets, specifically tailored for efficient training with Xception networks using Keras and Python/C++ bindings.</p>
+              <p class="blog-meta">Published: June 2025 | Topic: Deep Learning, Computer Vision</p>
+            </div>
+          </a>
+
+          <!-- Post 6 -->
+          <a href="https://medium.com/@av2019/pci-internals-in-simple-words-acd4c27e5b9c" target="_blank" class="blog-link">
+            <div class="blog-card">
+              <h2>PCI Internals in Simple Words</h2>
+              <p>A simplified explanation of the Peripheral Component Interconnect (PCI) standard, focusing on how devices communicate with the CPU and its importance in embedded systems.</p>
+              <p class="blog-meta">Published: May 2025 | Topic: Embedded Systems, Hardware</p>
+            </div>
+          </a>
+
+          <!-- Post 7 -->
+          <a href="https://medium.com/@av2019/power-management-for-your-computer-acpi-322cc1d50f4d" target="_blank" class="blog-link">
+            <div class="blog-card">
+              <h2>Power Management for Your Computer (ACPI)</h2>
+              <p>Understanding the role of the Advanced Configuration and Power Interface (ACPI) in modern systems and how it enables complex OS-directed power saving features.</p>
+              <p class="blog-meta">Published: April 2025 | Topic: Embedded Systems, Hardware</p>
+            </div>
+          </a>
+
+          <!-- Post 8 -->
+          <a href="https://medium.com/deep-dive-tensorflow-with-cuda/trainable-parameters-in-xception-network-with-keras-sample-9308d20b3157" target="_blank" class="blog-link">
+            <div class="blog-card">
+              <h2>Trainable Parameters in Xception Network with Keras Sample</h2>
+              <p>A quantitative look at the parameter count and efficiency of the Xception model, providing practical insights using a Keras implementation.</p>
+              <p class="blog-meta">Published: March 2025 | Topic: Deep Learning, Keras</p>
+            </div>
+          </a>
+
+          <!-- Post 9 -->
+          <a href="https://medium.com/@av2019/a-neural-network-example-with-sign-language-data-set-tensor-flow-and-tensor-board-7b5bbdc1534a" target="_blank" class="blog-link">
+            <div class="blog-card">
+              <h2>A Neural Network Example with Sign Language Data Set (TensorFlow)</h2>
+              <p>A practical case study demonstrating the creation and training of a neural network for sign language recognition using TensorFlow and visualizing results with TensorBoard.</p>
+              <p class="blog-meta">Published: February 2025 | Topic: Deep Learning, TensorFlow</p>
+            </div>
+          </a>
+
+          <!-- Post 10 (Oldest) -->
+          <a href="https://medium.com/@av2019/increasing-inception-v3-v4-and-mobilenet-v1-v2-performance-on-intel-x86-with-android-and-mkldnn-c65955af75ef" target="_blank" class="blog-link">
+            <div class="blog-card">
+              <h2>Increasing Inception V3/V4 and MobileNet V1/V2 Performance on Intel x86</h2>
+              <p>Methods for boosting the inference speed of popular vision models on Intel x86 platforms, leveraging Android frameworks and the MKL-DNN optimization library.</p>
+              <p class="blog-meta">Published: January 2025 | Topic: Embedded AI, Optimization</p>
+            </div>
+          </a>
+
+        </div>
+
+        <div class="text-center mt-12 pt-8 border-t border-slate-700">
+          <p class="text-slate-400">
+            Find the complete archive of these articles and more on my Medium profile: 
+            <a href="https://medium.com/@av2019" target="_blank" class="text-sky-400 font-semibold hover:underline">medium.com/@av2019</a>
           </p>
         </div>
+
       </div>
     </main>
 
