@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Svaraikyam Research Lab | Independent Applied Research</title>
+    <title>Svaraikyam Research Lab (SRL) | Independent Applied Research</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
@@ -121,7 +121,8 @@
             onerror="this.onerror=null; this.src='https://placehold.co/40x32/e6f2ff/007bff?text=AI';"
           />
           <span class="text-xl font-bold text-white"
-            >Svaraikyam Research Lab</span
+            >Svaraikyam Research Lab (<span class="text-sky-400">SRL</span
+            >)</span
           >
         </a>
         <!-- Navigation Links -->
@@ -163,20 +164,20 @@
       <section id="research-intro" class="py-20 text-center bg-slate-900">
         <div class="container mx-auto px-6">
           <h1 class="text-5xl md:text-6xl font-extrabold mb-4 text-white">
-            <span class="text-sky-400">Svaraikyam Research Lab</span>
+            <span class="text-sky-400">Svaraikyam Research Lab (SRL)</span>
           </h1>
           <h2 class="text-4xl font-extrabold mb-4 text-white">
-            Pioneering Edge AI & Robotics Research
+            Pioneering Edge AI ,GPU & Robotics Research
           </h2>
           <p class="text-xl text-slate-300 mb-8 max-w-4xl mx-auto">
             An independent applied research initiative focused on solving
-            real-world challenges through optimized AI, Computer Vision, and
-            Embedded Systems.
+            real-world challenges through GPU-HPC, AI Model Engineering, and
+            Robotics Research.
           </p>
           <a
-            href="embedded_research.html"
+            href="about-contact.html"
             class="bg-sky-500 hover:bg-sky-600 text-white cta-button"
-            >Explore Our Research &rarr;</a
+            >Contact us for Collaboration & Consultancy &rarr;</a
           >
         </div>
       </section>
@@ -222,12 +223,12 @@
         </div>
       </section>
 
-      <!-- Featured Research Projects Section (9 Total) -->
+      <!-- Featured Research Projects Section (12 Total) -->
       <section id="research-projects" class="py-16 bg-slate-800">
         <div class="container mx-auto px-6">
           <h2 class="section-title text-center text-sky-400 mb-1">
             Our Featured Research Projects (<span class="text-white"
-              >9 Total</span
+              >12 Total</span
             >)
           </h2>
           <p class="section-subtitle">
@@ -235,9 +236,9 @@
             initiatives, covering Edge AI, CV, GPU optimization, and LLMs.
           </p>
 
-          <!-- Projects Grid (3x3 Layout) -->
+          <!-- Projects Grid (3x4 Layout for 12 items) -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Project 1: GPU Acceleration for Visual Search, Retrieval, and Detection -->
+            <!-- Project 1: GPU Acceleration for Visual Search, Retrieval, and Detection (Original) -->
             <div class="content-card">
               <div class="responsive-media-container mb-4">
                 <!-- Placeholder for find_obj.png -->
@@ -265,13 +266,14 @@
               >
             </div>
 
-            <!-- Project 2: Agentic Compute on GPU -->
+            <!-- Project 2: Agentic Compute on GPU (Original) -->
             <div class="content-card">
               <div class="responsive-media-container mb-4">
                 <img
                   src="nsight.png"
                   alt="Agentic Compute on GPU"
                   class="rounded-lg shadow-md w-full h-full object-cover"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x337/334155/e2e8f0?text=Project+2+Agentic+Compute';"
                 />
               </div>
               <h4 class="text-xl font-bold text-sky-400 mb-2">
@@ -299,10 +301,85 @@
               </div>
             </div>
 
-            <!-- Project 3: Voice LLM on Jetson Orin -->
+            <!-- Project 3: NEW - Softmax Benchmarking on RTX GPU -->
             <div class="content-card">
               <div class="responsive-media-container mb-4">
-                <!-- Placeholder for voice_llm_demo.mp4 -->
+                <img
+                  src="softmax.png"
+                  alt="Softmax Benchmarking on RTX GPU"
+                  class="rounded-lg shadow-md w-full h-full object-cover"
+                />
+              </div>
+              <h4 class="text-xl font-bold text-sky-400 mb-2">
+                3. Softmax Benchmarking on RTX GPU
+              </h4>
+              <p class="text-slate-300 text-sm flex-grow">
+                Detailed performance analysis and optimization of various
+                Softmax kernel implementations for NVIDIA RTX GPUs, focusing on
+                CUDA performance for machine learning layers.
+              </p>
+              <a
+                href="https://github.com/intelav/cuda-softmax-bench"
+                target="_blank"
+                class="text-sky-400 font-semibold text-sm mt-3 inline-block hover:underline"
+                >View on GitHub &rarr;</a
+              >
+            </div>
+
+            <!-- Project 4: NEW - GEMM Benchmarking on RTX GPU -->
+            <div class="content-card">
+              <div class="responsive-media-container mb-4">
+                <img
+                  src="gemm.png"
+                  alt="GEMM Benchmarking on RTX GPU"
+                  class="rounded-lg shadow-md w-full h-full object-cover"
+                />
+              </div>
+              <h4 class="text-xl font-bold text-sky-400 mb-2">
+                4. GEMM Benchmarking on RTX GPU
+              </h4>
+              <p class="text-slate-300 text-sm flex-grow">
+                General Matrix Multiply (GEMM) performance investigation on RTX
+                GPUs, utilizing CUDA Tensor Cores for highly accelerated linear
+                algebra operations critical for deep learning inference.
+              </p>
+              <a
+                href="embedded_research.html"
+                class="text-sky-400 font-semibold text-sm mt-3 inline-block hover:underline"
+                >Explore Research &rarr;</a
+              >
+            </div>
+
+            <!-- Project 5: NEW - Satellite Change Detection using Change Star on Copernicus Dataset -->
+            <div class="content-card">
+              <div class="responsive-media-container mb-4">
+                <img
+                  src="chgdet.png"
+                  alt="Satellite Change Detection"
+                  class="rounded-lg shadow-md w-full h-full object-cover"
+                />
+              </div>
+              <h4 class="text-xl font-bold text-sky-400 mb-2">
+                5. Satellite Change Detection using Change Star on Copernicus
+                Dataset
+              </h4>
+              <p class="text-slate-300 text-sm flex-grow">
+                Applied research in detecting land cover changes using the
+                ChangeStar model, fine-tuned and evaluated on the
+                high-resolution Copernicus Sentinel-2 satellite imagery.
+              </p>
+              <a
+                href="https://github.com/intelav/SentinelChange-AI"
+                target="_blank"
+                class="text-sky-400 font-semibold text-sm mt-3 inline-block hover:underline"
+                >View on GitHub &rarr;</a
+              >
+            </div>
+
+            <!-- Project 6: SHIFTED - Voice LLM on Jetson Orin (Original Project 3) -->
+            <div class="content-card">
+              <div class="responsive-media-container mb-4">
+                <!-- Original Project 3 Video -->
                 <video
                   src="voice_llm_demo.mp4"
                   autoplay
@@ -310,11 +387,11 @@
                   muted
                   playsinline
                   class="rounded-lg shadow-md w-full h-full object-cover"
-                  onerror="this.onerror=null; this.src='https://placehold.co/600x337/1e293b/ffffff?text=Project+3+LLM+Demo';"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x337/1e293b/ffffff?text=Project+6+LLM+Demo';"
                 ></video>
               </div>
               <h4 class="text-xl font-bold text-sky-400 mb-2">
-                3. Voice LLM on Jetson Orin
+                6. Voice LLM on Jetson Orin
               </h4>
               <p class="text-slate-300 text-sm flex-grow">
                 Development and deployment of a full, low-latency conversational
@@ -329,9 +406,10 @@
               >
             </div>
 
-            <!-- Project 4: Visual Display of Annotated Objects using Unity and Cesium for Smart Urban Planning (UPDATED) -->
+            <!-- Project 7: SHIFTED - Visual Display of Annotated Objects (Original Project 4) -->
             <div class="content-card">
               <div class="responsive-media-container mb-4">
+                <!-- YouTube Link for Project 4 (now 7) -->
                 <iframe
                   width="100%"
                   height="100%"
@@ -340,11 +418,11 @@
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
                   class="rounded-lg shadow-md"
-                  title="Project 4 - Visual Display of Annotated Objects"
+                  title="Project 7 - Visual Display of Annotated Objects"
                 ></iframe>
               </div>
               <h4 class="text-xl font-bold text-sky-400 mb-2">
-                4. Visual Display of Annotated Objects using Unity and Cesium
+                7. Visual Display of Annotated Objects using Unity and Cesium
                 for Smart Urban Planning
               </h4>
               <p class="text-slate-300 text-sm flex-grow">
@@ -359,9 +437,10 @@
               >
             </div>
 
-            <!-- Project 5: Satellite Image Annotator (UPDATED) -->
+            <!-- Project 8: SHIFTED - Satellite Image Annotator (Original Project 5) -->
             <div class="content-card">
               <div class="responsive-media-container mb-4">
+                <!-- YouTube Link for Project 5 (now 8) -->
                 <iframe
                   width="100%"
                   height="100%"
@@ -370,11 +449,11 @@
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
                   class="rounded-lg shadow-md"
-                  title="Project 5 - Satellite Image Annotator"
+                  title="Project 8 - Satellite Image Annotator"
                 ></iframe>
               </div>
               <h4 class="text-xl font-bold text-sky-400 mb-2">
-                5. Satellite Image Annotator
+                8. Satellite Image Annotator
               </h4>
               <p class="text-slate-300 text-sm flex-grow">
                 A specialized, web-based tool for efficiently labeling,
@@ -388,9 +467,10 @@
               >
             </div>
 
-            <!-- Project 6: GPU Programming Learning Hub (UPDATED) -->
+            <!-- Project 9: SHIFTED - GPU Programming Learning Hub (Original Project 6) -->
             <div class="content-card">
               <div class="responsive-media-container mb-4">
+                <!-- YouTube Link for Project 6 (now 9) -->
                 <iframe
                   width="100%"
                   height="100%"
@@ -399,11 +479,11 @@
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
                   class="rounded-lg shadow-md"
-                  title="Project 6 - GPU Programming Learning Hub"
+                  title="Project 9 - GPU Programming Learning Hub"
                 ></iframe>
               </div>
               <h4 class="text-xl font-bold text-sky-400 mb-2">
-                6. GPU Programming Learning Hub
+                9. GPU Programming Learning Hub
               </h4>
               <p class="text-slate-300 text-sm flex-grow">
                 An open-source resource focused on advanced GPU programming
@@ -417,22 +497,23 @@
               >
             </div>
 
-            <!-- Project 7: Smartpurchase as an AI assistant for retail (UPDATED) -->
+            <!-- Project 10: SHIFTED - Smartpurchase as an AI assistant for retail (Original Project 7) -->
             <div class="content-card">
               <div class="responsive-media-container mb-4">
+                <!-- YouTube Link for Project 7 (now 10) -->
                 <iframe
                   width="100%"
                   height="100%"
                   src="https://www.youtube.com/embed/wqSR-2ARQZc"
                   frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-picture"
                   allowfullscreen
                   class="rounded-lg shadow-md"
-                  title="Project 7 - Smartpurchase AI Assistant"
+                  title="Project 10 - Smartpurchase AI Assistant"
                 ></iframe>
               </div>
               <h4 class="text-xl font-bold text-sky-400 mb-2">
-                7. Smartpurchase as an AI assistant for retail
+                10. Smartpurchase as an AI assistant for retail
               </h4>
               <p class="text-slate-300 text-sm flex-grow">
                 An early full-stack prototype demonstrating how Computer Vision
@@ -447,10 +528,10 @@
               >
             </div>
 
-            <!-- Project 8: Multi-Barcode Detection (Real-time CV) -->
+            <!-- Project 11: SHIFTED - Multi-Barcode Detection (Real-time CV) (Original Project 8) -->
             <div class="content-card">
               <div class="responsive-media-container mb-4">
-                <!-- Placeholder for shopping_ai_video.mp4 -->
+                <!-- Original Project 8 Video -->
                 <video
                   src="shopping_ai_video.mp4"
                   autoplay
@@ -458,11 +539,11 @@
                   muted
                   playsinline
                   class="rounded-lg shadow-md w-full h-full object-cover"
-                  onerror="this.onerror=null; this.src='https://placehold.co/600x337/1e293b/ffffff?text=Project+8+Barcode+Video';"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x337/1e293b/ffffff?text=Project+11+Barcode+Video';"
                 ></video>
               </div>
               <h4 class="text-xl font-bold text-sky-400 mb-2">
-                8. Multi-Barcode Detection (Real-time CV)
+                11. Multi-Barcode Detection (Real-time CV)
               </h4>
               <p class="text-slate-300 text-sm flex-grow">
                 Our AI quickly scans and identifies multiple products, forming
@@ -476,10 +557,10 @@
               >
             </div>
 
-            <!-- Project 9: AR Engagement Use Case -->
+            <!-- Project 12: SHIFTED - AR Engagement Use Case (Original Project 9) -->
             <div class="content-card">
               <div class="responsive-media-container mb-4">
-                <!-- Placeholder for ar_video.mp4 -->
+                <!-- Original Project 9 Video -->
                 <video
                   src="ar_video.mp4"
                   autoplay
@@ -487,11 +568,11 @@
                   muted
                   playsinline
                   class="rounded-lg shadow-md w-full h-full object-cover"
-                  onerror="this.onerror=null; this.src='https://placehold.co/600x337/1e293b/ffffff?text=Project+9+AR+Video';"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x337/1e293b/ffffff?text=Project+12+AR+Video';"
                 ></video>
               </div>
               <h4 class="text-xl font-bold text-sky-400 mb-2">
-                9. AR Engagement Use Case
+                12. AR Engagement Use Case
               </h4>
               <p class="text-slate-300 text-sm flex-grow">
                 Engage customers with interactive Augmented Reality experiences,
@@ -508,7 +589,7 @@
         </div>
       </section>
 
-      <!-- Our Research Focus Section -->
+      <!-- Our Research Focus Section (no changes here) -->
       <section id="focus-areas" class="py-16">
         <div class="container mx-auto px-6">
           <h2 class="section-title text-sky-400">Our Research Focus</h2>
@@ -595,7 +676,7 @@
           initiative — not a commercial startup.
         </p>
         <p>
-          &copy; 2025 Svaraikyam Research Lab. All Rights Reserved. |
+          &copy; 2025 Svaraikyam Research Lab (SRL). All Rights Reserved. |
           <a
             href="about-contact.html"
             class="hover:text-sky-400 transition-colors"
