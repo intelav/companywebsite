@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Svaraikyam AI | Independent Applied Research</title>
+    <title>Svaraikyam Research Lab | Independent Applied Research</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <!-- Font Awesome for Icons -->
@@ -24,6 +24,7 @@
         font-family: "Inter", sans-serif;
         background-color: #0f172a; /* slate-900 */
         color: #f8fafc; /* slate-50 */
+        scroll-behavior: smooth;
       }
       .section-title {
         font-size: 2.5rem;
@@ -33,180 +34,123 @@
         margin-bottom: 1rem;
       }
       .section-subtitle {
-        font-size: 1.125rem;
-        color: #cbd5e1; /* slate-300 */
+        font-size: 1.25rem;
+        color: #94a3b8; /* slate-400 */
         text-align: center;
-        max-width: 48rem;
+        margin-bottom: 3rem;
+        max-width: 600px;
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: 4rem;
       }
       .content-card {
         background-color: #1e293b; /* slate-800 */
-        border: 1px solid #334155; /* slate-700 */
+        padding: 1.5rem;
         border-radius: 0.75rem;
-        padding: 2rem;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: 1px solid #334155; /* slate-700 */
+        display: flex;
+        flex-direction: column;
       }
       .content-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
       }
-      .video-responsive {
-        overflow: hidden;
+      /* Custom video style for responsiveness */
+      .responsive-media-container {
         position: relative;
-        width: 100%;
-        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
         border-radius: 0.5rem;
+        background-color: #0f172a;
       }
-      .video-responsive iframe {
+      .responsive-media-container video,
+      .responsive-media-container img,
+      .responsive-media-container iframe {
+        /* Added iframe for embeds */
         position: absolute;
         top: 0;
         left: 0;
-        bottom: 0;
-        right: 0;
         width: 100%;
         height: 100%;
+        object-fit: cover;
       }
-      /* Style for the SmartPurchase preview in index.html (now a standard YouTube embed) */
-      .vertical-video-preview {
-        overflow: hidden;
-        position: relative;
-        width: 100%;
-        padding-top: 56.25%; /* Standard 16:9 Aspect Ratio */
-        border-radius: 0.5rem;
-      }
-      .vertical-video-preview iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-      }
-      .btn-download {
-        display: inline-block;
-        background-color: #22c55e; /* green-500 */
-        color: white;
+      /* Style for the CTA button on Research Focus Section */
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         padding: 0.75rem 1.5rem;
         border-radius: 0.5rem;
         font-weight: 600;
-        text-align: center;
-        margin-top: 1rem;
-        transition: background-color 0.3s ease;
+        transition: all 0.3s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
-      .btn-download:hover {
-        background-color: #16a34a; /* green-600 */
+      .cta-button-primary {
+        background-color: #0ea5e9; /* sky-500 */
+        color: #ffffff;
       }
-      /* Dropdown styles */
-      .dropdown-content {
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
+      .cta-button-primary:hover {
+        background-color: #0284c7; /* sky-600 */
+        transform: translateY(-2px);
       }
-      .group:hover .dropdown-content {
-        opacity: 1;
-        visibility: visible;
+      .cta-button-secondary {
+        background-color: #475569; /* slate-600 */
+        color: #ffffff;
+      }
+      .cta-button-secondary:hover {
+        background-color: #334155; /* slate-700 */
+        transform: translateY(-2px);
       }
     </style>
   </head>
-  <body class="antialiased">
-    <!-- Header -->
-    <header
-      class="bg-slate-900/70 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-800"
-    >
+  <body>
+    <!-- Header/Navigation -->
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-10">
       <nav
         class="container mx-auto px-6 py-4 flex justify-between items-center"
       >
-        <a href="index.html" class="flex items-center space-x-3">
+        <!-- Logo/Brand -->
+        <a href="index.html" class="flex items-center space-x-2">
+          <!-- Placeholder logo for Svaraikyam AI -->
           <img
             src="company_logo.png"
             alt="Svaraikyam AI Logo"
-            class="h-10"
-            onerror="this.onerror=null; this.src='https://placehold.co/100x40/0f172a/ffffff?text=Logo';"
+            class="h-8 w-auto rounded"
+            onerror="this.onerror=null; this.src='https://placehold.co/40x32/e6f2ff/007bff?text=AI';"
           />
-          <span class="text-2xl font-bold text-white">Svaraikyam Research Lab</span>
+          <span class="text-xl font-bold text-white"
+            >Svaraikyam Research Lab</span
+          >
         </a>
-        <!-- Desktop Nav -->
-        <ul class="hidden md:flex items-center space-x-8 text-lg">
+        <!-- Navigation Links -->
+        <ul class="flex space-x-6">
           <li>
             <a
               href="index.html"
-              class="text-sky-400 hover:text-sky-400 transition-colors"
+              class="text-sky-400 font-semibold hover:text-white transition-colors"
               >Home</a
             >
           </li>
-          <!-- Research Projects Dropdown -->
-          <li class="relative group">
-            <a
-              href="#research-projects"
-              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
-            >
-              Research Projects
-              <i class="fas fa-chevron-down text-xs ml-2"></i>
-            </a>
-            <div
-              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
-            >
-              <a
-                href="ai_accelerated_hub.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
-                >AI Accelerated Hub</a
-              >
-              <a
-                href="embedded_research.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >Embedded Research & App</a
-              >
-              <a
-                href="index.html#research-projects"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
-                >Satellite Image Analysis</a
-              >
-            </div>
-          </li>
-          <!-- Services Dropdown -->
-          <li class="relative group">
-            <a
-              href="services.html"
-              class="text-slate-300 hover:text-sky-400 transition-colors flex items-center"
-            >
-              Research Support & Consultancy
-              <i class="fas fa-chevron-down text-xs ml-2"></i>
-            </a>
-            <div
-              class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20"
-            >
-              <a
-                href="services.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-t-lg"
-                >GPU Benchmarking & Optimization</a
-              >
-              <a
-                href="services.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                >Geospatial AI Prototyping</a
-              >
-              <a
-                href="services.html"
-                class="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors rounded-b-lg"
-                >Embedded AI Migration</a
-              >
-            </div>
-          </li>
-          <!-- Blogs Direct Link -->
           <li>
             <a
-              href="blogs.html"
-              class="text-slate-300 hover:text-sky-400 transition-colors"
-              >Blogs</a
+              href="products.html"
+              class="text-slate-300 hover:text-white transition-colors"
+              >Products</a
+            >
+          </li>
+          <li>
+            <a
+              href="embedded-ai-trainings.html"
+              class="text-slate-300 hover:text-white transition-colors"
+              >Trainings</a
             >
           </li>
           <li>
             <a
               href="about-contact.html"
-              class="text-slate-300 hover:text-sky-400 transition-colors"
+              class="text-slate-300 hover:text-white transition-colors"
               >About & Contact</a
             >
           </li>
@@ -215,272 +159,428 @@
     </header>
 
     <main>
-      <!-- Hero Section -->
-      <section class="py-20 text-center">
+      <!-- Hero Section - Svaraikyam Research Lab -->
+      <section id="research-intro" class="py-20 text-center bg-slate-900">
         <div class="container mx-auto px-6">
-          <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">
-            Consultancy for GPU–HPC,AI Model Engineering and Robotics
+          <h1 class="text-5xl md:text-6xl font-extrabold mb-4 text-white">
+            <span class="text-sky-400">Svaraikyam Research Lab</span>
           </h1>
-          <p class="text-xl text-slate-300 mt-4 max-w-3xl mx-auto">
-            Applied research in GPU optimization, Geospatial AI, and Edge
-            Intelligence.
+          <h2 class="text-4xl font-extrabold mb-4 text-white">
+            Pioneering Edge AI & Robotics Research
+          </h2>
+          <p class="text-xl text-slate-300 mb-8 max-w-4xl mx-auto">
+            An independent applied research initiative focused on solving
+            real-world challenges through optimized AI, Computer Vision, and
+            Embedded Systems.
           </p>
+          <a
+            href="embedded_research.html"
+            class="bg-sky-500 hover:bg-sky-600 text-white cta-button"
+            >Explore Our Research &rarr;</a
+          >
         </div>
       </section>
 
-      <!-- Research Projects Section -->
-      <section id="research-projects" class="py-16">
+      <!-- The AI & Robotics Lab Section -->
+      <section id="ai-lab" class="py-16">
         <div class="container mx-auto px-6">
-          <h2 class="section-title">Research Projects</h2>
-          <p class="section-subtitle">
-            A collection of independent experiments and prototypes exploring the
-            future of AI.
-          </p>
-
-          <div class="space-y-16">
-            <!-- Project 1: Agentic Compute on GPU -->
-            <div class="content-card grid md:grid-cols-2 gap-12 items-center">
-              <div class="md:order-1">
-                <img
-                  src="nsight.png"
-                  alt="NVIDIA Nsight Systems Profile of GPU Workload"
-                  class="rounded-lg shadow-lg w-full h-auto border border-sky-600"
-                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=GPU+Profiling+Image';"
-                />
-              </div>
-              <div class="md:order-2">
-                <h3 class="text-3xl font-bold text-sky-400 mb-4">
-                  Agentic Compute on GPU
-                </h3>
-                <p class="text-lg text-slate-300 mb-4">
-                  This evolving Python framework orchestrates AI agents for
-                  Triton, CUDA, CuPy, and cuDF to achieve kernel autotuning and
-                  optimization. It follows the Sense → Think → Act → Learn loop,
-                  integrating profilers (Nsight) and leveraging advanced GPU
-                  primitives to create a single, knowledge-driven GPU research
-                  layer.
-                </p>
-                <div class="mt-4 space-y-3">
-                  <a
-                    href="https://test.pypi.org/project/gpu-agent-opt/"
-                    target="_blank"
-                    class="text-green-400 font-semibold text-lg hover:underline block"
-                  >
-                    <i class="fas fa-box-open mr-2"></i> Download Tool
-                    (TestPyPI)
-                  </a>
-                  <a
-                    href="https://github.com/intelav/gpu-agent-opt"
-                    target="_blank"
-                    class="text-slate-400 font-semibold text-lg hover:underline block"
-                  >
-                    <i class="fab fa-github mr-2"></i> View Source (GitHub)
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Project 2: GPU Acceleration for Visual Search, Retrieval, and Detection -->
-            <div class="content-card grid md:grid-cols-2 gap-12 items-center">
-              <div class="md:order-2">
-                <img
-                  src="find_obj.png"
-                  alt="Detection of Objects in Satellite Image"
-                  class="rounded-lg shadow-lg w-full h-auto border border-sky-600"
-                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=GPU+Profiling+Image';"
-                />
-              </div>
-              <div class="md:order-1">
-                <h3 class="text-3xl font-bold text-sky-400 mb-4">
-                  GPU Acceleration for Visual Search, Retrieval, and Detection
-                </h3>
-                <p class="text-lg text-slate-300 mb-4">
-                  This applied research focuses on optimizing end-to-end vision
-                  pipelines—such as those used for high-throughput satellite
-                  image analysis. By identifying and eliminating Python and
-                  host-side bottlenecks, we ensure maximum GPU utilization for
-                  deep learning models like YOLO and DINOv2.
-                </p>
-                <div class="mt-4 space-y-3">
-                  <a
-                    href="https://github.com/intelav/GeoAccel-AI"
-                    target="_blank"
-                    class="text-sky-400 font-semibold text-lg hover:underline block"
-                  >
-                    <i class="fas fa-file-alt mr-2"></i> View Source (GitHub)
-                    &rarr;
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Project 3 (NEWLY ADDED): Visual Display of Annotated Objects using Unity and Cesium -->
-            <div class="content-card grid md:grid-cols-2 gap-12 items-center">
-              <div class="md:order-1">
-                <!-- Video on the left for desktop -->
-                <div class="video-responsive">
-                  <iframe
-                    src="https://www.youtube.com/embed/JE9Obtd2TlQ"
-                    title="Visual Display of Annotated Objects using Unity and Cesium for Smart Urban Planning"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                  ></iframe>
-                </div>
-              </div>
-              <div class="md:order-2">
-                <!-- Description on the right for desktop -->
-                <h3 class="text-3xl font-bold text-sky-400 mb-4">
-                  Visual Display of Annotated Objects using Unity and Cesium for
-                  Smart Urban Planning
-                </h3>
-                <p class="text-lg text-slate-300 mb-4">
-                  This research explores the fusion of high-fidelity 3D
-                  visualization environments with real-world geospatial data. We
-                  demonstrate a pipeline for taking annotated object data
-                  (detected via AI on satellite imagery) and projecting it onto
-                  a dynamic 3D urban model in Unity, powered by Cesium. This
-                  proof-of-concept enables urban planners and GIS professionals
-                  to visualize, interact with, and analyze annotated
-                  objects—such as buildings, vehicles, or infrastructure—in a
-                  realistic, immersive, and geographically accurate context for
-                  smart city applications.
-                </p>
-                <div class="mt-4 space-y-3">
-                  <span class="text-sm font-normal text-slate-400 block">
-                    <i class="fas fa-cubes mr-2"></i> Technologies: Unity,
-                    Cesium, Geospatial AI
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Project 4 (Original Project 3): Satellite Image Analysis -->
-            <div class="content-card grid md:grid-cols-2 gap-12 items-center">
-              <div class="md:order-2">
-                <div class="video-responsive">
-                  <iframe
-                    src="https://www.youtube.com/embed/v3gq_fhGSlE"
-                    title="Satellite Image Analysis using customized Yolo Model"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                  ></iframe>
-                </div>
-              </div>
-              <div class="md:order-1">
-                <h3 class="text-3xl font-bold text-sky-400 mb-4">
-                  Satellite Image Annotator
-                </h3>
-                <p class="text-lg text-slate-300 mb-4">
-                  This research project leverages models like YOLO and DINOv2
-                  for high-precision object detection and analysis on satellite
-                  imagery. We also use NDWI (Normalized Difference Water Index)
-                  for environmental monitoring and change detection.
-                </p>
-                <a
-                  href="annotation_ui.html"
-                  class="text-sky-400 font-semibold text-lg hover:underline"
-                  >Explore this Project &rarr;</a
-                >
-              </div>
-            </div>
-
-            <!-- Project 5 (Original Project 4): GPU Programming Learning Hub -->
-            <div class="content-card grid md:grid-cols-2 gap-12 items-center">
-              <div class="video-responsive">
-                <iframe
-                  src="https://www.youtube.com/embed/hPXE96qSctc"
-                  title="AI Accelerated YouTube Playlist"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-              </div>
-              <div>
-                <h3 class="text-3xl font-bold text-sky-400 mb-4">
-                  GPU Programming Learning Hub
-                </h3>
-                <p class="text-lg text-slate-300 mb-4">
-                  Explore CUDA programming concepts through our YouTube series
-                  and Jupyter notebooks. Learn how CPU/GPU parallelism, Tensor
-                  Cores, and multi-GPU scaling can optimize AI training for
-                  India’s GPU Mission.
-                </p>
-                <a
-                  href="ai_accelerated_hub.html"
-                  class="text-sky-400 font-semibold text-lg hover:underline"
-                >
-                  Watch the Full Series &rarr;
-                </a>
-              </div>
-            </div>
-
-            <!-- Project 6 (Original Project 5): Embedded AI & Edge Computing -->
-            <div class="content-card grid md:grid-cols-2 gap-12 items-center">
-              <div class="md:order-2">
-                <!-- Updated to use the YouTube embed for SmartPurchase -->
-                <div class="vertical-video-preview">
-                  <iframe
-                    src="https://www.youtube.com/embed/wqSR-2ARQZc"
-                    title="SmartPurchase App Promotion Video"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                  ></iframe>
-                </div>
-              </div>
-              <div class="md:order-1">
-                <h3 class="text-3xl font-bold text-sky-400 mb-4">
-                  Embedded AI & Edge Computing
-                  <span class="text-sm font-normal text-slate-400 block mt-1">
-                    (SmartPurchase App, Voice LLM Prototypes)
-                  </span>
-                </h3>
-                <p class="text-lg text-slate-300 mb-4">
-                  This section contains our research into optimizing AI models
-                  for deployment on edge devices like Android and embedded
-                  systems. It includes early prototypes for real-time object
-                  detection (multi-barcode detection) and voice-enabled LLM
-                  interaction on mobile hardware.
-                </p>
-                <a
-                  href="embedded_research.html"
-                  class="text-sky-400 font-semibold text-lg hover:underline"
-                >
-                  Explore Embedded Research &rarr;
-                </a>
-              </div>
-            </div>
-
-        <!-- Services Section (Existing) -->
-      <section id="services" class="py-16 bg-slate-900/50">
-        <div class="container mx-auto px-6">
-          <div class="content-card grid md:grid-cols-2 gap-12 items-center">
-            <div class="md:order-2">
-              <img
-                src="lab.png"
-                alt="AI Lab Hardware"
-                class="rounded-lg shadow-lg w-full h-auto"
-                onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=AI+Lab+Image';"
-              />
-            </div>
+          <div
+            class="grid md:grid-cols-2 gap-12 items-center bg-slate-800 p-8 rounded-xl shadow-2xl"
+          >
+            <!-- Text Content -->
             <div class="md:order-1">
               <h3 class="text-3xl font-bold text-sky-400 mb-4">
-                AI & Robotics Lab
+                The AI & Robotics Lab: Our R&D Core
               </h3>
               <p class="text-lg text-slate-300 mb-4">
-               Our AI & Robotics Lab is equipped with advanced edge-computing platforms 
-                including <strong>Qualcomm RB3 Gen2</strong>, <strong>RB5</strong>, and 
-                <strong>NVIDIA Jetson Orin</strong> systems. We use these platforms to 
-                design, develop, and optimize real-time robotics workloads such as 
-                perception, navigation, mapping, and sensor fusion.
+                Our AI & Robotics Lab is equipped with advanced edge-computing
+                platforms including
+                <strong class="text-white">Qualcomm RB3 Gen2</strong>,
+                <strong class="text-white">RB5</strong>, and
+                <strong class="text-white">NVIDIA Jetson Orin</strong> systems.
+                We use these platforms to design, develop, and optimize
+                real-time robotics workloads such as perception, navigation,
+                mapping, and sensor fusion.
               </p>
               <a
                 href="ai-lab-details.html"
                 class="text-sky-400 font-semibold text-lg hover:underline"
                 >Discover Our Lab &rarr;</a
               >
+            </div>
+            <!-- Image/Media -->
+            <div class="md:order-2">
+              <!-- Placeholder for 'lab.png' -->
+              <img
+                src="lab.png"
+                alt="AI Robotics Lab Equipment"
+                class="rounded-xl shadow-lg w-full h-auto"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=AI+Lab+Image';"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Research Projects Section (9 Total) -->
+      <section id="research-projects" class="py-16 bg-slate-800">
+        <div class="container mx-auto px-6">
+          <h2 class="section-title text-center text-sky-400 mb-1">
+            Our Featured Research Projects (<span class="text-white"
+              >9 Total</span
+            >)
+          </h2>
+          <p class="section-subtitle">
+            A glance at our most ambitious and challenging applied research
+            initiatives, covering Edge AI, CV, GPU optimization, and LLMs.
+          </p>
+
+          <!-- Projects Grid (3x3 Layout) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1: GPU Acceleration for Visual Search, Retrieval, and Detection -->
+            <div class="content-card">
+              <div class="responsive-media-container mb-4">
+                <!-- Placeholder for find_obj.png -->
+                <img
+                  src="find_obj.png"
+                  alt="Visual Search GPU Acceleration"
+                  class="rounded-lg shadow-md w-full h-full object-cover"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x337/1e293b/ffffff?text=Project+1+GPU+Search';"
+                />
+              </div>
+              <h4 class="text-xl font-bold text-sky-400 mb-2">
+                1. GPU Acceleration for Visual Search, Retrieval, and Detection
+              </h4>
+              <p class="text-slate-300 text-sm flex-grow">
+                High-performance implementation of visual search and object
+                detection pipelines, heavily optimized using GPU acceleration
+                (CUDA/OpenCL) for massive-scale, real-time image retrieval and
+                analysis.
+              </p>
+              <a
+                href="https://github.com/intelav/GeoAccel-AI"
+                target="_blank"
+                class="text-sky-400 font-semibold text-sm mt-3 inline-block hover:underline"
+                >View on GitHub &rarr;</a
+              >
+            </div>
+
+            <!-- Project 2: Agentic Compute on GPU -->
+            <div class="content-card">
+              <div class="responsive-media-container mb-4">
+                <img
+                  src="nsight.png"
+                  alt="Agentic Compute on GPU"
+                  class="rounded-lg shadow-md w-full h-full object-cover"
+                />
+              </div>
+              <h4 class="text-xl font-bold text-sky-400 mb-2">
+                2. Agentic Compute on GPU
+              </h4>
+              <p class="text-slate-300 text-sm flex-grow">
+                Research into parallelizing sophisticated AI agent workflows and
+                decision-making loops directly on the GPU, maximizing throughput
+                for complex, multi-step computational tasks.
+              </p>
+              <div class="mt-3 text-sm space-y-1">
+                <a
+                  href="https://test.pypi.org/project/gpu-agent-opt"
+                  target="_blank"
+                  class="text-sky-400 font-semibold inline-block hover:underline"
+                  >PyPI Link &rarr;</a
+                >
+                <span class="text-slate-500">|</span>
+                <a
+                  href="https://github.com/intelav/gpu-agent-opt"
+                  target="_blank"
+                  class="text-sky-400 font-semibold inline-block hover:underline"
+                  >GitHub &rarr;</a
+                >
+              </div>
+            </div>
+
+            <!-- Project 3: Voice LLM on Jetson Orin -->
+            <div class="content-card">
+              <div class="responsive-media-container mb-4">
+                <!-- Placeholder for voice_llm_demo.mp4 -->
+                <video
+                  src="voice_llm_demo.mp4"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  class="rounded-lg shadow-md w-full h-full object-cover"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x337/1e293b/ffffff?text=Project+3+LLM+Demo';"
+                ></video>
+              </div>
+              <h4 class="text-xl font-bold text-sky-400 mb-2">
+                3. Voice LLM on Jetson Orin
+              </h4>
+              <p class="text-slate-300 text-sm flex-grow">
+                Development and deployment of a full, low-latency conversational
+                AI pipeline—from Voice Activity Detection (VAD) to LLM
+                inference—optimized specifically for the NVIDIA Jetson Orin edge
+                platform.
+              </p>
+              <a
+                href="product-voice-llm.html"
+                class="text-sky-400 font-semibold text-sm mt-3 inline-block hover:underline"
+                >Explore More &rarr;</a
+              >
+            </div>
+
+            <!-- Project 4: Visual Display of Annotated Objects using Unity and Cesium for Smart Urban Planning (UPDATED) -->
+            <div class="content-card">
+              <div class="responsive-media-container mb-4">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/JE9Obtd2TlQ"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  class="rounded-lg shadow-md"
+                  title="Project 4 - Visual Display of Annotated Objects"
+                ></iframe>
+              </div>
+              <h4 class="text-xl font-bold text-sky-400 mb-2">
+                4. Visual Display of Annotated Objects using Unity and Cesium
+                for Smart Urban Planning
+              </h4>
+              <p class="text-slate-300 text-sm flex-grow">
+                Creating high-fidelity, interactive 3D visualizations of urban
+                environments by rendering real-world annotated data over digital
+                twins using the Unity Engine and Cesium 3D geospatial platform.
+              </p>
+              <a
+                href="embedded_research.html"
+                class="text-sky-400 font-semibold text-sm mt-3 inline-block hover:underline"
+                >Explore More &rarr;</a
+              >
+            </div>
+
+            <!-- Project 5: Satellite Image Annotator (UPDATED) -->
+            <div class="content-card">
+              <div class="responsive-media-container mb-4">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/v3gq_fhGSlE"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  class="rounded-lg shadow-md"
+                  title="Project 5 - Satellite Image Annotator"
+                ></iframe>
+              </div>
+              <h4 class="text-xl font-bold text-sky-400 mb-2">
+                5. Satellite Image Annotator
+              </h4>
+              <p class="text-slate-300 text-sm flex-grow">
+                A specialized, web-based tool for efficiently labeling,
+                segmenting, and classifying large-scale satellite and aerial
+                imagery datasets to accelerate computer vision model training.
+              </p>
+              <a
+                href="products.html"
+                class="text-sky-400 font-semibold text-sm mt-3 inline-block hover:underline"
+                >Explore Products &rarr;</a
+              >
+            </div>
+
+            <!-- Project 6: GPU Programming Learning Hub (UPDATED) -->
+            <div class="content-card">
+              <div class="responsive-media-container mb-4">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/hPXE96qSctc"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  class="rounded-lg shadow-md"
+                  title="Project 6 - GPU Programming Learning Hub"
+                ></iframe>
+              </div>
+              <h4 class="text-xl font-bold text-sky-400 mb-2">
+                6. GPU Programming Learning Hub
+              </h4>
+              <p class="text-slate-300 text-sm flex-grow">
+                An open-source resource focused on advanced GPU programming
+                techniques, covering topics like CUDA, OpenCL, Nsight profiling,
+                and TensorRT for hardware-specific AI optimization.
+              </p>
+              <a
+                href="ai_accelerated_hub.html"
+                class="text-sky-400 font-semibold text-sm mt-3 inline-block hover:underline"
+                >Go to Learning Hub &rarr;</a
+              >
+            </div>
+
+            <!-- Project 7: Smartpurchase as an AI assistant for retail (UPDATED) -->
+            <div class="content-card">
+              <div class="responsive-media-container mb-4">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/wqSR-2ARQZc"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  class="rounded-lg shadow-md"
+                  title="Project 7 - Smartpurchase AI Assistant"
+                ></iframe>
+              </div>
+              <h4 class="text-xl font-bold text-sky-400 mb-2">
+                7. Smartpurchase as an AI assistant for retail
+              </h4>
+              <p class="text-slate-300 text-sm flex-grow">
+                An early full-stack prototype demonstrating how Computer Vision
+                and Generative AI can transform the shopping experience.
+                Features include personalized discounts, AI-driven shop
+                management, and enhanced product exploration.
+              </p>
+              <a
+                href="embedded_research.html"
+                class="text-sky-400 font-semibold text-sm mt-3 inline-block hover:underline"
+                >Explore Research &rarr;</a
+              >
+            </div>
+
+            <!-- Project 8: Multi-Barcode Detection (Real-time CV) -->
+            <div class="content-card">
+              <div class="responsive-media-container mb-4">
+                <!-- Placeholder for shopping_ai_video.mp4 -->
+                <video
+                  src="shopping_ai_video.mp4"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  class="rounded-lg shadow-md w-full h-full object-cover"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x337/1e293b/ffffff?text=Project+8+Barcode+Video';"
+                ></video>
+              </div>
+              <h4 class="text-xl font-bold text-sky-400 mb-2">
+                8. Multi-Barcode Detection (Real-time CV)
+              </h4>
+              <p class="text-slate-300 text-sm flex-grow">
+                Our AI quickly scans and identifies multiple products, forming
+                the foundation of a rapid, intelligent checkout or inventory
+                process for the retail environment.
+              </p>
+              <a
+                href="product-virtual-sales-agent.html"
+                class="text-sky-400 font-semibold text-sm mt-3 inline-block hover:underline"
+                >Explore Use Case &rarr;</a
+              >
+            </div>
+
+            <!-- Project 9: AR Engagement Use Case -->
+            <div class="content-card">
+              <div class="responsive-media-container mb-4">
+                <!-- Placeholder for ar_video.mp4 -->
+                <video
+                  src="ar_video.mp4"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  class="rounded-lg shadow-md w-full h-full object-cover"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x337/1e293b/ffffff?text=Project+9+AR+Video';"
+                ></video>
+              </div>
+              <h4 class="text-xl font-bold text-sky-400 mb-2">
+                9. AR Engagement Use Case
+              </h4>
+              <p class="text-slate-300 text-sm flex-grow">
+                Engage customers with interactive Augmented Reality experiences,
+                triggered by product recognition. This illustrates advanced
+                multimodal interaction.
+              </p>
+              <a
+                href="product-virtual-sales-agent.html"
+                class="text-sky-400 font-semibold text-sm mt-3 inline-block hover:underline"
+                >Explore Use Case &rarr;</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Our Research Focus Section -->
+      <section id="focus-areas" class="py-16">
+        <div class="container mx-auto px-6">
+          <h2 class="section-title text-sky-400">Our Research Focus</h2>
+          <p class="section-subtitle">
+            Targeting key technological pillars for the future of embedded and
+            decentralized artificial intelligence.
+          </p>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Focus Area 1: Embedded AI Optimization -->
+            <div class="content-card">
+              <i class="fas fa-battery-half text-sky-400 text-4xl mb-4"></i>
+              <h3 class="text-xl font-bold text-white mb-2">
+                Embedded AI Optimization
+              </h3>
+              <p class="text-slate-300 text-sm">
+                Developing highly efficient AI models for resource-constrained
+                edge devices (ARM, RISC-V), ensuring maximum performance with
+                minimal latency.
+              </p>
+            </div>
+
+            <!-- Focus Area 2: Intelligent Robotics -->
+            <div class="content-card">
+              <i class="fas fa-cogs text-sky-400 text-4xl mb-4"></i>
+              <h3 class="text-xl font-bold text-white mb-2">
+                Intelligent Robotics
+              </h3>
+              <p class="text-slate-300 text-sm">
+                Researching sensor fusion, real-time SLAM, and autonomous
+                navigation algorithms for advanced robotic systems using
+                platforms like Qualcomm and NVIDIA Jetson.
+              </p>
+            </div>
+
+            <!-- Focus Area 3: Generative AI Applications -->
+            <div class="content-card">
+              <i class="fas fa-comments text-sky-400 text-4xl mb-4"></i>
+              <h3 class="text-xl font-bold text-white mb-2">
+                Generative AI Applications
+              </h3>
+              <p class="text-slate-300 text-sm">
+                Exploring practical applications of LLMs and multimodal models
+                in domains like commerce, education, and human-computer
+                interaction.
+              </p>
+            </div>
+
+            <!-- Focus Area 4: Accelerate Your Expertise (CTA) -->
+            <div
+              class="content-card bg-sky-900/50 border-sky-600 border-2 border-dashed flex flex-col justify-center items-center text-center p-6"
+            >
+              <h3 class="text-xl font-bold text-white mb-4">
+                Accelerate Your Expertise
+              </h3>
+              <p class="text-slate-200 text-sm mb-6">
+                Access our specialized technical trainings and open-source hub.
+              </p>
+              <div class="flex flex-col space-y-4 w-full">
+                <a
+                  href="embedded-ai-trainings.html"
+                  class="cta-button cta-button-primary"
+                >
+                  View Specialized Trainings
+                </a>
+                <a
+                  href="ai_accelerated_hub.html"
+                  class="cta-button cta-button-secondary"
+                >
+                  Go to AI Accelerated Hub
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -491,10 +591,17 @@
     <footer class="bg-slate-900 border-t border-slate-800">
       <div class="container mx-auto px-6 py-8 text-center text-slate-400">
         <p class="text-sm mb-2">
-          AI Fusion (SvarAikyam Research Lab) is an independent applied research
+          AI Fusion (Svaraikyam Research Lab) is an independent applied research
           initiative — not a commercial startup.
         </p>
-        <p>&copy; 2025 Svaraikyam Research Lab. All Rights Reserved.</p>
+        <p>
+          &copy; 2025 Svaraikyam Research Lab. All Rights Reserved. |
+          <a
+            href="about-contact.html"
+            class="hover:text-sky-400 transition-colors"
+            >Contact</a
+          >
+        </p>
       </div>
     </footer>
   </body>
