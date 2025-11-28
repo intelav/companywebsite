@@ -21,6 +21,313 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
+
+    <!-- FIREBASE SDK IMPORTS  -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+      import {
+        getAuth,
+        signInAnonymously,
+        signInWithCustomToken,
+        onAuthStateChanged,
+      } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+      import {
+        getFirestore,
+        doc,
+        getDoc,
+        updateDoc,
+        setDoc,
+        increment,
+        onSnapshot,
+      } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+      // setLogLevel is not imported from the specific path in your script, but we'll include it for debug control if available.
+      // import { setLogLevel } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+
+      // --- CONFIGURATION LOADING ---
+      // Hardcoded config is used as a fallback if the environment variables are not present.
+      const hardcodedConfig = {
+        apiKey: "AIzaSyAtc4tGXWIhPRnCcSZY_Zf7030RcjaZ2zA",
+        authDomain: "svaraikyam-labs.firebaseapp.com",
+        projectId: "svaraikyam-labs",
+        storageBucket: "svaraikyam-labs.firebasestorage.app",
+        messagingSenderId: "914020808014",
+        appId: "1:914020808014:web:8f2c5dc99dbb240e5a5a1f",
+        measurementId: "G-MJYY25HCRB",
+      };
+
+      const firebaseConfig =
+        typeof __firebase_config !== "undefined"
+          ? JSON.parse(__firebase_config)
+          : hardcodedConfig;
+
+      const envAppId =
+        typeof __app_id !== "undefined" ? __app_id : firebaseConfig.projectId;
+      const initialAuthToken =
+        typeof __initial_auth_token !== "undefined"
+          ? __initial_auth_token
+          : null;
+      // -----------------------------
+
+      const appId = envAppId || "default-app-id";
+
+      let app, db, auth;
+      const globalCounterElement = document.getElementById("visitor-counter");
+      const userAccessCounterElement = document.getElementById(
+        "user-access-counter"
+      );
+
+      if (!firebaseConfig.apiKey) {
+        console.error(
+          "Firebase configuration is missing. The visitor counter will not function."
+        );
+        globalCounterElement.textContent = "Config Error";
+        userAccessCounterElement.textContent = "Config Error";
+        // Do not return here to allow the rest of the script to execute (better for debugging)
+      }
+
+      // Initialize Firebase App and Services (using the environment or hardcoded config)
+      try {
+        app = initializeApp(firebaseConfig);
+        db = getFirestore(app);
+        auth = getAuth(app);
+        // If setLogLevel is available, uncomment: setLogLevel("error");
+        console.log("Firebase Initialized.");
+      } catch (e) {
+        console.error(
+          "Could not initialize Firebase. Counter functionality will be unavailable.",
+          e
+        );
+        globalCounterElement.textContent = "DB Error";
+        userAccessCounterElement.textContent = "DB Error";
+        // Set db and auth to null to prevent errors in subsequent functions
+        db = null;
+        auth = null;
+      }
+
+      // Define Firestore Paths using the Canvas Environment standard
+      // Public Counter Path: /site_data/total_unique_visitors (simple global path for public data)
+      const GLOBAL_COUNTER_DOC_PATH = "site_data/total_unique_visitors";
+
+      // Private User Access Counter Path: /artifacts/{appId}/users/{userId}/user_data/access_counter
+      function getUserAccessDocRef(userId) {
+        if (!db) return null;
+        return doc(
+          db,
+          "artifacts",
+          appId,
+          "users",
+          userId,
+          "user_data",
+          "access_counter"
+        );
+      }
+
+      // Public Unique Visitor Tracking Path: /artifacts/{appId}/public/data/user_visits/{userId}
+      // This collection is used to track unique users (regardless of session)
+      function getPublicUserVisitDocRef(userId) {
+        if (!db) return null;
+        return doc(
+          db,
+          "artifacts",
+          appId,
+          "public/data",
+          "user_visits",
+          userId
+        );
+      }
+
+      const GLOBAL_COUNTER_DOC_REF = db
+        ? doc(db, GLOBAL_COUNTER_DOC_PATH)
+        : null;
+
+      // Use exponential backoff for retries
+      const MAX_RETRIES = 5;
+      const initialDelay = 1000; // 1 second
+
+      async function attemptFetch(operation, ...args) {
+        for (let i = 0; i < MAX_RETRIES; i++) {
+          try {
+            return await operation(...args);
+          } catch (error) {
+            // Only retry on network errors or transient backend issues
+            if (
+              error.code &&
+              (error.code === "unavailable" || error.code === "internal")
+            ) {
+              const delay =
+                initialDelay * Math.pow(2, i) + Math.random() * 1000;
+              await new Promise((resolve) => setTimeout(resolve, delay));
+            } else {
+              throw error; // Re-throw non-retryable errors
+            }
+          }
+        }
+        throw new Error("Max retries reached.");
+      }
+
+      async function updateVisitorCounter(user) {
+        if (!db || !GLOBAL_COUNTER_DOC_REF) return; // Guard against uninitialized DB/Refs
+
+        const userId = user.uid;
+        const userVisitDocRef = getPublicUserVisitDocRef(userId);
+        const userAccessDocRef = getUserAccessDocRef(userId);
+
+        if (!userVisitDocRef || !userAccessDocRef) return;
+
+        try {
+          // 1. Check if this user has ever been counted as a UNIQUE visitor
+          const visitSnapshot = await attemptFetch(getDoc, userVisitDocRef);
+          const hasVisitedBefore = visitSnapshot.exists();
+
+          if (!hasVisitedBefore) {
+            // A. NEW UNIQUE USER: Increment Global Counter and Initialize User's Visit Doc
+
+            // 1. Mark user as visited in the public user_visits collection
+            await attemptFetch(setDoc, userVisitDocRef, {
+              visitedAt: new Date().toISOString(),
+              // accessCount is now tracked separately and initialized below
+            });
+
+            // 2. Increment the global unique counter
+            await attemptFetch(updateDoc, GLOBAL_COUNTER_DOC_REF, {
+              count: increment(1),
+            });
+          }
+
+          // 2. RETURNING or NEW USER: Increment Private User Access Count (runs on every load)
+          // This logic now runs for *every* authenticated user/session load.
+          await attemptFetch(
+            setDoc,
+            userAccessDocRef,
+            {
+              access_count: increment(1),
+              lastAccessed: new Date().toISOString(),
+            },
+            { merge: true }
+          );
+        } catch (error) {
+          // Handle the initial creation of the global counter document gracefully.
+          if (
+            error.code === "not-found" &&
+            error.message.includes(GLOBAL_COUNTER_DOC_REF.path)
+          ) {
+            // Attempt to create the GLOBAL document with initial count 1 (only if it truly doesn't exist)
+            try {
+              await attemptFetch(setDoc, GLOBAL_COUNTER_DOC_REF, { count: 1 });
+            } catch (e) {
+              console.error(
+                "Error setting initial global counter document:",
+                e
+              );
+            }
+          }
+          console.error("Error updating visitor/access counter logic:", error);
+        }
+      }
+
+      function displayCurrentCount(count) {
+        if (globalCounterElement) {
+          globalCounterElement.textContent = count.toLocaleString("en-US");
+        }
+      }
+
+      function displayCurrentUserCount(count) {
+        if (userAccessCounterElement) {
+          userAccessCounterElement.textContent = count.toLocaleString("en-US");
+        }
+      }
+
+      function listenForGlobalCountChanges() {
+        if (!db || !GLOBAL_COUNTER_DOC_REF) return; // Guard against uninitialized DB/Refs
+
+        // Using onSnapshot for real-time updates of the total unique count
+        onSnapshot(
+          GLOBAL_COUNTER_DOC_REF,
+          (docSnapshot) => {
+            if (docSnapshot.exists()) {
+              const data = docSnapshot.data();
+              // The public count field is named 'count'
+              displayCurrentCount(data.count || 0);
+            } else {
+              displayCurrentCount(0); // If the document doesn't exist yet
+            }
+          },
+          (error) => {
+            console.error("Error fetching real-time total count:", error);
+            displayCurrentCount("Err");
+          }
+        );
+      }
+
+      function listenForUserCountChanges(userId) {
+        if (!db) return; // Guard against uninitialized DB
+        const userAccessDocRef = getUserAccessDocRef(userId);
+        if (!userAccessDocRef) return;
+
+        // Using onSnapshot for real-time updates of the current user's access count
+        onSnapshot(
+          userAccessDocRef,
+          (docSnapshot) => {
+            if (docSnapshot.exists()) {
+              const data = docSnapshot.data();
+              // The private count field is named 'access_count'
+              displayCurrentUserCount(data.access_count || 0);
+            } else {
+              displayCurrentUserCount(0);
+            }
+          },
+          (error) => {
+            console.error("Error fetching real-time user count:", error);
+            displayCurrentUserCount("Err");
+          }
+        );
+      }
+
+      // --- INITIALIZATION AND AUTHENTICATION ---
+      async function initAuthAndCounters() {
+        if (!db || !auth) return;
+
+        // 1. Start listening for the public global UNIQUE count immediately
+        listenForGlobalCountChanges();
+
+        // Set initial states
+        globalCounterElement.textContent = "...";
+        userAccessCounterElement.textContent = "...";
+
+        // 2. Attempt Sign In (prefer custom token, fall back to anonymous)
+        try {
+          if (initialAuthToken) {
+            await signInWithCustomToken(auth, initialAuthToken);
+          } else {
+            await signInAnonymously(auth);
+          }
+        } catch (error) {
+          console.error("Error during initial sign-in attempt:", error);
+          // We still proceed to onAuthStateChanged even if sign-in failed,
+          // as it will fire with a null user if it failed.
+        }
+
+        // 3. Listen for Auth State Change to execute counter logic
+        onAuthStateChanged(auth, async (user) => {
+          if (user) {
+            // User is authenticated
+            const userId = user.uid;
+
+            // A. Start listening for the CURRENT USER's private access count
+            listenForUserCountChanges(userId);
+
+            // B. Run the logic to check and increment the counts
+            await updateVisitorCounter(user);
+          } else {
+            // User is not signed in or sign-in failed
+            displayCurrentUserCount("N/A");
+            console.log("Authentication failed or user signed out.");
+          }
+        });
+      }
+
+      initAuthAndCounters();
+    </script>
     <style>
       /* Custom styles for the page */
       body {
@@ -440,7 +747,7 @@
               <a
                 href="embedded_research.html"
                 class="text-sky-400 font-semibold text-sm mt-3 inline-block hover:underline"
-                >Explore More &rarr;</a
+                >Explore Research &rarr;</a
               >
             </div>
 
@@ -675,21 +982,44 @@
       </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer - VISITOR COUNTER ADDED HERE -->
     <footer class="bg-slate-900 border-t border-slate-800">
-      <div class="container mx-auto px-6 py-8 text-center text-slate-400">
-        <p class="text-sm mb-2">
-          AI Fusion (Svaraikyam Research Lab) is an independent applied research
-          initiative — not a commercial startup.
-        </p>
-        <p>
-          &copy; 2025 Svaraikyam Research Lab (SRL). All Rights Reserved. |
-          <a
-            href="about-contact.html"
-            class="hover:text-sky-400 transition-colors"
-            >Contact</a
+      <div
+        class="container mx-auto px-6 py-4 text-center text-slate-400 flex flex-col sm:flex-row justify-between items-center"
+      >
+        <!-- Left Footer Content -->
+        <div>
+          <p class="text-sm mb-2 sm:mb-0">
+            AI Fusion (Svaraikyam Research Lab) is an independent applied
+            research initiative — not a commercial startup.
+          </p>
+          <p>
+            &copy; 2025 Svaraikyam Research Lab (SRL). All Rights Reserved. |
+            <a
+              href="about-contact.html"
+              class="hover:text-sky-400 transition-colors"
+              >Contact</a
+            >
+          </p>
+        </div>
+
+        <!-- Visitor Counter Displays (UPDATED) -->
+        <div
+          class="mt-4 sm:mt-0 text-xs sm:text-sm flex flex-col space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0"
+        >
+          <div
+            class="flex items-center space-x-2 justify-center sm:justify-start"
           >
-        </p>
+            <i class="fas fa-users text-sky-400"></i>
+            <span class="font-semibold text-white">Total Unique Visitors:</span>
+            <span id="visitor-counter" class="text-sky-400 font-bold text-lg"
+              >0</span
+            >
+          </div>
+           
+            <span id="visitor-status" class="hidden"></span>
+          </div>
+        </div>
       </div>
     </footer>
   </body>

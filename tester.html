@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Firebase Counter Logic Implementation (Modified for Single Public Counter)
+    </title>
+    <!-- Load Tailwind CSS for modern styling (Note: Use compiled CSS for production deployment) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f7fafc;
+        min-height: 100vh;
+      }
+      .container {
+        max-width: 900px;
+      }
+      .counter-box {
+        background-color: #f0f9ff; /* sky-50 */
+        border: 1px solid #e0f2fe; /* sky-100 */
+      }
+    </style>
+  </head>
+  <body class="p-4 sm:p-8 flex justify-center items-start">
+    <div class="container bg-white shadow-xl rounded-lg p-6 sm:p-8 mt-10">
+      <h1 class="3xl font-bold text-gray-900 mb-6 border-b pb-2">
+        Firebase Counter Logic Test - MODIFIED (Single Counter)
+      </h1>
+
+      <div id="results" class="space-y-6">
+        <div
+          id="status-card"
+          class="p-4 rounded-lg shadow-md transition duration-300 ease-in-out bg-gray-100"
+        >
+          <p class="text-lg font-semibold text-gray-800">
+            Auth Status:
+            <span id="auth-status" class="text-yellow-600"
+              >Initializing...</span
+            >
+          </p>
+          <p class="text-sm mt-2 text-gray-600">
+            User ID (UID):
+            <code
+              id="user-id"
+              class="font-mono bg-gray-200 px-2 py-1 rounded text-gray-700 break-all"
+              >Awaiting authentication...</code
+            >
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Global Counter Display (Maps to unique_visitors field in your Stats/visitors doc) -->
+          <div class="counter-box p-4 rounded-lg shadow">
+            <p class="text-sm font-medium text-sky-600">
+              Total Unique Visitors (from site_data/total_unique_visitors)
+            </p>
+            <p
+              id="global-counter"
+              class="text-3xl font-extrabold text-sky-900 mt-1"
+            >
+              --
+            </p>
+          </div>
+          <!-- Private Counter Display (Removed logic due to security conflict, showing placeholder) -->
+          <div class="counter-box p-4 rounded-lg shadow">
+            <p class="text-sm font-medium text-indigo-600">
+              Your Total Accesses
+            </p>
+            <p
+              id="private-counter"
+              class="text-3xl font-extrabold text-indigo-900 mt-1"
+            >
+              N/A (Requires Private Path)
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="bg-red-50 border-l-4 border-red-500 text-red-800 p-4 rounded-md text-sm"
+        >
+          <p class="font-semibold mb-2">IMPORTANT NOTE:</p>
+          <p>
+            The **"Your Total Accesses"** logic was removed as it requires a
+            private database path (`/users/{userId}/...`) which conflicts with
+            your current public `Stats/visitors` structure. This file now only
+            implements and tracks the **Total Unique Visitors** to your
+            document.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Firebase SDK Imports (using module for modern approach) -->
+    <script type="module">
+      // Using a slightly different Firebase CDN version (v12.6.0) known for better compatibility
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+      import {
+        getAuth,
+        signInAnonymously,
+        signInWithCustomToken,
+        onAuthStateChanged,
+      } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+      import {
+        getFirestore,
+        doc,
+        getDoc,
+        setDoc,
+        increment,
+        onSnapshot,
+      } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+      import { setLogLevel } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+
+      console.log("DEBUG: All Firebase modules imported successfully."); // New log to confirm imports passed
+
+      // --- HARDCODED CONFIGURATION (ALWAYS USED AS PRIMARY) ---
+      // This ensures the page works even when Canvas globals are not present or invalid.
+      let firebaseConfig = {
+        apiKey: "AIzaSyAtc4tGXWIhPRnCcSZY_Zf7030RcjaZ2zA",
+        authDomain: "svaraikyam-labs.firebaseapp.com",
+        projectId: "svaraikyam-labs",
+        storageBucket: "svaraikyam-labs.firebasestorage.app",
+        messagingSenderId: "914020808014",
+        appId: "1:914020808014:web:8f2c5dc99dbb240e5a5a1f",
+        measurementId: "G-MJYY25HCRB",
+      };
+
+      // Use Canvas-provided token if available
+      const initialAuthToken =
+        typeof __initial_auth_token !== "undefined"
+          ? __initial_auth_token
+          : null;
+      // ------------------------------------------------------------------
+
+      const authStatusElement = document.getElementById("auth-status");
+      const userIdElement = document.getElementById("user-id");
+      const statusCard = document.getElementById("status-card");
+      const globalCounterElement = document.getElementById("global-counter");
+
+      let db = null;
+      let auth = null;
+
+      /**
+       * Handles the 'Total Unique Visitors' counter (increments only once per user).
+       */
+      async function updateGlobalUniqueVisitors(db) {
+        console.log("DEBUG: Checking global unique visitor status...");
+
+        // Path: 'site_data/total_unique_visitors' (Collection/Document)
+        const globalStatsRef = doc(db, "site_data", "total_unique_visitors");
+
+        // --- LOCAL STORAGE FOR UNIQUENESS CHECK ---
+        const VISITOR_KEY = `unique_visitor_${firebaseConfig.projectId}`;
+        const isUniqueCounted = localStorage.getItem(VISITOR_KEY) === "true";
+
+        try {
+          if (!isUniqueCounted) {
+            console.log(
+              "DEBUG: User is NEW. Incrementing global counter via Local Storage check..."
+            );
+
+            // Atomically increment the public counter field: 'count'
+            await setDoc(
+              globalStatsRef,
+              {
+                count: increment(1),
+              },
+              { merge: true }
+            );
+
+            // Set the flag in Local Storage so they are not counted again
+            localStorage.setItem(VISITOR_KEY, "true");
+
+            console.log(
+              "DEBUG: Global counter incremented and Local Storage flag set to true."
+            );
+          } else {
+            console.log(
+              "DEBUG: User is RETURNING (via Local Storage). Global counter NOT incremented."
+            );
+          }
+        } catch (error) {
+          console.error(
+            "ERROR: Failed to update Global Unique Visitors:",
+            error
+          );
+        }
+      }
+
+      /**
+       * Sets up real-time listener for the public global counter.
+       */
+      function setupGlobalCounterListener(db) {
+        console.log("DEBUG: Setting up Global Counter Listener.");
+        // Path: 'site_data/total_unique_visitors' (Collection/Document)
+        const globalStatsRef = doc(db, "site_data", "total_unique_visitors");
+
+        // Set up real-time listener for the public global counter
+        onSnapshot(
+          globalStatsRef,
+          (docSnap) => {
+            if (docSnap.exists()) {
+              const data = docSnap.data();
+              const uniqueVisitors = data.count || 0;
+              globalCounterElement.textContent =
+                uniqueVisitors.toLocaleString();
+              console.log(
+                `DEBUG: Realtime Global Visitors updated to: ${uniqueVisitors}`
+              );
+            } else {
+              globalCounterElement.textContent = "0";
+              console.log(
+                "DEBUG: Global Stats document (site_data/total_unique_visitors) does not exist yet."
+              );
+            }
+          },
+          (error) => {
+            console.error("ERROR: Global Counter onSnapshot failed:", error);
+            globalCounterElement.textContent = "Error";
+          }
+        );
+      }
+
+      // --- INITIALIZATION FUNCTION ---
+      async function initFirebase() {
+        console.log(
+          "DEBUG: Starting initFirebase (v3.2 - Module compatibility fix attempt)..."
+        );
+
+        // Check if hardcoded config is present (it always should be now)
+        if (!firebaseConfig || !firebaseConfig.apiKey) {
+          authStatusElement.textContent = "FATAL ERROR";
+          userIdElement.textContent = "Hardcoded Config Missing.";
+          statusCard.classList.add("bg-red-100", "border-red-600");
+          statusCard.classList.remove("bg-gray-100");
+          return;
+        }
+
+        try {
+          // 1. Initialize Firebase App
+          const app = initializeApp(firebaseConfig);
+          auth = getAuth(app);
+          db = getFirestore(app);
+
+          setLogLevel("debug");
+          console.log(
+            "DEBUG: Firebase App, Auth, and Firestore initialized successfully. Log level set to debug."
+          );
+
+          authStatusElement.textContent = "Connecting...";
+
+          let signInAttempt;
+          const signInMethod = initialAuthToken ? "Custom Token" : "Anonymous";
+          console.log(
+            `DEBUG: Attempting sign-in using method: ${signInMethod}...`
+          );
+
+          // 2. Attempt Sign In (Anonymous sign-in for read/write permissions)
+          if (initialAuthToken) {
+            signInAttempt = signInWithCustomToken(auth, initialAuthToken);
+          } else {
+            signInAttempt = signInAnonymously(auth);
+          }
+
+          await signInAttempt;
+          console.log("DEBUG: Sign-in promise resolved successfully.");
+
+          // 3. Setup global listener immediately
+          setupGlobalCounterListener(db);
+
+          // 4. Listen for Auth State Change to trigger counter logic
+          onAuthStateChanged(auth, (user) => {
+            if (user) {
+              console.log(
+                `DEBUG: Auth State Changed: User signed in with UID: ${user.uid}`
+              );
+
+              // Update UI
+              authStatusElement.textContent = "SUCCESS - Signed In";
+              userIdElement.textContent = user.uid;
+              statusCard.classList.remove("bg-gray-100", "bg-red-100");
+              statusCard.classList.add("bg-green-100");
+
+              // --- CRITICAL COUNTER LOGIC EXECUTION ---
+              updateGlobalUniqueVisitors(db);
+            } else {
+              console.log("DEBUG: Auth State Changed: User signed out.");
+
+              // User is signed out.
+              authStatusElement.textContent = "FAILURE - Signed Out";
+              userIdElement.textContent = "No user signed in.";
+              statusCard.classList.remove("bg-gray-100", "bg-green-100");
+              statusCard.classList.add("bg-red-100");
+            }
+          });
+        } catch (error) {
+          authStatusElement.textContent = "FATAL ERROR";
+          userIdElement.textContent = `Authentication Failed: ${error.message}`;
+          statusCard.classList.remove("bg-gray-100", "bg-green-100");
+          statusCard.classList.add("bg-red-100");
+          console.error(
+            "FATAL ERROR: Firebase Initialization or Sign-in Error:",
+            error
+          );
+        }
+      }
+
+      initFirebase();
+    </script>
+  </body>
+</html>
