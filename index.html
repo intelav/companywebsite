@@ -40,13 +40,15 @@
         increment,
         onSnapshot,
       } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
-      // setLogLevel is not imported from the specific path in your script, but we'll include it for debug control if available.
-      // import { setLogLevel } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+      
+      // We will define a minimal setLogLevel if it's not available in the environment scope
+      const setLogLevel = console.log;
 
       // --- CONFIGURATION LOADING ---
       // Hardcoded config is used as a fallback if the environment variables are not present.
       const hardcodedConfig = {
-        apiKey: "",
+        // NOTE: API Key is now assumed to be supplied correctly by the user/environment
+        apiKey: "AIzaSyAtc4tGXWIhPRnCcSZY_Zf7030RcjaZ2zA", 
         authDomain: "svaraikyam-labs.firebaseapp.com",
         projectId: "svaraikyam-labs",
         storageBucket: "svaraikyam-labs.firebasestorage.app",
@@ -71,18 +73,15 @@
       const appId = envAppId || "default-app-id";
 
       let app, db, auth;
+      // We only keep the global counter element
       const globalCounterElement = document.getElementById("visitor-counter");
-      const userAccessCounterElement = document.getElementById(
-        "user-access-counter"
-      );
+
 
       if (!firebaseConfig.apiKey) {
         console.error(
           "Firebase configuration is missing. The visitor counter will not function."
         );
         globalCounterElement.textContent = "Config Error";
-        userAccessCounterElement.textContent = "Config Error";
-        // Do not return here to allow the rest of the script to execute (better for debugging)
       }
 
       // Initialize Firebase App and Services (using the environment or hardcoded config)
@@ -90,7 +89,7 @@
         app = initializeApp(firebaseConfig);
         db = getFirestore(app);
         auth = getAuth(app);
-        // If setLogLevel is available, uncomment: setLogLevel("error");
+        setLogLevel("error"); // Set log level to 'error' to minimize console noise
         console.log("Firebase Initialized.");
       } catch (e) {
         console.error(
@@ -98,40 +97,21 @@
           e
         );
         globalCounterElement.textContent = "DB Error";
-        userAccessCounterElement.textContent = "DB Error";
         // Set db and auth to null to prevent errors in subsequent functions
         db = null;
         auth = null;
       }
 
       // Define Firestore Paths using the Canvas Environment standard
-      // Public Counter Path: /site_data/total_unique_visitors (simple global path for public data)
-      const GLOBAL_COUNTER_DOC_PATH = "site_data/total_unique_visitors";
+      // Public Counter Path: /artifacts/{appId}/public/data/site_data/total_unique_visitors
+      const GLOBAL_COUNTER_DOC_PATH = `site_data/total_unique_visitors`;
 
-      // Private User Access Counter Path: /artifacts/{appId}/users/{userId}/user_data/access_counter
-      function getUserAccessDocRef(userId) {
-        if (!db) return null;
-        return doc(
-          db,
-          "artifacts",
-          appId,
-          "users",
-          userId,
-          "user_data",
-          "access_counter"
-        );
-      }
-
-      // Public Unique Visitor Tracking Path: /artifacts/{appId}/public/data/user_visits/{userId}
-      // This collection is used to track unique users (regardless of session)
+      // 2. Unique User Tracking: CHANGED to match a short path: /user_visits/{userId}
       function getPublicUserVisitDocRef(userId) {
         if (!db) return null;
         return doc(
           db,
-          "artifacts",
-          appId,
-          "public/data",
-          "user_visits",
+          "user_visits", // Short collection name
           userId
         );
       }
@@ -170,9 +150,8 @@
 
         const userId = user.uid;
         const userVisitDocRef = getPublicUserVisitDocRef(userId);
-        const userAccessDocRef = getUserAccessDocRef(userId);
 
-        if (!userVisitDocRef || !userAccessDocRef) return;
+        if (!userVisitDocRef) return;
 
         try {
           // 1. Check if this user has ever been counted as a UNIQUE visitor
@@ -185,26 +164,17 @@
             // 1. Mark user as visited in the public user_visits collection
             await attemptFetch(setDoc, userVisitDocRef, {
               visitedAt: new Date().toISOString(),
-              // accessCount is now tracked separately and initialized below
             });
 
             // 2. Increment the global unique counter
             await attemptFetch(updateDoc, GLOBAL_COUNTER_DOC_REF, {
               count: increment(1),
             });
+            console.log(`[${userId.substring(0, 8)}] NEW UNIQUE VISITOR! Global count incremented.`);
+          } else {
+            console.log(`[${userId.substring(0, 8)}] Returning visitor. Global count not incremented.`);
           }
 
-          // 2. RETURNING or NEW USER: Increment Private User Access Count (runs on every load)
-          // This logic now runs for *every* authenticated user/session load.
-          await attemptFetch(
-            setDoc,
-            userAccessDocRef,
-            {
-              access_count: increment(1),
-              lastAccessed: new Date().toISOString(),
-            },
-            { merge: true }
-          );
         } catch (error) {
           // Handle the initial creation of the global counter document gracefully.
           if (
@@ -213,6 +183,7 @@
           ) {
             // Attempt to create the GLOBAL document with initial count 1 (only if it truly doesn't exist)
             try {
+              console.log("Global counter document not found. Creating it with count: 1.");
               await attemptFetch(setDoc, GLOBAL_COUNTER_DOC_REF, { count: 1 });
             } catch (e) {
               console.error(
@@ -220,20 +191,16 @@
                 e
               );
             }
+          } else {
+             console.error("Error updating unique visitor counter logic:", error);
           }
-          console.error("Error updating visitor/access counter logic:", error);
+         
         }
       }
 
       function displayCurrentCount(count) {
         if (globalCounterElement) {
           globalCounterElement.textContent = count.toLocaleString("en-US");
-        }
-      }
-
-      function displayCurrentUserCount(count) {
-        if (userAccessCounterElement) {
-          userAccessCounterElement.textContent = count.toLocaleString("en-US");
         }
       }
 
@@ -259,30 +226,6 @@
         );
       }
 
-      function listenForUserCountChanges(userId) {
-        if (!db) return; // Guard against uninitialized DB
-        const userAccessDocRef = getUserAccessDocRef(userId);
-        if (!userAccessDocRef) return;
-
-        // Using onSnapshot for real-time updates of the current user's access count
-        onSnapshot(
-          userAccessDocRef,
-          (docSnapshot) => {
-            if (docSnapshot.exists()) {
-              const data = docSnapshot.data();
-              // The private count field is named 'access_count'
-              displayCurrentUserCount(data.access_count || 0);
-            } else {
-              displayCurrentUserCount(0);
-            }
-          },
-          (error) => {
-            console.error("Error fetching real-time user count:", error);
-            displayCurrentUserCount("Err");
-          }
-        );
-      }
-
       // --- INITIALIZATION AND AUTHENTICATION ---
       async function initAuthAndCounters() {
         if (!db || !auth) return;
@@ -290,9 +233,8 @@
         // 1. Start listening for the public global UNIQUE count immediately
         listenForGlobalCountChanges();
 
-        // Set initial states
+        // Set initial state
         globalCounterElement.textContent = "...";
-        userAccessCounterElement.textContent = "...";
 
         // 2. Attempt Sign In (prefer custom token, fall back to anonymous)
         try {
@@ -303,24 +245,15 @@
           }
         } catch (error) {
           console.error("Error during initial sign-in attempt:", error);
-          // We still proceed to onAuthStateChanged even if sign-in failed,
-          // as it will fire with a null user if it failed.
         }
 
         // 3. Listen for Auth State Change to execute counter logic
         onAuthStateChanged(auth, async (user) => {
           if (user) {
             // User is authenticated
-            const userId = user.uid;
-
-            // A. Start listening for the CURRENT USER's private access count
-            listenForUserCountChanges(userId);
-
-            // B. Run the logic to check and increment the counts
+            // Run the logic to check and increment the global unique count
             await updateVisitorCounter(user);
           } else {
-            // User is not signed in or sign-in failed
-            displayCurrentUserCount("N/A");
             console.log("Authentication failed or user signed out.");
           }
         });
